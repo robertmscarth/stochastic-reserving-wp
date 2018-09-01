@@ -1,0 +1,1757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <TycheProjectFileVersion>2</TycheProjectFileVersion>
+  <TycheVersion>181.0.0.8320</TycheVersion>
+  <IsAuditingEnabled>false</IsAuditingEnabled>
+  <IsEncrypted>false</IsEncrypted>
+  <TycheProjectEngineContents>
+    <TycheEngine xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <FileVersion>1</FileVersion>
+      <LastLoadedEngineVersion>
+        <BuildNumber>0</BuildNumber>
+        <MajorVersionNumber>0</MajorVersionNumber>
+        <MinorVersionNumber>0</MinorVersionNumber>
+        <PatchNumber>0</PatchNumber>
+      </LastLoadedEngineVersion>
+      <Globals>
+        <ScenarioCount>1000</ScenarioCount>
+        <RandomSeed>749216459</RandomSeed>
+        <UsePerNodeSeeding>true</UsePerNodeSeeding>
+        <AutomaticClearResults>true</AutomaticClearResults>
+        <AutomaticFreeMemory>true</AutomaticFreeMemory>
+        <SparseVectorThreshold>0.01</SparseVectorThreshold>
+        <SIMDGlobalNumThreads>-1</SIMDGlobalNumThreads>
+        <ModelDescription i:nil="true" />
+        <ManagedGlobalNumThreads>1</ManagedGlobalNumThreads>
+        <UseDependencyGroups>true</UseDependencyGroups>
+        <CheckIndexingVariables>false</CheckIndexingVariables>
+        <CheckVariablesAndTypes>false</CheckVariablesAndTypes>
+        <FatalReportLevel>None</FatalReportLevel>
+        <IssueWarningForExperimentalFeatures>true</IssueWarningForExperimentalFeatures>
+      </Globals>
+      <TopLevelModelNodes>
+        <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+          <fAttachedData i:nil="true" />
+          <NodeType>ImportDatabase</NodeType>
+          <Name>Import Claims Triangle</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg DataSet = 'Select Data Set'.DataSet;
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings i:nil="true" />
+          <Children />
+          <ChildrenEdges />
+          <ImportSettings>
+            <InputVariables i:nil="true" />
+            <OutputVariables i:nil="true" />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1058333815</RandomSeed>
+            <DatabaseType>CSV</DatabaseType>
+            <DatabaseServerName></DatabaseServerName>
+            <DatabaseName></DatabaseName>
+            <DatabaseFilePath></DatabaseFilePath>
+            <AuthenticationType>Windows</AuthenticationType>
+            <Username>RPC\RS09</Username>
+            <Password />
+            <ResultSets>
+              <TycheSQLResultSet>
+                <Name>ClaimsTriangle</Name>
+                <SQLString>SELECT * FROM [&lt;&lt;DataSet&gt;&gt;]</SQLString>
+              </TycheSQLResultSet>
+            </ResultSets>
+            <OutputTables />
+            <DatabaseImportVariables>
+              <TycheOutputVariable_DatabaseImport>
+                <VariableName>ClaimsTriangle</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <ResultsSetName>ClaimsTriangle</ResultsSetName>
+                <DimensionColumnNames>OP,DP</DimensionColumnNames>
+                <ValuesColumnName>ClaimsAmount</ValuesColumnName>
+                <ImportFinalDimensionAsScenarios>false</ImportFinalDimensionAsScenarios>
+                <DataType>Double</DataType>
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable_DatabaseImport>
+            </DatabaseImportVariables>
+            <DatabaseExportVariables />
+            <DatabaseImportIndexingVariables />
+            <DatabaseImportValuesIndexingVariables />
+            <DSNName></DSNName>
+            <DSNConnectionString>DSN=;UID=RPC\RS09;PWD=</DSNConnectionString>
+            <UseJaggedImports>true</UseJaggedImports>
+            <AccelerateJaggedImports>true</AccelerateJaggedImports>
+            <CustomDateFormat></CustomDateFormat>
+            <ListSeparator>,</ListSeparator>
+            <FileLocale>en-US</FileLocale>
+            <FastMode>false</FastMode>
+            <CommandTimeout>30</CommandTimeout>
+            <SQLString></SQLString>
+            <ExportRowLimit>0</ExportRowLimit>
+            <CommentMarker>35</CommentMarker>
+            <TextFilePath>.\</TextFilePath>
+            <ConnectionTimeout>5</ConnectionTimeout>
+            <HasHeader>true</HasHeader>
+            <OleDbProvider></OleDbProvider>
+          </ImportSettings>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Mack Bootstrap</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PreSimulatedMackResiduals = 'Read In Pre Simulated'.PreSimulatedMackResiduals;
+
+UsePreSimulated = False;
+UseNormalResiduals = False;
+
+// Basic Chain Ladder calculations
+out OPs=Length(ClaimsTriangle);
+out DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
+AllDPs=max(DPs);
+out FutDPs[OP][OPs]=AllDPs -DPs[OP];
+
+out DevelopmentFactors[OP,DP][OPs,DPs[OP]-1]=ClaimsTriangle[OP,DP+1]/ClaimsTriangle[OP,DP];
+
+Weights[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+NumObsIndicator[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 || Indicator[OP,DP]==0 || (OP==0&amp;&amp;DP==DPs[0]-1) then 0 else 1;
+NumObsByDP=sum[DP](NumObsIndicator);
+NumObs=sum(NumObsByDP);
+
+// calculate the chain ladder fitted development factors
+out DevRatios = sum[DP](DevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
+NumParams = Length(DevRatios);
+
+out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
+
+// Bootstrapping calculations
+// First calculate residuals
+PearsonResiduals[OP,DP][OPs,DPs[OP]-1]=Indicator[OP,DP] *sqrt(Weights[OP,DP])*(DevelopmentFactors[OP,DP]-DevRatios[DP]);
+BiasCorrection=((NumObs-(OPs-1))/(NumObs-NumParams))*NumObsByDP/(NumObsByDP -1) ;
+SigmaSquaredStep1=Sum[DP](PearsonResiduals^2)*BiasCorrection/NumObsByDP;
+FinalSigmaSquared=min(SigmaSquaredStep1[AllDPs-3]^4/SigmaSquaredStep1[AllDPs-4]^2,min(SigmaSquaredStep1[AllDPs-3],SigmaSquaredStep1[AllDPs-4]));
+SigmaSquared[DP][AllDPs-1]=if DP &lt; AllDPs-2 then SigmaSquaredStep1[DP] else FinalSigmaSquared;
+
+StandardisationFactor=sqrt(BiasCorrection/SigmaSquared);
+StandardisedPearsonResiduals[OP,DP][OPs,if OP==0 then DPs[OP]-2 else DPs[OP]-1]=PearsonResiduals[OP,DP] *StandardisationFactor[DP];
+
+// Flatten thee into a 1D list (to make it easier to resample from them), and sort them in an increasing order (this makes it easier to match up with externaly calculated residuals)
+Residuals1 = SortIncreasing( Flatten( StandardisedPearsonResiduals ) );
+MeanCentreResiduals = True;
+StandardiseResiduals = False;
+MeanResiduals = Mean( Residuals1 );
+StdDevResiduals1 = StandardDeviation( Residuals1 );
+Residuals = 
+	if MeanCentreResiduals and StandardiseResiduals then ( Residuals1 - MeanResiduals ) / StdDevResiduals1
+	else if MeanCentreResiduals and !StandardiseResiduals then Residuals1 - MeanResiduals
+	else Residuals1;
+StdDevResiduals = if StandardiseResiduals then 1 else StdDevResiduals1;
+
+// Resample residuals and generate pseudo development factors
+ResidualLookUp[OP,DP][OPs,DPs[OP]-1] = ToString( ToInteger( ( OPs - 1 ) * OP + DP + 1 - OP * ( OP - 1 ) / 2 ) );
+ReSampleResidualNum[OP,DP][OPs,DPs[OP]-1] = ToInteger( Uniform( 0 , Length( Residuals ) - 1 ) );
+//ResampledResiduals[OP,DP][OPs,DPs[OP]-1]=Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+ResampledResiduals = 
+	if UseNormalResiduals then normal(0,1)
+	else if !UseNormalResiduals and UsePreSimulated then Residuals[PreSimulatedMackResiduals[ResidualLookUp] - 1]
+	else Residuals[ReSampleResidualNum];
+
+PseudoDevelopmentFactors[OP,DP][OPs,DPs[OP]-1]=DevRatios[DP]+ResampledResiduals[OP,DP]*sqrt(SigmaSquared[DP]/Weights[OP,DP]);
+
+// Fit the model to the pseudo data by calculating the fitted development ratios
+PseudoDevRatios = sum[DP,sims](PseudoDevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
+
+// Project, allowing for process error
+// First, resample residuals for the future periods
+FutureResidualLookUp[OP,DP][OPs,FutDPs[OP]] = ToString( ToInteger( ( OPs * ( OPs - 1 ) / 2 ) + DP + 1 + OP * ( OP - 1 ) / 2 ) );
+ReSampleFutureResidualNum[OP,DP][OPs,FutDPs[OP]] = ToInteger( Uniform( 0 , Length( Residuals ) - 1 ) );
+//FutureResiduals[OP,DP][OPs,FutDPs[OP]]=Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+FutureResiduals = 
+	if UseNormalResiduals then normal(0,1)
+	else if !UseNormalResiduals and UsePreSimulated then Residuals[PreSimulatedMackResiduals[FutureResidualLookUp] - 1]
+	else Residuals[ReSampleFutureResidualNum];
+// Then use resampled residuals to project the future claims
+out FutureClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*PseudoDevRatios[OPs-OP-1] + FutureResiduals[OP,DP]*Sqrt(SigmaSquared[DP+DPs[OP]-1]*ClaimsTriangle[OP,DPs[OP]-1])  else FutureClaims[OP,DP-1]*PseudoDevRatios[OPs-OP-1+DP] + FutureResiduals[OP,DP]*Sqrt(SigmaSquared[DP+DPs[OP]-1]*FutureClaims[OP,DP-1]);
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1883692604</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Merz Wuethrich</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg OPs = Prep.OPs;
+arg DPs = Prep.DPs;
+arg AllDPs = Prep.AllDPs;
+arg FutDPs = Prep.FutDPs;
+arg Indicator = Prep.Indicator;
+arg DevelopmentFactors = 'Basic Chain Ladder'.DevelopmentFactors;
+arg Weights = 'Basic Chain Ladder'.Weights;
+arg DevRatios = 'Basic Chain Ladder'.DevRatios;
+arg ProjClaims = 'Basic Chain Ladder'.ProjClaims;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg SigmaSquared = 'Analytic Mack'.SigmaSquared;
+arg SubCalc2 = 'Analytic Mack'.SubCalc2; //sigma^2/f^2
+
+S1_temp=sum[DP](DevelopmentFactors * Weights * Indicator);
+S1[DP][Length(S1_temp)+1]=if DP==0 then Sum(ClaimsTriangle[:,0]) else S1_temp[DP-1];
+S2=sum[DP](Weights * Indicator);
+
+// calculate Delta
+Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
+
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>953571433</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Select Data Set</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>//out DataSet="TaylorAshe";
+
+//out DataSet="MerzWuethrich";
+
+out DataSet = "Example1";
+
+//out DataSet = "Example2_Paid";
+
+//out DataSet = "Example2_Incurred";
+
+//out DataSet = "AMWBF";
+
+PriorUltimateFlag = False;
+out PriorUltimateDataSet = if PriorUltimateFlag then DataSet + "_PriorUltimate" else "Dummy_PriorUltimate";
+
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1421024521</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Basic Chain Ladder</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg OPs = Prep.OPs;
+arg DPs = Prep.DPs;
+arg AllDPs = Prep.AllDPs;
+arg FutDPs = Prep.FutDPs;
+arg Indicator = Prep.Indicator;
+arg FutureShape = Prep.FutureShape;
+
+// calculate triangle of development factors
+out DevelopmentFactors[Indicator] = SafeDivide( ClaimsTriangle[OP,DP+1] , ClaimsTriangle[OP,DP] , 1 );
+
+// calculate the weights for calculating the fitted development ratios
+out Weights[Indicator]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+// calculate the chain ladder fitted development factors
+out DevRatios = SafeDivide( sum[DP](DevelopmentFactors * Weights * Indicator) , sum[DP](Weights * Indicator) , 1 );
+
+// calculate the expected future cumulative claim amounts
+out ProjClaims[FutureShape]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
+
+// calculate the expected ultimate claims
+out UltimateClaims[OP][OPs] = if OP==0 then ClaimsTriangle[0,DPs[0]-1] else ProjClaims[OP,FutDPs[OP]-1];
+
+// calculate the reserves
+out ClaimsReserves[OP][OPs] = UltimateClaims[OP] - ClaimsTriangle[OP,DPs[OP]-1];
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1421024521</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Prep</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+
+// calculate triangle dimensions
+out OPs=Length(ClaimsTriangle);
+out DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
+out AllDPs=max(DPs);
+out FutDPs[OP][OPs]=AllDPs -DPs[OP];
+
+// set the indicators all to 1 - this should be an input in future
+// this variable is also used as the shape of the development factor triangle, and other triangles of the same shape
+out Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+// output the shape for future claims
+out FutureShape[OP,DP][OPs,FutDPs[OP]]=0;
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1898315699</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Analytic Mack</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg OPs = Prep.OPs;
+arg DPs = Prep.DPs;
+arg AllDPs = Prep.AllDPs;
+arg FutDPs = Prep.FutDPs;
+arg Indicator = Prep.Indicator;
+arg DevelopmentFactors = 'Basic Chain Ladder'.DevelopmentFactors;
+arg Weights = 'Basic Chain Ladder'.Weights;
+arg DevRatios = 'Basic Chain Ladder'.DevRatios;
+arg ProjClaims = 'Basic Chain Ladder'.ProjClaims;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+
+NumParams=Length(DevRatios);
+
+// calculate the scale factor (Sigma^2)
+SquaredDifference[Indicator] = ((DevelopmentFactors[OP,DP]-DevRatios[DP])^2)/(OPs-DP-2);
+SigmaSquaredStep1=Sum[DP](SquaredDifference * Weights * Indicator);
+FinalSigmaSquared=min(SigmaSquaredStep1[AllDPs-3]^4/SigmaSquaredStep1[AllDPs-4]^2,min(SigmaSquaredStep1[AllDPs-3],SigmaSquaredStep1[AllDPs-4]));
+out SigmaSquared[DP][AllDPs-1]=if DP &lt; AllDPs-2 then SigmaSquaredStep1[DP] else FinalSigmaSquared;
+
+// calculate the mse for the reserve estimate for each origin period
+SubCalc1 = 1/Sum[DP](Weights);
+out SubCalc2 = SigmaSquared / DevRatios^2;
+SubCalc3[OP,DP][OPs-1,FutDPs[OP+1]]=if DP==0 then ClaimsTriangle[OP+1,DPs[OP+1]-1] else ProjClaims[OP+1,DP-1];
+SubCalc4[OP,k][OPs-1,OP+1] = SubCalc2[OPs-1-k-1] * ( SubCalc1[AllDPs-2-k] + 1 / SubCalc3[OP,FutDPs[OP+1]-k-1] );
+
+// calculate the MSE for each origin period (excluding the first)
+OPs_Temp[i][OPs-1]=i+1;
+out MSE = UltimateClaims[OPs_Temp] * sqrt( Sum[OP]( SubCalc4 ) );
+
+// now we calculate the MSE for the total reserves
+SubCalc5=2 * SubCalc1 * SubCalc2;
+SubCalc6[SubCalc5]=if DP==0 then SubCalc5[Length(SubCalc5)-1] else SubCalc6[DP-1]+SubCalc5[Length(SubCalc5)-DP-1];
+
+SubCalc7[OP][OPs-2]=if OP==0 then UltimateClaims[OPs-1] else SubCalc7[OP-1]+UltimateClaims[OPs-OP-1];
+
+Total_MSE_2[OP][OPs-2]=UltimateClaims[OP+1]*SubCalc7[OPs-3-OP]*SubCalc6[OP];
+
+Total_MSE_1=Sum(MSE^2);
+
+out Total_MSE=Sqrt(Total_MSE_1 + Sum(Total_MSE_2));
+
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>953571433</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Output</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg MSE = 'Analytic Mack'.MSE;
+arg Total_MSE = 'Analytic Mack'.Total_MSE;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg ProjClaims = 'Basic Chain Ladder'.ProjClaims;
+
+// calculate the reserves
+ClaimsReserves[UltimateClaims] = UltimateClaims[OP] - ClaimsTriangle[OP,Length(ClaimsTriangle[OP])-1];
+TotalClaimsReserves = Sum[mind,OP]( ClaimsReserves );
+
+// Calculate CoVs of the reserves
+CoV[MSE] = SafeDivide( MSE[i] , ClaimsReserves[i+1] , Blank );
+TotalCoV = SafeDivide( Total_MSE , TotalClaimsReserves , Blank );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>2123700497</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>ODP Bootstrap</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PreSimulatedODPResiduals = 'Read In Pre Simulated'.PreSimulatedODPResiduals;
+
+ODPType = "Constant"; // "Constant" or "Varying"
+UsePreSimulated = True;
+
+OPs=Length(ClaimsTriangle);
+DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
+AllDPs=max(DPs);
+FutDPs[OP][OPs]=AllDPs -DPs[OP];
+
+out DevelopmentFactors[OP,DP][OPs,DPs[OP]-1]=ClaimsTriangle[OP,DP+1]/ClaimsTriangle[OP,DP];
+
+Weights[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+NumObsIndicator[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 || Indicator[OP,DP]==0 || (OP==0&amp;&amp;DP==DPs[0]-1) then 0 else 1;
+ResidualsExclusionIndicator[ClaimsTriangle] = 
+	if ToInteger(OP) + ToInteger(DP) == OPs-1 
+	then ( if ClaimsTriangle[OP,DP] &gt; 0 then 1 else 0 )
+	else ( if ClaimsTriangle[OP,DP] &gt; 0 then Indicator[ToInteger(OP),ToInteger(DP)] else 0 );
+NumObsByDP=sum[DP](ResidualsExclusionIndicator);
+NumObs=sum(NumObsByDP);
+
+// calculate the chain ladder fitted development factors
+out DevRatios = sum[DP](DevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
+//NumParams = if ODPType == "Constant" then Length(DevRatios) else Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) );
+NumParams = Length(DevRatios);
+NumOPs = if ODPType == "Constant" then Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) ) else OPs;
+DegOfFreedom = NumObs - ( NumOPs + NumParams );
+
+out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
+
+// items needed for ODP
+IncrementalClaims[ClaimsTriangle] = if DP=="0" then ClaimsTriangle[OP,DP] else ClaimsTriangle[OP,DP] - ClaimsTriangle[OP,ToString(ToInteger(DP)-1)];
+ReverseFittedCumulativeClaims[ClaimsTriangle] = if DP=="0" then ClaimsTriangle[OP,Length(ClaimsTriangle[OP])-1] else ReverseFittedCumulativeClaims[OP,ToString(ToInteger(DP)-1)] / DevRatios[Length(DevRatios)-ToInteger(DP)-ToInteger(OP)];
+FittedIncrementalClaims[ClaimsTriangle] = if DP=="0" then ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP])-1] else ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP]) - ToInteger(DP)-1] - ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP]) - ToInteger(DP)];
+
+// Bootstrapping calculations
+// First calculate residuals
+PearsonResiduals[OP,DP][OPs-1,DPs[OP]-(if OP==0 then 1 else 0)]=ResidualsExclusionIndicator[OP,DP] * ( IncrementalClaims[OP,DP] - FittedIncrementalClaims[OP,DP] ) / sqrt( FittedIncrementalClaims[OP,DP] );
+ConstantScaleParameter = Sum( PearsonResiduals^2 ) / DegOfFreedom;
+PearsonResidualsSquareSum = Sum[DP]( PearsonResiduals ^2 );
+ResidualsExclusionIndicatorByDP = Sum[DP]( ResidualsExclusionIndicator );
+VaryingScaleParameter1[PearsonResidualsSquareSum] = PearsonResidualsSquareSum[DP] / ResidualsExclusionIndicatorByDP[DP];
+VaryingScaleParameter2 = VaryingScaleParameter1 * NumObs / DegOfFreedom;
+VaryingScaleParameter[DP][AllDPs] = if DP &lt; AllDPs - 1 then VaryingScaleParameter2[DP] else Min( VaryingScaleParameter2[AllDPs-3] , VaryingScaleParameter2[AllDPs-2] );
+ScaleParameter[DP][AllDPs] = if ODPType == "Constant" then ConstantScaleParameter else VaryingScaleParameter[DP];
+
+// Calculate the standardised Pearson residuals
+StandardisedPearsonResiduals[PearsonResiduals] = sqrt( NumObs / DegOfFreedom ) * PearsonResiduals[OP,DP] / sqrt( ScaleParameter[DP] );
+
+// Flatten thee into a 1D list (to make it easier to resample from them), and sort them in an increasing order (this makes it easier to match up with externaly calculated residuals)
+Residuals1 = SortIncreasing( Flatten( StandardisedPearsonResiduals ) );
+MeanCentreResiduals = False;
+StandardiseResiduals = False;
+MeanResiduals = Mean( Residuals1 );
+StdDevResiduals1 = StandardDeviation( Residuals1 );
+Residuals = 
+	if MeanCentreResiduals and StandardiseResiduals then ( Residuals1 - MeanResiduals ) / StdDevResiduals1
+	else if MeanCentreResiduals and !StandardiseResiduals then Residuals1 - MeanResiduals
+	else Residuals1;
+StdDevResiduals = if StandardiseResiduals then 1 else StdDevResiduals1;
+
+// Resample the residuals in the shape of the original claims triangle
+ResidualLookUp[ClaimsTriangle] = ToString( ToInteger( NumOPs * ToInteger(OP) + ToInteger(DP) + 2 - ( ToInteger(OP) - 1 ) * ( ToInteger(OP) - 2 ) / 2 ) );
+ReSampleResidualNum[ClaimsTriangle] = ToInteger( Uniform( 0 , Length( Residuals ) - 1 ) );
+// ResampledResiduals[ClaimsTriangle] = Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+ResampledResiduals = 
+	if UsePreSimulated then Residuals[PreSimulatedODPResiduals[ResidualLookUp] - 1]
+	else Residuals[ReSampleResidualNum];
+
+// Calculate the pseudo incremental data from the residuals and the fitted incremental claims
+ResampleDistribution = "Residuals"; // "Residuals" or "Normal"
+PseudoIncrementalClaims[ClaimsTriangle] = 
+	if ResampleDistribution == "Residuals"
+		then ResampledResiduals[OP,DP] * Sqrt( ScaleParameter[ToInteger(DP)] * FittedIncrementalClaims[OP,DP] ) + FittedIncrementalClaims[OP,DP]
+	else if ResampleDistribution == "Normal"
+		then Normal( FittedIncrementalClaims[OP,DP] , StdDevResiduals * Sqrt( ScaleParameter[ToInteger(DP)] * FittedIncrementalClaims[OP,DP] ) )
+	else 0;
+
+// Calculate the pseudo cumulative data from the pseudo incremental data
+PseudoCumulativeClaims[ClaimsTriangle] = if DP == "0" then PseudoIncrementalClaims[OP,DP] else PseudoCumulativeClaims[OP,ToString(ToInteger(DP)-1)] + PseudoIncrementalClaims[OP,DP];
+
+// Now apply the basic chain ladder to the pseudo cumulative claims to get the pseudo ultimate claims, and the pseudo fitted incremental factors
+PseudoDevelopmentFactors[Indicator]=PseudoCumulativeClaims[OP,DP+1]/PseudoCumulativeClaims[OP,DP];
+PseudoWeights[OP,DP][OPs,DPs[OP]-1]=if PseudoCumulativeClaims[OP,DP]==0 then 0 else PseudoCumulativeClaims[OP,DP];
+PseudoDevRatios = sum[DP,sims](PseudoDevelopmentFactors * PseudoWeights * Indicator) / sum[DP,sims](PseudoWeights * Indicator);
+ReversePseudoFactorToUltimate[DP][AllDPs] = if DP==0 then 1 else ReversePseudoFactorToUltimate[DP-1] * PseudoDevRatios[Length(PseudoDevRatios) - DP];
+PseudoCumulativeFactor[DP][AllDPs] = 1 / ReversePseudoFactorToUltimate[AllDPs - DP-1];
+PseudoIncrementalFactor[DP][AllDPs] = if DP==0 then PseudoCumulativeFactor[DP] else PseudoCumulativeFactor[DP] - PseudoCumulativeFactor[DP-1];
+PseudoUltimate[OP][OPs] = PseudoCumulativeClaims[OP,DPs[OP]-1] / PseudoCumulativeFactor[DPs[OP]-1];
+PseudoFittedIncrementalClaims[ProjClaims] = PseudoUltimate[OP] * PseudoIncrementalFactor[DPs[OP]+DP];
+
+// Resample residuals for projections
+ResampledProjResiduals[ProjClaims] = Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+
+FutureResidualLookUp[ProjClaims] = ToString( ToInteger( ( NumOPs * ( NumOPs + 1 ) / 2 ) + DP + 1 + OP * ( OP - 1 ) / 2 ) );
+ReSampleFutureResidualNum[ProjClaims] = ToInteger( Uniform( 0 , Length( Residuals ) - 1 ) );
+//FutureResiduals[OP,DP][OPs,FutDPs[OP]]=Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+FutureResiduals = 
+	if UsePreSimulated then Residuals[PreSimulatedODPResiduals[FutureResidualLookUp] - 1]
+	else Residuals[ReSampleFutureResidualNum];
+
+
+// Calculate the projected incremental claims from the resampled residuals and pseudo ultimates and pseudo incremental factors
+out IncrementalProjClaims[ProjClaims] = ResampledProjResiduals[OP,DP] * Sqrt(abs( ScaleParameter[ToInteger(DP)] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
+
+// checks
+MeanPseudoDevRatios = Mean[mind,sims](PseudoDevRatios);
+MeanPseudoIncrementalClaims = Mean[mind,sims](PseudoIncrementalClaims);
+//ProjReserve = Sum[OP,sims](IncrementalProjClaims);
+//MeanProjReserve = Mean[mind,sims](ProjReserve);
+MeanIncrementalProjClaims = Mean[mind,sims](IncrementalProjClaims);
+//MeanPseudoUltimate = Mean[mind,sims](PseudoUltimate);
+//MeanResiduals = Mean(Residuals);
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1497916658</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>AMWBF Bootstrap</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg PriorUltimate = 'Import Prior Ultimate'.PriorUltimate;
+arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+ODPType = "Constant"; // "Constant" or "Varying"
+
+OPs=Length(ClaimsTriangle);
+DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
+AllDPs=max(DPs);
+FutDPs[OP][OPs]=AllDPs -DPs[OP];
+
+out DevelopmentFactors[OP,DP][OPs,DPs[OP]-1]=ClaimsTriangle[OP,DP+1]/ClaimsTriangle[OP,DP];
+
+Weights[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+NumObsIndicator[OP,DP][OPs,DPs[OP]-1]=if ClaimsTriangle[OP,DP]==0 || Indicator[OP,DP]==0 || (OP==0&amp;&amp;DP==DPs[0]-1) then 0 else 1;
+ResidualsExclusionIndicator[ClaimsTriangle] = 
+	if ToInteger(OP) + ToInteger(DP) == OPs-1 
+	then ( if ClaimsTriangle[OP,DP] &gt; 0 then 1 else 0 )
+	else ( if ClaimsTriangle[OP,DP] &gt; 0 then Indicator[ToInteger(OP),ToInteger(DP)] else 0 );
+NumObsByDP=sum[DP](ResidualsExclusionIndicator);
+NumObs=sum(NumObsByDP);
+
+// calculate the chain ladder fitted development factors
+out DevRatios = sum[DP](DevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
+//NumParams = if ODPType == "Constant" then Length(DevRatios) else Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) );
+NumParams = Length(DevRatios);
+NumOPs = if ODPType == "Constant" then Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) ) else OPs;
+DegOfFreedom = NumObs - ( NumOPs + NumParams );
+
+out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
+
+// items needed for ODP
+IncrementalClaims[ClaimsTriangle] = if DP=="0" then ClaimsTriangle[OP,DP] else ClaimsTriangle[OP,DP] - ClaimsTriangle[OP,ToString(ToInteger(DP)-1)];
+ReverseFittedCumulativeClaims[ClaimsTriangle] = if DP=="0" then ClaimsTriangle[OP,Length(ClaimsTriangle[OP])-1] else ReverseFittedCumulativeClaims[OP,ToString(ToInteger(DP)-1)] / DevRatios[Length(DevRatios)-ToInteger(DP)-ToInteger(OP)];
+FittedIncrementalClaims[ClaimsTriangle] = if DP=="0" then ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP])-1] else ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP]) - ToInteger(DP)-1] - ReverseFittedCumulativeClaims[OP,Length(ReverseFittedCumulativeClaims[OP]) - ToInteger(DP)];
+
+// Bootstrapping calculations
+// First calculate residuals
+PearsonResiduals[OP,DP][OPs-1,DPs[OP]-(if OP==0 then 1 else 0)]=ResidualsExclusionIndicator[OP,DP] * ( IncrementalClaims[OP,DP] - FittedIncrementalClaims[OP,DP] ) / sqrt( FittedIncrementalClaims[OP,DP] );
+ConstantScaleParameter = Sum( PearsonResiduals^2 ) / DegOfFreedom;
+PearsonResidualsSquareSum = Sum[DP]( PearsonResiduals ^2 );
+ResidualsExclusionIndicatorByDP = Sum[DP]( ResidualsExclusionIndicator );
+VaryingScaleParameter1[PearsonResidualsSquareSum] = PearsonResidualsSquareSum[DP] / ResidualsExclusionIndicatorByDP[DP];
+VaryingScaleParameter2 = VaryingScaleParameter1 * NumObs / DegOfFreedom;
+VaryingScaleParameter[DP][AllDPs] = if DP &lt; AllDPs - 1 then VaryingScaleParameter2[DP] else Min( VaryingScaleParameter2[AllDPs-3] , VaryingScaleParameter2[AllDPs-2] );
+ScaleParameter[DP][AllDPs] = if ODPType == "Constant" then ConstantScaleParameter else VaryingScaleParameter[DP];
+
+// Calculate the standardised Pearson residuals
+StandardisedPearsonResiduals[PearsonResiduals] = sqrt( NumObs / DegOfFreedom ) * PearsonResiduals[OP,DP] / sqrt( ScaleParameter[DP] );
+
+// Flatten them into a 1D list to make it easier to resample from them
+Residuals1=Flatten(StandardisedPearsonResiduals);
+MeanCentreResiduals = False;
+StandardiseResiduals = False;
+MeanResiduals = Mean( Residuals1 );
+StdDevResiduals1 = StandardDeviation( Residuals1 );
+Residuals = 
+	if MeanCentreResiduals and StandardiseResiduals then ( Residuals1 - MeanResiduals ) / StdDevResiduals1
+	else if MeanCentreResiduals and !StandardiseResiduals then Residuals1 - MeanResiduals
+	else Residuals1;
+StdDevResiduals = if StandardiseResiduals then 1 else StdDevResiduals1;
+
+// Resample the residuals in the shape of the original claims triangle
+ResampledResiduals[ClaimsTriangle] = Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+
+// Calculate the pseudo incremental data from the residuals and the fitted incremental claims
+ResampleDistribution = "Residuals"; // "Residuals" or "Normal"
+PseudoIncrementalClaims[ClaimsTriangle] = 
+	if ResampleDistribution == "Residuals"
+		then ResampledResiduals[OP,DP] * Sqrt( ScaleParameter[ToInteger(DP)] * FittedIncrementalClaims[OP,DP] ) + FittedIncrementalClaims[OP,DP]
+	else if ResampleDistribution == "Normal"
+		then Normal( FittedIncrementalClaims[OP,DP] , StdDevResiduals * Sqrt( ScaleParameter[ToInteger(DP)] * FittedIncrementalClaims[OP,DP] ) )
+	else 0;
+
+// Calculate the pseudo cumulative data from the pseudo incremental data
+PseudoCumulativeClaims[ClaimsTriangle] = if DP == "0" then PseudoIncrementalClaims[OP,DP] else PseudoCumulativeClaims[OP,ToString(ToInteger(DP)-1)] + PseudoIncrementalClaims[OP,DP];
+
+// Now apply the basic chain ladder to the pseudo cumulative claims to get the pseudo ultimate claims, and the pseudo fitted incremental factors
+PseudoDevelopmentFactors[Indicator]=PseudoCumulativeClaims[OP,DP+1]/PseudoCumulativeClaims[OP,DP];
+PseudoWeights[OP,DP][OPs,DPs[OP]-1]=if PseudoCumulativeClaims[OP,DP]==0 then 0 else PseudoCumulativeClaims[OP,DP];
+PseudoDevRatios = sum[DP,sims](PseudoDevelopmentFactors * PseudoWeights * Indicator) / sum[DP,sims](PseudoWeights * Indicator);
+ReversePseudoFactorToUltimate[DP][AllDPs] = if DP==0 then 1 else ReversePseudoFactorToUltimate[DP-1] * PseudoDevRatios[Length(PseudoDevRatios) - DP];
+//PseudoCumulativeFactor[DP][AllDPs] = 1 / ReversePseudoFactorToUltimate[AllDPs - DP-1];
+//PseudoIncrementalFactor[DP][AllDPs] = if DP==0 then PseudoCumulativeFactor[DP] else PseudoCumulativeFactor[DP] - PseudoCumulativeFactor[DP-1];
+//PseudoUltimate[OP][OPs] = PseudoCumulativeClaims[OP,DPs[OP]-1] / PseudoCumulativeFactor[DPs[OP]-1];
+
+// Since this is the BF - calculate the proportion emerging and the (conditional) expected future incremental claims
+PseudoProportionEmerging[DP][Length(ReversePseudoFactorToUltimate)] = 1 / ReversePseudoFactorToUltimate[Length(ReversePseudoFactorToUltimate) - DP - 1] - (if DP==0 then 0 else 1 / ReversePseudoFactorToUltimate[Length(ReversePseudoFactorToUltimate) - DP]);
+PseudoFittedIncrementalClaims[ProjClaims] = 
+	if OP == 0  then 0
+	else PriorUltimate[OP,"Mean"] * PseudoProportionEmerging[OPs-OP+DP];
+
+// Resample residuals for projections
+ResampledProjResiduals[ProjClaims] = Residuals[ToInteger(Uniform(0,Length(Residuals)-1))];
+
+// Resample the prior ultimates
+ResampledPriorUltimates[OP][OPs] = Normal( PriorUltimate[OP,"Mean"] , PriorUltimate[OP,"Mean"] * PriorUltimate[OP,"CoV"] );
+
+// Calculate the projected incremental claims from the resampled residuals and pseudo ultimates and pseudo incremental factors
+out IncrementalProjClaims[ProjClaims] = ResampledProjResiduals[OP,DP] * Sqrt(abs( ScaleParameter[ToInteger(DP)] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
+
+// checks
+MeanPseudoDevRatios = Mean[mind,sims](PseudoDevRatios);
+MeanPseudoIncrementalClaims = Mean[mind,sims](PseudoIncrementalClaims);
+//ProjReserve = Sum[OP,sims](IncrementalProjClaims);
+//MeanProjReserve = Mean[mind,sims](ProjReserve);
+MeanIncrementalProjClaims = Mean[mind,sims](IncrementalProjClaims);
+//MeanPseudoUltimate = Mean[mind,sims](PseudoUltimate);
+//MeanResiduals = Mean(Residuals);
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>403258816</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>ODP Outputs</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg DPs = 'Mack Bootstrap'.DPs;
+arg IncrementalProjClaims = 'ODP Bootstrap'.IncrementalProjClaims;
+arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+
+FutureClaimsByOP = Sum[mind,DP]( IncrementalProjClaims );
+ClaimsReserve = Mean[mind,sims]( FutureClaimsByOP );
+StdDevFutureClaims = StandardDeviation[mind,sims]( FutureClaimsByOP );
+
+TotalFutureClaims = Sum[mind,OP]( FutureClaimsByOP );
+TotalClaimsReserve = Sum[mind,OP]( ClaimsReserve );
+StdDevTotalFutureClaims = StandardDeviation[mind,sims]( TotalFutureClaims );
+
+out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims )[OP,DP] + ClaimsTriangle[OP,DPs[OP]-1];
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1678741692</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Mack Outputs</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg FutureClaims = 'Mack Bootstrap'.FutureClaims;
+
+IncrementalProjClaims[FutureClaims] =
+	if DP==0
+	then FutureClaims[OP,DP] - ClaimsTriangle[OP,Length(ClaimsTriangle[OP])-1]
+	else FutureClaims[OP,DP] - FutureClaims[OP,DP-1];
+
+FutureClaimsByOP = Sum[mind,DP]( IncrementalProjClaims );
+ClaimsReserve = Mean[mind,sims]( FutureClaimsByOP );
+StdDevFutureClaims = StandardDeviation[mind,sims]( FutureClaimsByOP );
+
+TotalFutureClaims = Sum[mind,OP]( FutureClaimsByOP );
+TotalClaimsReserve = Sum[mind,OP]( ClaimsReserve );
+StdDevTotalFutureClaims = StandardDeviation[mind,sims]( TotalFutureClaims );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1519545093</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+          <fAttachedData i:nil="true" />
+          <NodeType>ImportDatabase</NodeType>
+          <Name>Import Prior Ultimate</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg PriorUltimateDataSet = 'Select Data Set'.PriorUltimateDataSet;
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings i:nil="true" />
+          <Children />
+          <ChildrenEdges />
+          <ImportSettings>
+            <InputVariables i:nil="true" />
+            <OutputVariables i:nil="true" />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>688705783</RandomSeed>
+            <DatabaseType>CSV</DatabaseType>
+            <DatabaseServerName></DatabaseServerName>
+            <DatabaseName></DatabaseName>
+            <DatabaseFilePath></DatabaseFilePath>
+            <AuthenticationType>Windows</AuthenticationType>
+            <Username></Username>
+            <Password />
+            <ResultSets>
+              <TycheSQLResultSet>
+                <Name>PriorUltimate</Name>
+                <SQLString>SELECT * FROM [&lt;&lt;PriorUltimateDataSet&gt;&gt;]</SQLString>
+              </TycheSQLResultSet>
+            </ResultSets>
+            <OutputTables />
+            <DatabaseImportVariables>
+              <TycheOutputVariable_DatabaseImport>
+                <VariableName>PriorUltimate</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <ResultsSetName>PriorUltimate</ResultsSetName>
+                <DimensionColumnNames>OP,Item</DimensionColumnNames>
+                <ValuesColumnName>Value</ValuesColumnName>
+                <ImportFinalDimensionAsScenarios>false</ImportFinalDimensionAsScenarios>
+                <DataType>Double</DataType>
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable_DatabaseImport>
+            </DatabaseImportVariables>
+            <DatabaseExportVariables />
+            <DatabaseImportIndexingVariables />
+            <DatabaseImportValuesIndexingVariables />
+            <DSNName i:nil="true" />
+            <DSNConnectionString></DSNConnectionString>
+            <UseJaggedImports>true</UseJaggedImports>
+            <AccelerateJaggedImports>true</AccelerateJaggedImports>
+            <CustomDateFormat></CustomDateFormat>
+            <ListSeparator>,</ListSeparator>
+            <FileLocale>en-US</FileLocale>
+            <FastMode>false</FastMode>
+            <CommandTimeout>30</CommandTimeout>
+            <SQLString></SQLString>
+            <ExportRowLimit>0</ExportRowLimit>
+            <CommentMarker>35</CommentMarker>
+            <TextFilePath></TextFilePath>
+            <ConnectionTimeout>5</ConnectionTimeout>
+            <HasHeader>true</HasHeader>
+            <OleDbProvider></OleDbProvider>
+          </ImportSettings>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Bornhuetter Ferguson</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PriorUltimate = 'Import Prior Ultimate'.PriorUltimate;
+arg OPs = Prep.OPs;
+arg DPs = Prep.DPs;
+arg FutureShape = Prep.FutureShape;
+arg DevRatios = 'Basic Chain Ladder'.DevRatios;
+
+ReverseFactorToUltimate[DevRatios] = ( if DP==0 then 1 else ReverseFactorToUltimate[DP-1] ) * DevRatios[Length(DevRatios) - DP - 1];
+ProportionEmerging[DP][Length(DevRatios)+1] = (if DP==Length(DevRatios) then 1 else 1 / ReverseFactorToUltimate[Length(DevRatios) - DP - 1]) - (if DP==0 then 0 else 1 / ReverseFactorToUltimate[Length(DevRatios) - DP]);
+
+out ProjClaims[FutureShape] = if OP == 0  then 0 else PriorUltimate[OP,"Mean"] * ProportionEmerging[OPs-OP+DP];
+Reserve = Sum[mind,DP]( ProjClaims );
+
+out Ultimate[OP][OPs] = ClaimsTriangle[OP,DPs[OP]-1] + (if OP==0 then 0 else Reserve[OP]);
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>409286094</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Read In Pre Simulated</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>// Set file path
+FilePath = "C:\Users\rs09\Desktop\TEMP WORKING\";
+
+// Set file names
+MackFileName = "MackResiduals.csv";
+ODPFileName = "ODPResiduals.csv";
+
+// Set number of simulations
+NumSims = 10000;
+
+// Set shape
+Empty = {ToString(Blank)};
+ImportShape[Residual][Empty] = ToInteger(Indices(NumSims));
+
+// Import from .csv file
+out PreSimulatedMackResiduals = ImportCSVShape( FilePath + MackFileName , "," , ImportShape );
+out PreSimulatedODPResiduals = ImportCSVShape( FilePath + ODPFileName , "," , ImportShape );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1695123393</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Actuary in the Box Mack</Name>
+          <Description></Description>
+          <Author>Richard Lewis (RL03)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg inFutDPs = 'Mack Bootstrap'.FutDPs;
+arg DPs = 'Mack Bootstrap'.DPs;
+arg OPs = 'Mack Bootstrap'.OPs;
+arg FutureClaims = 'Mack Bootstrap'.FutureClaims;
+arg ClaimsReserves = 'Basic Chain Ladder'.ClaimsReserves;
+
+ClaimsTriangleExtraDiag[OP][OPs] = if OP == 0 then ClaimsTriangle[0] else Glue( ClaimsTriangle[OP], FutureClaims[OP,0,default::Blank] );
+FutDPs = Max( 0, inFutDPs - 1 );
+DevelopmentFactors[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=ClaimsTriangleExtraDiag[OP,DP+1]/ClaimsTriangleExtraDiag[OP,DP];
+
+Weights[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=if ClaimsTriangleExtraDiag[OP,DP]==0 then 0 else ClaimsTriangleExtraDiag[OP,DP];
+
+Indicator[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=1;
+
+// calculate the chain ladder fitted development factors
+out DevRatios = sum[DP,sims](DevelopmentFactors * Weights * Indicator) / sum[DP,sims](Weights * Indicator);
+
+out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangleExtraDiag[OP,Min(DPs[0]-1,DPs[OP])]*DevRatios[OPs-OP] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP+DP];
+
+Ult1[OP][OPs] = if OP == 0 then ClaimsTriangleExtraDiag[0,DPs[0]-1] else if OP == 1 then ClaimsTriangleExtraDiag[1,DPs[1]] else ProjClaims[OP,FutDPs[OP]-1];
+CDR = UltimateClaims - Ult1;
+
+// Checks
+// Mean CDR should be zero (+/- sim error)
+MeanCDR = Mean[mind,sims]( CDR );
+// Calculate the ratio of the mean CDR to the reserves
+RatioMeanCDRReserve = SafeDivide( MeanCDR , ClaimsReserves , MeanCDR );
+// calculate mean dev ratios
+MeanDevRatios = Mean[mind,sims]( DevRatios );
+// calculate mean of extra diagonal
+MeanClaimsTriangleExtraDiag = Mean[mind,sims]( ClaimsTriangleExtraDiag );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1765024667</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Actuary in the Box ODP</Name>
+          <Description></Description>
+          <Author>Richard Lewis (RL03)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg inFutDPs = 'Mack Bootstrap'.FutDPs;
+arg DPs = 'Mack Bootstrap'.DPs;
+arg OPs = 'Mack Bootstrap'.OPs;
+arg FutureClaims = 'ODP Outputs'.FutureClaims;
+
+ClaimsTriangleExtraDiag[OP][OPs] = if OP == 0 then ClaimsTriangle[0] else Glue( ClaimsTriangle[OP], FutureClaims[OP,0,default::Blank] );
+FutDPs = Max( 0, inFutDPs - 1 );
+DevelopmentFactors[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=ClaimsTriangleExtraDiag[OP,DP+1]/ClaimsTriangleExtraDiag[OP,DP];
+
+Weights[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=if ClaimsTriangleExtraDiag[OP,DP]==0 then 0 else ClaimsTriangleExtraDiag[OP,DP];
+
+Indicator[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=1;
+
+// calculate the chain ladder fitted development factors
+out DevRatios = sum[DP,sims](DevelopmentFactors * Weights * Indicator) / sum[DP,sims](Weights * Indicator);
+
+out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangleExtraDiag[OP,Min(DPs[0]-1,DPs[OP])]*DevRatios[OPs-OP] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP+DP];
+
+Ult1[OP][OPs] = if OP == 0 then ClaimsTriangleExtraDiag[0,DPs[0]-1] else if OP == 1 then ClaimsTriangleExtraDiag[1,DPs[1]] else ProjClaims[OP,FutDPs[OP]-1];
+CDR = UltimateClaims - Ult1;
+
+// Checks
+// Mean CDR should be zero (+/- sim error)
+MeanCDR = Mean[mind,sims]( CDR );</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1765024667</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+      </TopLevelModelNodes>
+      <TopLevelModelEdges>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Select Data Set</SourceNodeFullName>
+          <SinkNodeFullName>Import Claims Triangle</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Basic Chain Ladder</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Prep</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Prep</SourceNodeFullName>
+          <SinkNodeFullName>Basic Chain Ladder</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Prep</SourceNodeFullName>
+          <SinkNodeFullName>Analytic Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Analytic Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Analytic Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Analytic Mack</SourceNodeFullName>
+          <SinkNodeFullName>Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Merz Wuethrich</SourceNodeFullName>
+          <SinkNodeFullName>Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Prep</SourceNodeFullName>
+          <SinkNodeFullName>Merz Wuethrich</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Analytic Mack</SourceNodeFullName>
+          <SinkNodeFullName>Merz Wuethrich</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Merz Wuethrich</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Merz Wuethrich</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>Mack Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Mack Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Select Data Set</SourceNodeFullName>
+          <SinkNodeFullName>Import Prior Ultimate</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Prior Ultimate</SourceNodeFullName>
+          <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Bornhuetter Ferguson</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Prior Ultimate</SourceNodeFullName>
+          <SinkNodeFullName>Bornhuetter Ferguson</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Bornhuetter Ferguson</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Prep</SourceNodeFullName>
+          <SinkNodeFullName>Bornhuetter Ferguson</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
+          <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
+          <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Outputs</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
+        </TycheEdge>
+      </TopLevelModelEdges>
+    </TycheEngine>
+  </TycheProjectEngineContents>
+  <TycheProjectGUIContents>
+    <TycheModel xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <FileVersion>1</FileVersion>
+      <TopLevelGuiNodes>
+        <TycheGuiNode>
+          <Name>Import Claims Triangle</Name>
+          <ElementLeft>136</ElementLeft>
+          <ElementTop>-41</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>135</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Mack Bootstrap</Name>
+          <ElementLeft>522</ElementLeft>
+          <ElementTop>253</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Merz Wuethrich</Name>
+          <ElementLeft>71</ElementLeft>
+          <ElementTop>741</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Select Data Set</Name>
+          <ElementLeft>137</ElementLeft>
+          <ElementTop>-190</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Basic Chain Ladder</Name>
+          <ElementLeft>-365</ElementLeft>
+          <ElementTop>431</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Prep</Name>
+          <ElementLeft>-110</ElementLeft>
+          <ElementTop>263</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Analytic Mack</Name>
+          <ElementLeft>-143</ElementLeft>
+          <ElementTop>592</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Output</Name>
+          <ElementLeft>-139</ElementLeft>
+          <ElementTop>887</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>ODP Bootstrap</Name>
+          <ElementLeft>860</ElementLeft>
+          <ElementTop>246</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>AMWBF Bootstrap</Name>
+          <ElementLeft>1178</ElementLeft>
+          <ElementTop>247</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>ODP Outputs</Name>
+          <ElementLeft>863</ElementLeft>
+          <ElementTop>424</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Mack Outputs</Name>
+          <ElementLeft>546</ElementLeft>
+          <ElementTop>428</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Import Prior Ultimate</Name>
+          <ElementLeft>477</ElementLeft>
+          <ElementTop>-38</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>135</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Bornhuetter Ferguson</Name>
+          <ElementLeft>-513</ElementLeft>
+          <ElementTop>597</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Read In Pre Simulated</Name>
+          <ElementLeft>822</ElementLeft>
+          <ElementTop>-31</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Actuary in the Box Mack</Name>
+          <ElementLeft>540</ElementLeft>
+          <ElementTop>622</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Actuary in the Box ODP</Name>
+          <ElementLeft>965</ElementLeft>
+          <ElementTop>651</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+      </TopLevelGuiNodes>
+      <DebuggingSettings>
+        <BreakOnError>true</BreakOnError>
+        <BreakOnWarning>false</BreakOnWarning>
+        <BreakOnMessage>false</BreakOnMessage>
+      </DebuggingSettings>
+      <DefaultGridCellFormat>
+        <BackgroundColourAsString>#FFFFFFFF</BackgroundColourAsString>
+        <CustomNumberFormatString i:nil="true" />
+        <FontFamilyAsString>Arial</FontFamilyAsString>
+        <FontIsBold>false</FontIsBold>
+        <FontIsItalic>false</FontIsItalic>
+        <FontIsUnderline>false</FontIsUnderline>
+        <FontSize>11</FontSize>
+        <ForegroundColourAsString>#FF000000</ForegroundColourAsString>
+        <FormatType>Number</FormatType>
+        <HorizontalAlignment>Right</HorizontalAlignment>
+        <LocaleIdentifier>Auto</LocaleIdentifier>
+        <NumDecimalPlaces>3</NumDecimalPlaces>
+        <ShowThousandsSeparators>true</ShowThousandsSeparators>
+        <VerticalAlignment>Center</VerticalAlignment>
+      </DefaultGridCellFormat>
+    </TycheModel>
+  </TycheProjectGUIContents>
+  <NodeTests i:nil="true" />
+</TycheProject>
