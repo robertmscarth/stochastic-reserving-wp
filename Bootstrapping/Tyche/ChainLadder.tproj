@@ -251,7 +251,7 @@ Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
           <Name>Select Data Set</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
-          <Text>out DataSet="TaylorAshe";
+          <Text>//out DataSet="TaylorAshe";
 
 //out DataSet="MerzWuethrich";
 
@@ -261,11 +261,10 @@ Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
 
 //out DataSet = "Example2_Incurred";
 
-//out DataSet = "AMWBF";
+out DataSet = "AMWBF";
 
-PriorUltimateFlag = False;
+PriorUltimateFlag = true;
 out PriorUltimateDataSet = if PriorUltimateFlag then DataSet + "_PriorUltimate" else "Dummy_PriorUltimate";
-
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -477,7 +476,7 @@ TotalCoV = SafeDivide( Total_MSE , TotalClaimsReserves , Blank );
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
 arg PreSimulatedODPResiduals = 'Read In Pre Simulated'.PreSimulatedODPResiduals;
-ODPType = "Varying"; // "Constant" or "Varying"
+ODPType = "Constant"; // "Constant" or "Varying"
 UsePreSimulated = True;
 
 OPs=Length(ClaimsTriangle);
@@ -576,7 +575,7 @@ FutureResiduals =
 	else Residuals[ReSampleFutureResidualNum];
 
 // Calculate the projected incremental claims from the resampled residuals and pseudo ultimates and pseudo incremental factors
-out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( ScaleParameter[ToInteger(DP)] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
+out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( ScaleParameter[Length(ScaleParameter) - OP + DP] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
 
 // checks
 //MeanPseudoDevRatios = Mean[mind,sims](PseudoDevRatios);
