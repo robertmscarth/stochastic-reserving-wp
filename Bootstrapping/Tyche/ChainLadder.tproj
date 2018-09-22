@@ -263,7 +263,7 @@ Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
 
 out DataSet = "AMWBF";
 
-PriorUltimateFlag = true;
+PriorUltimateFlag = False;
 out PriorUltimateDataSet = if PriorUltimateFlag then DataSet + "_PriorUltimate" else "Dummy_PriorUltimate";
 </Text>
           <CacheResultValues>true</CacheResultValues>
@@ -496,14 +496,14 @@ ResidualsExclusionIndicator[ClaimsTriangle] =
 	then ( if ClaimsTriangle[OP,DP] &gt; 0 then 1 else 0 )
 	else ( if ClaimsTriangle[OP,DP] &gt; 0 then Indicator[ToInteger(OP),ToInteger(DP)] else 0 );
 NumObsByDP=sum[DP](ResidualsExclusionIndicator);
+NumParams = Sum( if NumObsByDP &gt; 0 then 1 else 0 ) - 1;
+NumObsByOP = Sum[OP]( ResidualsExclusionIndicator );
+NumOPs = Sum( if NumObsByOP &gt; 0 then 1 else 0 );
 NumObs=sum(NumObsByDP);
+DegOfFreedom = NumObs - ( NumOPs + NumParams );
 
 // calculate the chain ladder fitted development factors
 out DevRatios = sum[DP](DevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
-//NumParams = if ODPType == "Constant" then Length(DevRatios) else Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) );
-NumParams = Length(DevRatios);
-NumOPs = OPs;
-DegOfFreedom = NumObs - NumParams - ( if ODPType == "Constant" then Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) ) else OPs );
 
 out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
 
@@ -629,14 +629,14 @@ ResidualsExclusionIndicator[ClaimsTriangle] =
 	then ( if ClaimsTriangle[OP,DP] &gt; 0 then 1 else 0 )
 	else ( if ClaimsTriangle[OP,DP] &gt; 0 then Indicator[ToInteger(OP),ToInteger(DP)] else 0 );
 NumObsByDP=sum[DP](ResidualsExclusionIndicator);
+NumParams = Sum( if NumObsByDP &gt; 0 then 1 else 0 ) - 1;
+NumObsByOP = Sum[OP]( ResidualsExclusionIndicator );
+NumOPs = Sum( if NumObsByOP &gt; 0 then 1 else 0 );
 NumObs=sum(NumObsByDP);
+DegOfFreedom = NumObs - ( NumOPs + NumParams );
 
 // calculate the chain ladder fitted development factors
 out DevRatios = sum[DP](DevelopmentFactors * Weights * Indicator) / sum[DP](Weights * Indicator);
-//NumParams = if ODPType == "Constant" then Length(DevRatios) else Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) );
-NumParams = Length(DevRatios);
-NumOPs = if ODPType == "Constant" then Sum( 1-Product[pind,OP]( 1-NumObsIndicator ) ) else OPs;
-DegOfFreedom = NumObs - ( NumOPs + NumParams );
 
 out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[OPs-OP-1] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP-1+DP];
 
