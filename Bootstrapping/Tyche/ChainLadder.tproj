@@ -111,7 +111,7 @@
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
 arg PreSimulatedMackResiduals = 'Read In Pre Simulated'.PreSimulatedMackResiduals;
-UsePreSimulated = False;
+UsePreSimulated = True;
 UseNormalResiduals = False;
 
 // Basic Chain Ladder calculations
@@ -149,7 +149,7 @@ StandardisedPearsonResiduals[OP,DP][OPs,if OP==0 then DPs[OP]-2 else DPs[OP]-1]=
 
 // Flatten thee into a 1D list (to make it easier to resample from them), and sort them in an increasing order (this makes it easier to match up with externaly calculated residuals)
 Residuals1 = SortIncreasing( Flatten( StandardisedPearsonResiduals ) );
-MeanCentreResiduals = True;
+MeanCentreResiduals = False;
 StandardiseResiduals = False;
 MeanResiduals = Mean( Residuals1 );
 StdDevResiduals1 = StandardDeviation( Residuals1 );
@@ -263,7 +263,7 @@ Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
 
 out DataSet = "AMWBF";
 
-PriorUltimateFlag = True;
+PriorUltimateFlag = False;
 out PriorUltimateDataSet = if PriorUltimateFlag then DataSet + "_PriorUltimate" else "Dummy_PriorUltimate";
 </Text>
           <CacheResultValues>true</CacheResultValues>
@@ -612,7 +612,7 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
 arg PreSimulatedODPResiduals = 'Read In Pre Simulated'.PreSimulatedODPResiduals;
 arg PreSimulatedUniforms = 'Read In Pre Simulated'.PreSimulatedUniforms;
 arg PriorUltimate = 'Import Prior Ultimate'.PriorUltimate;
-ODPType = "Constant"; // "Constant" or "Varying"
+ODPType = "Varying"; // "Constant" or "Varying"
 UsePreSimulated = True;
 
 OPs=Length(ClaimsTriangle);
@@ -698,9 +698,6 @@ PseudoDevelopmentFactors[Indicator]=PseudoCumulativeClaims[OP,DP+1]/PseudoCumula
 PseudoWeights[OP,DP][OPs,DPs[OP]-1]=if PseudoCumulativeClaims[OP,DP]==0 then 0 else PseudoCumulativeClaims[OP,DP];
 PseudoDevRatios = sum[DP,sims](PseudoDevelopmentFactors * PseudoWeights * Indicator) / sum[DP,sims](PseudoWeights * Indicator);
 ReversePseudoFactorToUltimate[DP][AllDPs] = if DP==0 then 1 else ReversePseudoFactorToUltimate[DP-1] * PseudoDevRatios[Length(PseudoDevRatios) - DP];
-//PseudoCumulativeFactor[DP][AllDPs] = 1 / ReversePseudoFactorToUltimate[AllDPs - DP-1];
-//PseudoIncrementalFactor[DP][AllDPs] = if DP==0 then PseudoCumulativeFactor[DP] else PseudoCumulativeFactor[DP] - PseudoCumulativeFactor[DP-1];
-//PseudoUltimate[OP][OPs] = PseudoCumulativeClaims[OP,DPs[OP]-1] / PseudoCumulativeFactor[DPs[OP]-1];
 
 // Since this is the BF - calculate the proportion emerging and the (conditional) expected future incremental claims
 // Resample the prior ultimates
@@ -718,7 +715,7 @@ FutureResiduals =
 	else Residuals[ReSampleFutureResidualNum];
 
 // Calculate the projected incremental claims from the resampled residuals and pseudo ultimates and pseudo incremental factors
-out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( ScaleParameter[ToInteger(DP)] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
+out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( ScaleParameter[Length(ScaleParameter) - OP + DP] * PseudoFittedIncrementalClaims[OP,DP] )) + PseudoFittedIncrementalClaims[OP,DP];
 
 // checks
 //MeanPseudoDevRatios = Mean[mind,sims](PseudoDevRatios);
@@ -1008,6 +1005,8 @@ RatioMeanCDRReserve = SafeDivide( MeanCDR , ClaimsReserves , MeanCDR );
 MeanDevRatios = Mean[mind,sims]( DevRatios );
 // calculate mean of extra diagonal
 MeanClaimsTriangleExtraDiag = Mean[mind,sims]( ClaimsTriangleExtraDiag );
+
+StdDevCDR = StandardDeviation[mind,sims]( CDR );
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1708,8 +1707,8 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box ODP</Name>
-          <ElementLeft>965</ElementLeft>
-          <ElementTop>651</ElementTop>
+          <ElementLeft>878</ElementLeft>
+          <ElementTop>629</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
