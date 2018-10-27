@@ -1006,7 +1006,14 @@ MeanDevRatios = Mean[mind,sims]( DevRatios );
 // calculate mean of extra diagonal
 MeanClaimsTriangleExtraDiag = Mean[mind,sims]( ClaimsTriangleExtraDiag );
 
+// Calculate the standard deviation of the CDR and the ratio of that to the reserves
 StdDevCDR = StandardDeviation[mind,sims]( CDR );
+FutureClaimsByOP = Sum[pind,OP,sims]( FutureClaims );
+MeanFutureClaimsByOP = Mean[mind,sims]( FutureClaimsByOP );
+StdDevFutureClaimsByOP = StandardDeviation[mind,sims]( FutureClaimsByOP );
+StdDevCDRRatioToMeanResv = SafeDivide( StdDevCDR , ClaimsReserves , 0 );
+StdDevCDRRatioToStdDevResv = SafeDivide( StdDevCDR , StdDevFutureClaimsByOP , 0 );
+
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
