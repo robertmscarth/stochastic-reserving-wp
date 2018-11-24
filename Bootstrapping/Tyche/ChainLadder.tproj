@@ -995,6 +995,11 @@ out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangleExtraDiag[OP,M
 
 Ult1[OP][OPs] = if OP == 0 then ClaimsTriangleExtraDiag[0,DPs[0]-1] else if OP == 1 then ClaimsTriangleExtraDiag[1,DPs[1]] else ProjClaims[OP,FutDPs[OP]-1];
 CDR = UltimateClaims - Ult1;
+TotalCDR = Sum[mind,OP](CDR);
+
+// Calculate statistics
+MeanUlt = Mean[mind,sims]( Ult1 );
+MeanTotalCDR = Mean[mind,sims]( TotalCDR );
 
 // Checks
 // Mean CDR should be zero (+/- sim error)
@@ -1014,6 +1019,7 @@ StdDevFutureClaimsByOP = StandardDeviation[mind,sims]( FutureClaimsByOP );
 StdDevCDRRatioToMeanResv = SafeDivide( StdDevCDR , ClaimsReserves , 0 );
 StdDevCDRRatioToStdDevResv = SafeDivide( StdDevCDR , StdDevFutureClaimsByOP , 0 );
 
+StdDevTotalCDR = StandardDeviation[mind,sims]( TotalCDR );
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1078,6 +1084,275 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
           </NestedSettings>
           <Children />
           <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeContainer">
+          <fAttachedData i:nil="true" />
+          <NodeType>Container</NodeType>
+          <Name>Multi year Actuary in the Box</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables>
+              <TycheInputVariable>
+                <VariableName>FutureClaims</VariableName>
+                <AncestorNodeName>Mack Bootstrap</AncestorNodeName>
+                <AncestorVariableName>FutureClaims</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>ClaimsTriangle</VariableName>
+                <AncestorNodeName>Import Claims Triangle</AncestorNodeName>
+                <AncestorVariableName>ClaimsTriangle</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+            </InputVariables>
+            <OutputVariables />
+            <IsContainer>true</IsContainer>
+            <RandomSeed>1456631343</RandomSeed>
+          </NestedSettings>
+          <Children>
+            <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedInputs</NodeType>
+              <Name>Inputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedOutputs</NodeType>
+              <Name>Outputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeParallel">
+              <fAttachedData i:nil="true" />
+              <NodeType>Parallel</NodeType>
+              <Name>AitB</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsParallel">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>FutureClaims</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>FutureClaims</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>ClaimsTriangle</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>ClaimsTriangle</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>FuturePeriods</VariableName>
+                    <AncestorNodeName>Prep</AncestorNodeName>
+                    <AncestorVariableName>FuturePeriods</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables />
+                <IsContainer>true</IsContainer>
+                <RandomSeed>1424952715</RandomSeed>
+                <ParalleliseBy>TopDimension</ParalleliseBy>
+                <ParallelisationMethod>Series</ParallelisationMethod>
+                <LocalScenarioCount>0</LocalScenarioCount>
+                <NumThreads>2</NumThreads>
+                <NumberOfSimChunks>1</NumberOfSimChunks>
+                <AutomaticallyGlueSimChunks>false</AutomaticallyGlueSimChunks>
+                <FreeChunkAllocationsAfterExecution>false</FreeChunkAllocationsAfterExecution>
+                <Grid>
+                  <GridTransferType>ByRequest</GridTransferType>
+                  <HostName>localhost</HostName>
+                  <MaximumGridRequests>100</MaximumGridRequests>
+                  <PortRangeHighest>7460</PortRangeHighest>
+                  <PortRangeLowest>7443</PortRangeLowest>
+                  <Priority>
+                    <Value>2000</Value>
+                  </Priority>
+                  <RuntimeDirectory i:nil="true" />
+                  <UseGridEmulation>false</UseGridEmulation>
+                  <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+                </Grid>
+                <ReseedEachExecution>true</ReseedEachExecution>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Create Triangle</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg FuturePeriods = Inputs.FuturePeriods;
+arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg FutureClaims = Inputs.FutureClaims;
+
+OPs = IteratorSize(ClaimsTriangle);
+NumObDPs[OP][OPs] = Length( ClaimsTriangle[OP] );
+NumFutDPs[OP][OPs] = Min( ToInteger(FuturePeriods) , Length( FutureClaims[OP] ) );
+
+DPs[OP,DP][OPs,NumObDPs[OP]+NumFutDPs[OP]] = ToString(DP);
+
+out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt;= NumObDPs[OP] then ClaimsTriangle[OP,DP] else FutureClaims[OP,DP-NumObDPs[OP]-1];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1030259207</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Chain Ladder</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1867553500</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+              </Children>
+              <ChildrenEdges>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Create Triangle</SinkNodeFullName>
+                </TycheEdge>
+              </ChildrenEdges>
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeOperation">
+              <fAttachedData i:nil="true" />
+              <NodeType>Operation</NodeType>
+              <Name>Prep</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>arg FutureClaims = Inputs.FutureClaims;
+
+NumFuturePeriods1[OP][IteratorSize(FutureClaims)] = Length( FutureClaims[OP] );
+NumFuturePeriods = Max(NumFuturePeriods1);
+out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables />
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>1431687646</RandomSeed>
+              </NestedSettings>
+              <Children />
+              <ChildrenEdges />
+            </TycheNode>
+          </Children>
+          <ChildrenEdges>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\Prep</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\AitB</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\AitB</SinkNodeFullName>
+            </TycheEdge>
+          </ChildrenEdges>
         </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
@@ -1240,6 +1515,14 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         <TycheEdge>
           <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
           <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
     </TycheEngine>
@@ -1540,8 +1823,8 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>ODP Outputs</Name>
-          <ElementLeft>863</ElementLeft>
-          <ElementTop>424</ElementTop>
+          <ElementLeft>883</ElementLeft>
+          <ElementTop>633</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -1569,8 +1852,8 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Mack Outputs</Name>
-          <ElementLeft>546</ElementLeft>
-          <ElementTop>428</ElementTop>
+          <ElementLeft>556</ElementLeft>
+          <ElementTop>639</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -1685,8 +1968,8 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box Mack</Name>
-          <ElementLeft>540</ElementLeft>
-          <ElementTop>622</ElementTop>
+          <ElementLeft>467</ElementLeft>
+          <ElementTop>501</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -1715,10 +1998,273 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         <TycheGuiNode>
           <Name>Actuary in the Box ODP</Name>
           <ElementLeft>878</ElementLeft>
-          <ElementTop>629</ElementTop>
+          <ElementTop>484</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Multi year Actuary in the Box</Name>
+          <ElementLeft>614</ElementLeft>
+          <ElementTop>843</ElementTop>
+          <ElementWidth>298</ElementWidth>
+          <ElementHeight>116</ElementHeight>
+          <Children>
+            <TycheGuiNode>
+              <Name>Inputs</Name>
+              <ElementLeft>233</ElementLeft>
+              <ElementTop>-58</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Outputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>540</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>AitB</Name>
+              <ElementLeft>244</ElementLeft>
+              <ElementTop>298</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>252</ElementLeft>
+                  <ElementTop>602</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Create Triangle</Name>
+                  <ElementLeft>251</ElementLeft>
+                  <ElementTop>253</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Chain Ladder</Name>
+                  <ElementLeft>254</ElementLeft>
+                  <ElementTop>422</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Prep</Name>
+              <ElementLeft>43</ElementLeft>
+              <ElementTop>132</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+            </TycheGuiNode>
+          </Children>
           <VisualNodeSettings>
             <ShowIcon>true</ShowIcon>
             <ShowTitle>true</ShowTitle>
