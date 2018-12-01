@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
   <TycheProjectFileVersion>2</TycheProjectFileVersion>
-  <TycheVersion>181.0.0.8320</TycheVersion>
+  <TycheVersion>181.0.2.129</TycheVersion>
   <IsAuditingEnabled>false</IsAuditingEnabled>
   <IsEncrypted>false</IsEncrypted>
   <TycheProjectEngineContents>
@@ -1116,7 +1116,36 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
                 <IsBranchSelector>false</IsBranchSelector>
               </TycheInputVariable>
             </InputVariables>
-            <OutputVariables />
+            <OutputVariables>
+              <TycheOutputVariable>
+                <VariableName>ProjClaims</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>ProjClaims</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>Ultimate</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>Ultimate</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>Reserve</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>Reserve</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>CDR</VariableName>
+                <ChildNodeName>CDR</ChildNodeName>
+                <ChildVariableName>CDR</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+            </OutputVariables>
             <IsContainer>true</IsContainer>
             <RandomSeed>1456631343</RandomSeed>
           </NestedSettings>
@@ -1189,7 +1218,29 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
                     <IsBranchSelector>false</IsBranchSelector>
                   </TycheInputVariable>
                 </InputVariables>
-                <OutputVariables />
+                <OutputVariables>
+                  <TycheOutputVariable>
+                    <VariableName>ProjClaims</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>ProjClaims</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                  <TycheOutputVariable>
+                    <VariableName>Reserve</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>Reserve</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                  <TycheOutputVariable>
+                    <VariableName>Ultimate</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>Ultimate</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                </OutputVariables>
                 <IsContainer>true</IsContainer>
                 <RandomSeed>1424952715</RandomSeed>
                 <ParalleliseBy>TopDimension</ParalleliseBy>
@@ -1257,11 +1308,11 @@ arg FutureClaims = Inputs.FutureClaims;
 
 OPs = IteratorSize(ClaimsTriangle);
 NumObDPs[OP][OPs] = Length( ClaimsTriangle[OP] );
-NumFutDPs[OP][OPs] = Min( ToInteger(FuturePeriods) , Length( FutureClaims[OP] ) );
+NumFutDPs[OP][IteratorSize(FutureClaims)] = Min( ToInteger(FuturePeriods) , Length( FutureClaims[OP] ) );
 
-DPs[OP,DP][OPs,NumObDPs[OP]+NumFutDPs[OP]] = ToString(DP);
+DPs[OP,DP][OPs,NumObDPs[OP]+NumFutDPs[ToInteger(OP)]] = ToString(DP);
 
-out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt;= NumObDPs[OP] then ClaimsTriangle[OP,DP] else FutureClaims[OP,DP-NumObDPs[OP]-1];
+out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt; NumObDPs[OP] then ClaimsTriangle[OP,DP] else FutureClaims[ToInteger(OP),ToInteger(DP)-NumObDPs[OP]];
 </Text>
                   <CacheResultValues>true</CacheResultValues>
                   <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1285,7 +1336,33 @@ out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt;= NumObDPs
                   <Name>Chain Ladder</Name>
                   <Description></Description>
                   <Author>Robert Scarth (RS09)</Author>
-                  <Text></Text>
+                  <Text>arg ClaimsTriangle = 'Create Triangle'.ExtendedClaimsTriangle;
+
+OPs = IteratorSize(ClaimsTriangle);
+NumOPs = Length(ClaimsTriangle);
+DPs[OP][OPs] = Length(ClaimsTriangle[OP]);
+Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+AllDPs=max(DPs);
+FutDPs[OP][OPs]=AllDPs -DPs[OP];
+FutureShape[OP,DP][OPs,FutDPs[OP]]=0;
+
+// calculate triangle of development factors
+DevelopmentFactors[Indicator] = SafeDivide( ClaimsTriangle[OP,DP+1] , ClaimsTriangle[OP,DP] , 1 );
+
+// calculate the weights for calculating the fitted development ratios
+Weights[Indicator]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+// calculate the chain ladder fitted development factors
+DevRatios = SafeDivide( sum[mind,OP](DevelopmentFactors * Weights * Indicator) , sum[mind,OP](Weights * Indicator) , 1 );
+
+// calculate the expected future cumulative claim amounts
+out ProjClaims[FutureShape] = if ToInteger(DP)==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[NumOPs-ToInteger(OP)] else ProjClaims[OP,DP-1]*DevRatios[NumOPs-ToInteger(OP)+DP];
+
+out Ultimate[OP][OPs] = ProjClaims[OP,Length(ProjClaims[OP])-1];
+
+out Reserve[OP][OPs] = Ultimate[OP] - ClaimsTriangle[OP,NumOPs-1];
+</Text>
                   <CacheResultValues>true</CacheResultValues>
                   <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
                   <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
@@ -1307,6 +1384,14 @@ out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt;= NumObDPs
                 <TycheEdge>
                   <SourceNodeFullName>Multi year Actuary in the Box\AitB\Inputs</SourceNodeFullName>
                   <SinkNodeFullName>Multi year Actuary in the Box\AitB\Create Triangle</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Create Triangle</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Chain Ladder</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Outputs</SinkNodeFullName>
                 </TycheEdge>
               </ChildrenEdges>
             </TycheNode>
@@ -1338,6 +1423,35 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
               <Children />
               <ChildrenEdges />
             </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeOperation">
+              <fAttachedData i:nil="true" />
+              <NodeType>Operation</NodeType>
+              <Name>CDR</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>arg FuturePeriods = Prep.FuturePeriods;
+arg Ultimate = AitB.Ultimate;
+
+FutureSteps[FP][Length(FuturePeriods)-1] = ToString(FP);
+
+out CDR[FP,OP][FutureSteps,IteratorSize(Ultimate[ToInteger(FP)])] = Ultimate[ToInteger(FP),OP] - Ultimate[ToInteger(FP)+1,OP];
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables />
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>1523957368</RandomSeed>
+              </NestedSettings>
+              <Children />
+              <ChildrenEdges />
+            </TycheNode>
           </Children>
           <ChildrenEdges>
             <TycheEdge>
@@ -1352,7 +1466,55 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
               <SourceNodeFullName>Multi year Actuary in the Box\Inputs</SourceNodeFullName>
               <SinkNodeFullName>Multi year Actuary in the Box\AitB</SinkNodeFullName>
             </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\Outputs</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\CDR</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\CDR</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box\CDR</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box\Outputs</SinkNodeFullName>
+            </TycheEdge>
           </ChildrenEdges>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>AitB Output</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg FutureClaims = 'Mack Bootstrap'.FutureClaims;
+arg ProjClaims_2 = 'Actuary in the Box Mack'.ProjClaims;
+arg CDR = 'Multi year Actuary in the Box'.CDR;
+arg ProjClaims = 'Multi year Actuary in the Box'.ProjClaims;
+arg Ultimate = 'Multi year Actuary in the Box'.Ultimate;
+arg Reserve = 'Multi year Actuary in the Box'.Reserve;
+
+MeanProjClaims_2 = Mean[mind,sims]( ProjClaims_2 );
+MeanProjClaims = Mean[mind,sims]( ProjClaims );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>349658251</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
         </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
@@ -1523,6 +1685,18 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
         <TycheEdge>
           <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
           <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Multi year Actuary in the Box</SourceNodeFullName>
+          <SinkNodeFullName>AitB Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Actuary in the Box Mack</SourceNodeFullName>
+          <SinkNodeFullName>AitB Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>AitB Output</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
     </TycheEngine>
@@ -2062,8 +2236,8 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
             </TycheGuiNode>
             <TycheGuiNode>
               <Name>Outputs</Name>
-              <ElementLeft>250</ElementLeft>
-              <ElementTop>540</ElementTop>
+              <ElementLeft>248</ElementLeft>
+              <ElementTop>652</ElementTop>
               <ElementWidth>250</ElementWidth>
               <ElementHeight>90</ElementHeight>
               <Children />
@@ -2264,7 +2438,65 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
             </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>CDR</Name>
+              <ElementLeft>46</ElementLeft>
+              <ElementTop>474</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+            </TycheGuiNode>
           </Children>
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>AitB Output</Name>
+          <ElementLeft>917</ElementLeft>
+          <ElementTop>995</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
           <VisualNodeSettings>
             <ShowIcon>true</ShowIcon>
             <ShowTitle>true</ShowTitle>
