@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
   <TycheProjectFileVersion>2</TycheProjectFileVersion>
-  <TycheVersion>181.0.2.129</TycheVersion>
+  <TycheVersion>182.0.1.9757</TycheVersion>
   <IsAuditingEnabled>false</IsAuditingEnabled>
   <IsEncrypted>false</IsEncrypted>
   <TycheProjectEngineContents>
@@ -28,6 +28,7 @@
         <CheckVariablesAndTypes>false</CheckVariablesAndTypes>
         <FatalReportLevel>None</FatalReportLevel>
         <IssueWarningForExperimentalFeatures>true</IssueWarningForExperimentalFeatures>
+        <CheckDimensionNames>None</CheckDimensionNames>
       </Globals>
       <TopLevelModelNodes>
         <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
@@ -110,7 +111,7 @@
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedMackResiduals = 'Read In Pre Simulated'.PreSimulatedMackResiduals;
+arg PreSimulatedMackResiduals = 'Import Pre Simulated'.MackResiduals;
 UsePreSimulated = True;
 UseNormalResiduals = False;
 
@@ -475,7 +476,7 @@ TotalCoV = SafeDivide( Total_MSE , TotalClaimsReserves , Blank );
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedODPResiduals = 'Read In Pre Simulated'.PreSimulatedODPResiduals;
+arg PreSimulatedODPResiduals = 'Import Pre Simulated'.ODPResiduals;
 ODPType = "Constant"; // "Constant" or "Varying"
 UsePreSimulated = True;
 
@@ -609,8 +610,8 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedODPResiduals = 'Read In Pre Simulated'.PreSimulatedODPResiduals;
-arg PreSimulatedUniforms = 'Read In Pre Simulated'.PreSimulatedUniforms;
+arg PreSimulatedODPResiduals = 'Import Pre Simulated'.ODPResiduals;
+arg PreSimulatedUniforms = 'Import Pre Simulated'.AMWBFUniforms;
 arg PriorUltimate = 'Import Prior Ultimate'.PriorUltimate;
 ODPType = "Varying"; // "Constant" or "Varying"
 UsePreSimulated = True;
@@ -922,46 +923,6 @@ out Ultimate[OP][OPs] = ClaimsTriangle[OP,DPs[OP]-1] + (if OP==0 then 0 else Res
             <OutputVariables />
             <IsContainer>false</IsContainer>
             <RandomSeed>409286094</RandomSeed>
-          </NestedSettings>
-          <Children />
-          <ChildrenEdges />
-        </TycheNode>
-        <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
-          <NodeType>Operation</NodeType>
-          <Name>Read In Pre Simulated</Name>
-          <Description></Description>
-          <Author>Robert Scarth (RS09)</Author>
-          <Text>// Set file names
-MackFileName = "MackResiduals.csv";
-ODPFileName = "ODPResiduals.csv";
-AMWBFUniformFileName = "AMWBF_Uniforms.csv";
-
-// Set number of simulations
-NumSims = 10000;
-
-// Set shape
-Empty = {ToString(Blank)};
-ImportShape[Residual][Empty] = ToInteger(Indices(NumSims));
-UniformsShape[OP][Empty] = ToDouble(Indices(NumSims));
-
-// Import from .csv file
-out PreSimulatedMackResiduals = ImportCSVShape( MackFileName , "," , ImportShape );
-out PreSimulatedODPResiduals = ImportCSVShape( ODPFileName , "," , ImportShape );
-out PreSimulatedUniforms = ImportCSVShape( AMWBFUniformFileName , "," , UniformsShape );
-</Text>
-          <CacheResultValues>true</CacheResultValues>
-          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
-          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
-          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
-          <NumScenariosDefault>0</NumScenariosDefault>
-          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
-          <Breakpoints />
-          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
-            <InputVariables />
-            <OutputVariables />
-            <IsContainer>false</IsContainer>
-            <RandomSeed>1695123393</RandomSeed>
           </NestedSettings>
           <Children />
           <ChildrenEdges />
@@ -1516,6 +1477,112 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <Children />
           <ChildrenEdges />
         </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+          <fAttachedData i:nil="true" />
+          <NodeType>ImportDatabase</NodeType>
+          <Name>Import Pre Simulated</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings i:nil="true" />
+          <Children />
+          <ChildrenEdges />
+          <ImportSettings>
+            <InputVariables i:nil="true" />
+            <OutputVariables i:nil="true" />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>85697660</RandomSeed>
+            <DatabaseType>CSV</DatabaseType>
+            <DatabaseServerName></DatabaseServerName>
+            <DatabaseName></DatabaseName>
+            <DatabaseFilePath></DatabaseFilePath>
+            <AuthenticationType>Windows</AuthenticationType>
+            <Username></Username>
+            <Password />
+            <ResultSets>
+              <TycheSQLResultSet>
+                <Name>MackResiduals</Name>
+                <SQLString>SELECT * FROM [MackResiduals.csv]</SQLString>
+              </TycheSQLResultSet>
+              <TycheSQLResultSet>
+                <Name>ODPResiduals</Name>
+                <SQLString>SELECT * FROM [ODPResiduals.csv]</SQLString>
+              </TycheSQLResultSet>
+              <TycheSQLResultSet>
+                <Name>AMWBFUniforms</Name>
+                <SQLString>SELECT * FROM [AMWBF_Uniforms.csv]</SQLString>
+              </TycheSQLResultSet>
+            </ResultSets>
+            <OutputTables />
+            <DatabaseImportVariables>
+              <TycheOutputVariable_DatabaseImport>
+                <VariableName>MackResiduals</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <ResultsSetName>MackResiduals</ResultsSetName>
+                <DimensionColumnNames>Residual, Sim</DimensionColumnNames>
+                <ValuesColumnName>Value</ValuesColumnName>
+                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
+                <DataType>Integer</DataType>
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable_DatabaseImport>
+              <TycheOutputVariable_DatabaseImport>
+                <VariableName>ODPResiduals</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <ResultsSetName>ODPResiduals</ResultsSetName>
+                <DimensionColumnNames>Residual, Sim</DimensionColumnNames>
+                <ValuesColumnName>Value</ValuesColumnName>
+                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
+                <DataType>Integer</DataType>
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable_DatabaseImport>
+              <TycheOutputVariable_DatabaseImport>
+                <VariableName>AMWBFUniforms</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <ResultsSetName>AMWBFUniforms</ResultsSetName>
+                <DimensionColumnNames>OP,Sim</DimensionColumnNames>
+                <ValuesColumnName>Value</ValuesColumnName>
+                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
+                <DataType>Double</DataType>
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable_DatabaseImport>
+            </DatabaseImportVariables>
+            <DatabaseExportVariables />
+            <DatabaseImportIndexingVariables />
+            <DatabaseImportValuesIndexingVariables />
+            <DSNName i:nil="true" />
+            <DSNConnectionString></DSNConnectionString>
+            <UseJaggedImports>true</UseJaggedImports>
+            <AccelerateJaggedImports>true</AccelerateJaggedImports>
+            <CustomDateFormat></CustomDateFormat>
+            <ListSeparator>,</ListSeparator>
+            <FileLocale>en-US</FileLocale>
+            <FastMode>false</FastMode>
+            <CommandTimeout>30</CommandTimeout>
+            <SQLString></SQLString>
+            <ExportRowLimit>0</ExportRowLimit>
+            <CommentMarker>35</CommentMarker>
+            <TextFilePath>.\</TextFilePath>
+            <ConnectionTimeout>5</ConnectionTimeout>
+            <HasHeader>true</HasHeader>
+            <OleDbProvider></OleDbProvider>
+          </ImportSettings>
+        </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
         <TycheEdge>
@@ -1667,18 +1734,6 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
-          <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
-          <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
-          <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
-          <SourceNodeFullName>Read In Pre Simulated</SourceNodeFullName>
-          <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
           <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
           <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
         </TycheEdge>
@@ -1697,6 +1752,18 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
         <TycheEdge>
           <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
           <SinkNodeFullName>AitB Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
     </TycheEngine>
@@ -1733,6 +1800,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Mack Bootstrap</Name>
@@ -1762,6 +1830,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Merz Wuethrich</Name>
@@ -1791,6 +1860,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Select Data Set</Name>
@@ -1820,6 +1890,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Basic Chain Ladder</Name>
@@ -1849,6 +1920,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Prep</Name>
@@ -1878,6 +1950,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Analytic Mack</Name>
@@ -1907,6 +1980,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Output</Name>
@@ -1936,6 +2010,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>ODP Bootstrap</Name>
@@ -1965,6 +2040,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>AMWBF Bootstrap</Name>
@@ -1994,6 +2070,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>ODP Outputs</Name>
@@ -2023,6 +2100,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Mack Outputs</Name>
@@ -2052,6 +2130,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Import Prior Ultimate</Name>
@@ -2081,6 +2160,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Bornhuetter Ferguson</Name>
@@ -2110,35 +2190,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
-        </TycheGuiNode>
-        <TycheGuiNode>
-          <Name>Read In Pre Simulated</Name>
-          <ElementLeft>858</ElementLeft>
-          <ElementTop>-33</ElementTop>
-          <ElementWidth>250</ElementWidth>
-          <ElementHeight>90</ElementHeight>
-          <Children />
-          <VisualNodeSettings>
-            <ShowIcon>true</ShowIcon>
-            <ShowTitle>true</ShowTitle>
-            <ShowBorder>true</ShowBorder>
-            <ShowBackground>true</ShowBackground>
-            <IconString></IconString>
-            <TitleLocation>Embed</TitleLocation>
-            <TitleColourString>#FF000000</TitleColourString>
-            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
-            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
-            <BorderColourString>#FF800080</BorderColourString>
-            <IsIconStandardSize>true</IsIconStandardSize>
-            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
-            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
-            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
-            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
-            <FloatingTitleWidth>120</FloatingTitleWidth>
-            <FloatingTitleHeight>40</FloatingTitleHeight>
-          </VisualNodeSettings>
-          <OutliningStatus />
-          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box Mack</Name>
@@ -2168,6 +2220,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box ODP</Name>
@@ -2197,6 +2250,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Multi year Actuary in the Box</Name>
@@ -2233,6 +2287,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
               </VisualNodeSettings>
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
             <TycheGuiNode>
               <Name>Outputs</Name>
@@ -2262,6 +2317,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
               </VisualNodeSettings>
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
             <TycheGuiNode>
               <Name>AitB</Name>
@@ -2298,6 +2354,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
                   </VisualNodeSettings>
                   <OutliningStatus />
                   <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
                 </TycheGuiNode>
                 <TycheGuiNode>
                   <Name>Outputs</Name>
@@ -2327,6 +2384,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
                   </VisualNodeSettings>
                   <OutliningStatus />
                   <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
                 </TycheGuiNode>
                 <TycheGuiNode>
                   <Name>Create Triangle</Name>
@@ -2356,6 +2414,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
                   </VisualNodeSettings>
                   <OutliningStatus />
                   <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
                 </TycheGuiNode>
                 <TycheGuiNode>
                   <Name>Chain Ladder</Name>
@@ -2385,6 +2444,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
                   </VisualNodeSettings>
                   <OutliningStatus />
                   <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
                 </TycheGuiNode>
               </Children>
               <VisualNodeSettings>
@@ -2408,6 +2468,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
               </VisualNodeSettings>
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
             <TycheGuiNode>
               <Name>Prep</Name>
@@ -2437,6 +2498,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
               </VisualNodeSettings>
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
             <TycheGuiNode>
               <Name>CDR</Name>
@@ -2466,6 +2528,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
               </VisualNodeSettings>
               <OutliningStatus />
               <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
           </Children>
           <VisualNodeSettings>
@@ -2489,6 +2552,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>AitB Output</Name>
@@ -2518,6 +2582,37 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           </VisualNodeSettings>
           <OutliningStatus />
           <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Import Pre Simulated</Name>
+          <ElementLeft>940</ElementLeft>
+          <ElementTop>-50</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>135</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
       </TopLevelGuiNodes>
       <DebuggingSettings>
@@ -2525,22 +2620,8 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
         <BreakOnWarning>false</BreakOnWarning>
         <BreakOnMessage>false</BreakOnMessage>
       </DebuggingSettings>
-      <DefaultGridCellFormat>
-        <BackgroundColourAsString>#FFFFFFFF</BackgroundColourAsString>
-        <CustomNumberFormatString i:nil="true" />
-        <FontFamilyAsString>Arial</FontFamilyAsString>
-        <FontIsBold>false</FontIsBold>
-        <FontIsItalic>false</FontIsItalic>
-        <FontIsUnderline>false</FontIsUnderline>
-        <FontSize>11</FontSize>
-        <ForegroundColourAsString>#FF000000</ForegroundColourAsString>
-        <FormatType>Number</FormatType>
-        <HorizontalAlignment>Right</HorizontalAlignment>
-        <LocaleIdentifier>Auto</LocaleIdentifier>
-        <NumDecimalPlaces>3</NumDecimalPlaces>
-        <ShowThousandsSeparators>true</ShowThousandsSeparators>
-        <VerticalAlignment>Center</VerticalAlignment>
-      </DefaultGridCellFormat>
+      <DefaultGridCellFormat i:nil="true" />
+      <ModelInspectionSettings viewGlobalProperties="True" viewDescriptionProperties="True" viewTSharpProperties="True" viewGeneralProperties="True" viewNodesWithTSharp="True" viewNodesWithoutTSharp="True" />
     </TycheModel>
   </TycheProjectGUIContents>
   <NodeTests i:nil="true" />
