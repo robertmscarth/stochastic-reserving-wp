@@ -110,9 +110,10 @@
           <Name>Mack Bootstrap</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
-          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedMackResiduals = 'Import Pre Simulated'.MackResiduals;
-UsePreSimulated = True;
+          <Text>arg UsePreSimulatedResiduals = 'Pre Sim Options'.UsePreSimulatedResiduals;
+arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PreSimulatedMackResiduals = 'Remove Outer Dim'.PreSimulatedResiduals;
+UsePreSimulated = UsePreSimulatedResiduals[0]=="Yes";
 UseNormalResiduals = False;
 
 // Basic Chain Ladder calculations
@@ -475,10 +476,11 @@ TotalCoV = SafeDivide( Total_MSE , TotalClaimsReserves , Blank );
           <Name>ODP Bootstrap</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
-          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedODPResiduals = 'Import Pre Simulated'.ODPResiduals;
+          <Text>arg UsePreSimulatedResiduals = 'Pre Sim Options'.UsePreSimulatedResiduals;
+arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PreSimulatedODPResiduals = 'Remove Outer Dim'.PreSimulatedResiduals;
 ODPType = "Constant"; // "Constant" or "Varying"
-UsePreSimulated = True;
+UsePreSimulated = UsePreSimulatedResiduals[0]=="Yes";
 
 OPs=Length(ClaimsTriangle);
 DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
@@ -609,12 +611,16 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
           <Name>AMWBF Bootstrap</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
-          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
-arg PreSimulatedODPResiduals = 'Import Pre Simulated'.ODPResiduals;
-arg PreSimulatedUniforms = 'Import Pre Simulated'.AMWBFUniforms;
+          <Text>arg UsePreSimulatedUniforms = 'Pre Sim Options'.UsePreSimulatedUniforms;
+arg UsePreSimulatedResiduals = 'Pre Sim Options'.UsePreSimulatedResiduals;
+arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg PreSimulatedODPResiduals = 'Remove Outer Dim'.PreSimulatedResiduals;
+arg PreSimulatedUniforms = 'Remove Outer Dim'.PreSimulatedUniforms;
 arg PriorUltimate = 'Import Prior Ultimate'.PriorUltimate;
+
 ODPType = "Varying"; // "Constant" or "Varying"
-UsePreSimulated = True;
+ConsistencyCheck = if UsePreSimulatedUniforms[0]!=UsePreSimulatedResiduals[0] then ReportError("Inconsistent choice for pre-simulated residuals") else true;
+UsePreSimulated = UsePreSimulatedResiduals[0]=="Yes";
 
 OPs=Length(ClaimsTriangle);
 DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
@@ -1477,10 +1483,41 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <Children />
           <ChildrenEdges />
         </TycheNode>
-        <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
           <fAttachedData i:nil="true" />
-          <NodeType>ImportDatabase</NodeType>
-          <Name>Import Pre Simulated</Name>
+          <NodeType>Operation</NodeType>
+          <Name>Pre Sim Options</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>// Set the options for use of pre-simulated data
+setUsePreSimulatedResiduals = "No"; // "Yes" or "No"
+setUsePreSimulatedUniforms = "No"; // "Yes" or "No"
+
+out PreSimulatedResidualsFileName = "MackResiduals.csv";  // "MackResiduals.csv" or "ODPResiduals.csv"
+out PreSimulatedUniformsFileName = "AMWBF_Uniforms.csv";
+out UsePreSimulatedResiduals = { setUsePreSimulatedResiduals };
+out UsePreSimulatedUniforms = { setUsePreSimulatedUniforms };
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1061338206</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeSwitch">
+          <fAttachedData i:nil="true" />
+          <NodeType>Switch</NodeType>
+          <Name>Pre Simulated Residuals</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text></Text>
@@ -1491,97 +1528,685 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <NumScenariosDefault>0</NumScenariosDefault>
           <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
           <Breakpoints />
-          <NestedSettings i:nil="true" />
+          <NestedSettings xmlns="" i:type="TycheSettingsSwitch">
+            <InputVariables>
+              <TycheInputVariable>
+                <VariableName>UsePreSimulatedResiduals</VariableName>
+                <AncestorNodeName>Pre Sim Options</AncestorNodeName>
+                <AncestorVariableName>UsePreSimulatedResiduals</AncestorVariableName>
+                <IsParallel>true</IsParallel>
+                <IsBranchSelector>true</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>PreSimulatedResidualsFileName</VariableName>
+                <AncestorNodeName>Pre Sim Options</AncestorNodeName>
+                <AncestorVariableName>PreSimulatedResidualsFileName</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+            </InputVariables>
+            <OutputVariables>
+              <TycheOutputVariable>
+                <VariableName>PreSimulatedResiduals</VariableName>
+                <ChildNodeName>Yes</ChildNodeName>
+                <ChildVariableName>PreSimulatedResiduals</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+            </OutputVariables>
+            <IsContainer>true</IsContainer>
+            <RandomSeed>960911195</RandomSeed>
+            <ParalleliseBy>TopDimension</ParalleliseBy>
+            <ParallelisationMethod>Series</ParallelisationMethod>
+            <NumThreads>2</NumThreads>
+            <SwitchBranchSettings>
+              <TycheSettingsSwitchBranch>
+                <BranchName>Yes</BranchName>
+                <IsContainer>true</IsContainer>
+              </TycheSettingsSwitchBranch>
+              <TycheSettingsSwitchBranch>
+                <BranchName>No</BranchName>
+                <IsContainer>false</IsContainer>
+              </TycheSettingsSwitchBranch>
+            </SwitchBranchSettings>
+            <Grid>
+              <GridTransferType>ByRequest</GridTransferType>
+              <HostName>localhost</HostName>
+              <MaximumGridRequests>100</MaximumGridRequests>
+              <PortRangeHighest>7460</PortRangeHighest>
+              <PortRangeLowest>7443</PortRangeLowest>
+              <Priority>
+                <Value>2000</Value>
+              </Priority>
+              <RuntimeDirectory i:nil="true" />
+              <UseGridEmulation>false</UseGridEmulation>
+              <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+            </Grid>
+            <ReseedEachExecution>true</ReseedEachExecution>
+          </NestedSettings>
+          <Children>
+            <TycheNode xmlns="" i:type="TycheNodeContainer">
+              <fAttachedData i:nil="true" />
+              <NodeType>Container</NodeType>
+              <Name>Yes</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>UsePreSimulatedResiduals</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>UsePreSimulatedResiduals</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>true</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>PreSimulatedResidualsFileName</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>PreSimulatedResidualsFileName</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables>
+                  <TycheOutputVariable>
+                    <VariableName>PreSimulatedResiduals</VariableName>
+                    <ChildNodeName>Import Pre Simulated</ChildNodeName>
+                    <ChildVariableName>PreSimulatedResiduals</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                </OutputVariables>
+                <IsContainer>true</IsContainer>
+                <RandomSeed>1505525828</RandomSeed>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>ImportDatabase</NodeType>
+                  <Name>Import Pre Simulated</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg PreSimulatedResidualsFileName = Inputs.PreSimulatedResidualsFileName;
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings i:nil="true" />
+                  <Children />
+                  <ChildrenEdges />
+                  <ImportSettings>
+                    <InputVariables i:nil="true" />
+                    <OutputVariables i:nil="true" />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>85697660</RandomSeed>
+                    <DatabaseType>CSV</DatabaseType>
+                    <DatabaseServerName></DatabaseServerName>
+                    <DatabaseName></DatabaseName>
+                    <DatabaseFilePath></DatabaseFilePath>
+                    <AuthenticationType>Windows</AuthenticationType>
+                    <Username></Username>
+                    <Password />
+                    <ResultSets>
+                      <TycheSQLResultSet>
+                        <Name>PreSimulatedResiduals</Name>
+                        <SQLString>SELECT * FROM [&lt;&lt;PreSimulatedResidualsFileName&gt;&gt;]</SQLString>
+                      </TycheSQLResultSet>
+                    </ResultSets>
+                    <OutputTables />
+                    <DatabaseImportVariables>
+                      <TycheOutputVariable_DatabaseImport>
+                        <VariableName>PreSimulatedResiduals</VariableName>
+                        <ChildNodeName></ChildNodeName>
+                        <ChildVariableName></ChildVariableName>
+                        <CachedTypeData i:nil="true" />
+                        <IsEnabled>true</IsEnabled>
+                        <ResultsSetName>PreSimulatedResiduals</ResultsSetName>
+                        <DimensionColumnNames>Residual, Sim</DimensionColumnNames>
+                        <ValuesColumnName>Value</ValuesColumnName>
+                        <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
+                        <DataType>Integer</DataType>
+                        <IsEnabled>true</IsEnabled>
+                      </TycheOutputVariable_DatabaseImport>
+                    </DatabaseImportVariables>
+                    <DatabaseExportVariables />
+                    <DatabaseImportIndexingVariables />
+                    <DatabaseImportValuesIndexingVariables />
+                    <DSNName i:nil="true" />
+                    <DSNConnectionString></DSNConnectionString>
+                    <UseJaggedImports>true</UseJaggedImports>
+                    <AccelerateJaggedImports>true</AccelerateJaggedImports>
+                    <CustomDateFormat></CustomDateFormat>
+                    <ListSeparator>,</ListSeparator>
+                    <FileLocale>en-US</FileLocale>
+                    <FastMode>false</FastMode>
+                    <CommandTimeout>30</CommandTimeout>
+                    <SQLString></SQLString>
+                    <ExportRowLimit>0</ExportRowLimit>
+                    <CommentMarker>35</CommentMarker>
+                    <TextFilePath>.\</TextFilePath>
+                    <ConnectionTimeout>5</ConnectionTimeout>
+                    <HasHeader>true</HasHeader>
+                    <OleDbProvider></OleDbProvider>
+                  </ImportSettings>
+                </TycheNode>
+              </Children>
+              <ChildrenEdges>
+                <TycheEdge>
+                  <SourceNodeFullName>Pre Simulated Residuals\Yes\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Pre Simulated Residuals\Yes\Import Pre Simulated</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Pre Simulated Residuals\Yes\Import Pre Simulated</SourceNodeFullName>
+                  <SinkNodeFullName>Pre Simulated Residuals\Yes\Outputs</SinkNodeFullName>
+                </TycheEdge>
+              </ChildrenEdges>
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeContainer">
+              <fAttachedData i:nil="true" />
+              <NodeType>Container</NodeType>
+              <Name>No</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>out PreSimulatedResiduals[Residual][0] = 0;
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>UsePreSimulatedResiduals</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>UsePreSimulatedResiduals</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>true</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>PreSimulatedResidualsFileName</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>PreSimulatedResidualsFileName</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>1329764010</RandomSeed>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+              </Children>
+              <ChildrenEdges />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedInputs</NodeType>
+              <Name>Inputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedOutputs</NodeType>
+              <Name>Outputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+          </Children>
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Remove Outer Dim</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg PreSimulatedResiduals = 'Pre Simulated Residuals'.PreSimulatedResiduals;
+arg PreSimulatedUniforms = 'Pre Simulated Uniforms'.PreSimulatedUniforms;
+
+out PreSimulatedResiduals = PreSimulatedResiduals[0];
+out PreSimulatedUniforms = PreSimulatedUniforms[0];
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>802903392</RandomSeed>
+          </NestedSettings>
           <Children />
           <ChildrenEdges />
-          <ImportSettings>
-            <InputVariables i:nil="true" />
-            <OutputVariables i:nil="true" />
-            <IsContainer>false</IsContainer>
-            <RandomSeed>85697660</RandomSeed>
-            <DatabaseType>CSV</DatabaseType>
-            <DatabaseServerName></DatabaseServerName>
-            <DatabaseName></DatabaseName>
-            <DatabaseFilePath></DatabaseFilePath>
-            <AuthenticationType>Windows</AuthenticationType>
-            <Username></Username>
-            <Password />
-            <ResultSets>
-              <TycheSQLResultSet>
-                <Name>MackResiduals</Name>
-                <SQLString>SELECT * FROM [MackResiduals.csv]</SQLString>
-              </TycheSQLResultSet>
-              <TycheSQLResultSet>
-                <Name>ODPResiduals</Name>
-                <SQLString>SELECT * FROM [ODPResiduals.csv]</SQLString>
-              </TycheSQLResultSet>
-              <TycheSQLResultSet>
-                <Name>AMWBFUniforms</Name>
-                <SQLString>SELECT * FROM [AMWBF_Uniforms.csv]</SQLString>
-              </TycheSQLResultSet>
-            </ResultSets>
-            <OutputTables />
-            <DatabaseImportVariables>
-              <TycheOutputVariable_DatabaseImport>
-                <VariableName>MackResiduals</VariableName>
-                <ChildNodeName></ChildNodeName>
-                <ChildVariableName></ChildVariableName>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeSwitch">
+          <fAttachedData i:nil="true" />
+          <NodeType>Switch</NodeType>
+          <Name>Pre Simulated Uniforms</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsSwitch">
+            <InputVariables>
+              <TycheInputVariable>
+                <VariableName>UsePreSimulatedUniforms</VariableName>
+                <AncestorNodeName>Pre Sim Options</AncestorNodeName>
+                <AncestorVariableName>UsePreSimulatedUniforms</AncestorVariableName>
+                <IsParallel>true</IsParallel>
+                <IsBranchSelector>true</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>PreSimulatedUniformsFileName</VariableName>
+                <AncestorNodeName>Pre Sim Options</AncestorNodeName>
+                <AncestorVariableName>PreSimulatedUniformsFileName</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+            </InputVariables>
+            <OutputVariables>
+              <TycheOutputVariable>
+                <VariableName>PreSimulatedUniforms</VariableName>
+                <ChildNodeName>Yes</ChildNodeName>
+                <ChildVariableName>PreSimulatedUniforms</ChildVariableName>
                 <CachedTypeData i:nil="true" />
                 <IsEnabled>true</IsEnabled>
-                <ResultsSetName>MackResiduals</ResultsSetName>
-                <DimensionColumnNames>Residual, Sim</DimensionColumnNames>
-                <ValuesColumnName>Value</ValuesColumnName>
-                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
-                <DataType>Integer</DataType>
-                <IsEnabled>true</IsEnabled>
-              </TycheOutputVariable_DatabaseImport>
-              <TycheOutputVariable_DatabaseImport>
-                <VariableName>ODPResiduals</VariableName>
-                <ChildNodeName></ChildNodeName>
-                <ChildVariableName></ChildVariableName>
-                <CachedTypeData i:nil="true" />
-                <IsEnabled>true</IsEnabled>
-                <ResultsSetName>ODPResiduals</ResultsSetName>
-                <DimensionColumnNames>Residual, Sim</DimensionColumnNames>
-                <ValuesColumnName>Value</ValuesColumnName>
-                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
-                <DataType>Integer</DataType>
-                <IsEnabled>true</IsEnabled>
-              </TycheOutputVariable_DatabaseImport>
-              <TycheOutputVariable_DatabaseImport>
-                <VariableName>AMWBFUniforms</VariableName>
-                <ChildNodeName></ChildNodeName>
-                <ChildVariableName></ChildVariableName>
-                <CachedTypeData i:nil="true" />
-                <IsEnabled>true</IsEnabled>
-                <ResultsSetName>AMWBFUniforms</ResultsSetName>
-                <DimensionColumnNames>OP,Sim</DimensionColumnNames>
-                <ValuesColumnName>Value</ValuesColumnName>
-                <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
-                <DataType>Double</DataType>
-                <IsEnabled>true</IsEnabled>
-              </TycheOutputVariable_DatabaseImport>
-            </DatabaseImportVariables>
-            <DatabaseExportVariables />
-            <DatabaseImportIndexingVariables />
-            <DatabaseImportValuesIndexingVariables />
-            <DSNName i:nil="true" />
-            <DSNConnectionString></DSNConnectionString>
-            <UseJaggedImports>true</UseJaggedImports>
-            <AccelerateJaggedImports>true</AccelerateJaggedImports>
-            <CustomDateFormat></CustomDateFormat>
-            <ListSeparator>,</ListSeparator>
-            <FileLocale>en-US</FileLocale>
-            <FastMode>false</FastMode>
-            <CommandTimeout>30</CommandTimeout>
-            <SQLString></SQLString>
-            <ExportRowLimit>0</ExportRowLimit>
-            <CommentMarker>35</CommentMarker>
-            <TextFilePath>.\</TextFilePath>
-            <ConnectionTimeout>5</ConnectionTimeout>
-            <HasHeader>true</HasHeader>
-            <OleDbProvider></OleDbProvider>
-          </ImportSettings>
+              </TycheOutputVariable>
+            </OutputVariables>
+            <IsContainer>true</IsContainer>
+            <RandomSeed>1893900046</RandomSeed>
+            <ParalleliseBy>TopDimension</ParalleliseBy>
+            <ParallelisationMethod>Series</ParallelisationMethod>
+            <NumThreads>2</NumThreads>
+            <SwitchBranchSettings>
+              <TycheSettingsSwitchBranch>
+                <BranchName>Yes</BranchName>
+                <IsContainer>true</IsContainer>
+              </TycheSettingsSwitchBranch>
+              <TycheSettingsSwitchBranch>
+                <BranchName>No</BranchName>
+                <IsContainer>false</IsContainer>
+              </TycheSettingsSwitchBranch>
+            </SwitchBranchSettings>
+            <Grid>
+              <GridTransferType>ByRequest</GridTransferType>
+              <HostName>localhost</HostName>
+              <MaximumGridRequests>100</MaximumGridRequests>
+              <PortRangeHighest>7460</PortRangeHighest>
+              <PortRangeLowest>7443</PortRangeLowest>
+              <Priority>
+                <Value>2000</Value>
+              </Priority>
+              <RuntimeDirectory i:nil="true" />
+              <UseGridEmulation>false</UseGridEmulation>
+              <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+            </Grid>
+            <ReseedEachExecution>true</ReseedEachExecution>
+          </NestedSettings>
+          <Children>
+            <TycheNode xmlns="" i:type="TycheNodeContainer">
+              <fAttachedData i:nil="true" />
+              <NodeType>Container</NodeType>
+              <Name>Yes</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>UsePreSimulatedUniforms</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>UsePreSimulatedUniforms</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>true</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>PreSimulatedUniformsFileName</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>PreSimulatedUniformsFileName</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables>
+                  <TycheOutputVariable>
+                    <VariableName>PreSimulatedUniforms</VariableName>
+                    <ChildNodeName>Import Pre Simulated Uniforms</ChildNodeName>
+                    <ChildVariableName>PreSimulatedUniforms</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                </OutputVariables>
+                <IsContainer>true</IsContainer>
+                <RandomSeed>2017271741</RandomSeed>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeImportDatabase">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>ImportDatabase</NodeType>
+                  <Name>Import Pre Simulated Uniforms</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg PreSimulatedUniformsFileName = Inputs.PreSimulatedUniformsFileName;
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings i:nil="true" />
+                  <Children />
+                  <ChildrenEdges />
+                  <ImportSettings>
+                    <InputVariables i:nil="true" />
+                    <OutputVariables i:nil="true" />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>100870826</RandomSeed>
+                    <DatabaseType>CSV</DatabaseType>
+                    <DatabaseServerName></DatabaseServerName>
+                    <DatabaseName></DatabaseName>
+                    <DatabaseFilePath></DatabaseFilePath>
+                    <AuthenticationType>Windows</AuthenticationType>
+                    <Username></Username>
+                    <Password />
+                    <ResultSets>
+                      <TycheSQLResultSet>
+                        <Name>PreSimulatedUniforms</Name>
+                        <SQLString>SELECT * FROM [&lt;&lt;PreSimulatedUniformsFileName&gt;&gt;]</SQLString>
+                      </TycheSQLResultSet>
+                    </ResultSets>
+                    <OutputTables />
+                    <DatabaseImportVariables>
+                      <TycheOutputVariable_DatabaseImport>
+                        <VariableName>PreSimulatedUniforms</VariableName>
+                        <ChildNodeName></ChildNodeName>
+                        <ChildVariableName></ChildVariableName>
+                        <CachedTypeData i:nil="true" />
+                        <IsEnabled>true</IsEnabled>
+                        <ResultsSetName>PreSimulatedUniforms</ResultsSetName>
+                        <DimensionColumnNames>OP, Sim</DimensionColumnNames>
+                        <ValuesColumnName>Value</ValuesColumnName>
+                        <ImportFinalDimensionAsScenarios>true</ImportFinalDimensionAsScenarios>
+                        <DataType>Double</DataType>
+                        <IsEnabled>true</IsEnabled>
+                      </TycheOutputVariable_DatabaseImport>
+                    </DatabaseImportVariables>
+                    <DatabaseExportVariables />
+                    <DatabaseImportIndexingVariables />
+                    <DatabaseImportValuesIndexingVariables />
+                    <DSNName i:nil="true" />
+                    <DSNConnectionString></DSNConnectionString>
+                    <UseJaggedImports>true</UseJaggedImports>
+                    <AccelerateJaggedImports>true</AccelerateJaggedImports>
+                    <CustomDateFormat></CustomDateFormat>
+                    <ListSeparator>,</ListSeparator>
+                    <FileLocale>en-US</FileLocale>
+                    <FastMode>false</FastMode>
+                    <CommandTimeout>30</CommandTimeout>
+                    <SQLString></SQLString>
+                    <ExportRowLimit>0</ExportRowLimit>
+                    <CommentMarker>35</CommentMarker>
+                    <TextFilePath></TextFilePath>
+                    <ConnectionTimeout>5</ConnectionTimeout>
+                    <HasHeader>true</HasHeader>
+                    <OleDbProvider></OleDbProvider>
+                  </ImportSettings>
+                </TycheNode>
+              </Children>
+              <ChildrenEdges>
+                <TycheEdge>
+                  <SourceNodeFullName>Pre Simulated Uniforms\Yes\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Pre Simulated Uniforms\Yes\Import Pre Simulated Uniforms</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Pre Simulated Uniforms\Yes\Import Pre Simulated Uniforms</SourceNodeFullName>
+                  <SinkNodeFullName>Pre Simulated Uniforms\Yes\Outputs</SinkNodeFullName>
+                </TycheEdge>
+              </ChildrenEdges>
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeContainer">
+              <fAttachedData i:nil="true" />
+              <NodeType>Container</NodeType>
+              <Name>No</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>out PreSimulatedUniforms[OP][0] = 0.0;
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>UsePreSimulatedUniforms</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>UsePreSimulatedUniforms</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>true</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>PreSimulatedUniformsFileName</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>PreSimulatedUniformsFileName</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>537388731</RandomSeed>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+              </Children>
+              <ChildrenEdges />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedInputs</NodeType>
+              <Name>Inputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedOutputs</NodeType>
+              <Name>Outputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+          </Children>
+          <ChildrenEdges />
         </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
@@ -1754,15 +2379,43 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <SinkNodeFullName>AitB Output</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
+          <SinkNodeFullName>Pre Simulated Residuals</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Simulated Residuals</SourceNodeFullName>
+          <SinkNodeFullName>Remove Outer Dim</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Remove Outer Dim</SourceNodeFullName>
           <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SourceNodeFullName>Remove Outer Dim</SourceNodeFullName>
           <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Import Pre Simulated</SourceNodeFullName>
+          <SourceNodeFullName>Remove Outer Dim</SourceNodeFullName>
+          <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
+          <SinkNodeFullName>Pre Simulated Uniforms</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Simulated Uniforms</SourceNodeFullName>
+          <SinkNodeFullName>Remove Outer Dim</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
+          <SinkNodeFullName>Mack Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
+          <SinkNodeFullName>ODP Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
           <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
@@ -2585,12 +3238,648 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
-          <Name>Import Pre Simulated</Name>
-          <ElementLeft>940</ElementLeft>
-          <ElementTop>-50</ElementTop>
+          <Name>Pre Sim Options</Name>
+          <ElementLeft>1149</ElementLeft>
+          <ElementTop>-408</ElementTop>
           <ElementWidth>250</ElementWidth>
-          <ElementHeight>135</ElementHeight>
+          <ElementHeight>90</ElementHeight>
           <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Pre Simulated Residuals</Name>
+          <ElementLeft>984</ElementLeft>
+          <ElementTop>-209</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children>
+            <TycheGuiNode>
+              <Name>Yes</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>0</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>0</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>540</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Import Pre Simulated</Name>
+                  <ElementLeft>256</ElementLeft>
+                  <ElementTop>284</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>135</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>No</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>0</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>0</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>540</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Inputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>90</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Outputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>540</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+          </Children>
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Remove Outer Dim</Name>
+          <ElementLeft>1157</ElementLeft>
+          <ElementTop>-47</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Pre Simulated Uniforms</Name>
+          <ElementLeft>1314</ElementLeft>
+          <ElementTop>-212</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children>
+            <TycheGuiNode>
+              <Name>Yes</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>0</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>0</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>540</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Import Pre Simulated Uniforms</Name>
+                  <ElementLeft>229</ElementLeft>
+                  <ElementTop>270</ElementTop>
+                  <ElementWidth>308</ElementWidth>
+                  <ElementHeight>135</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>No</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>0</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>0</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>540</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Inputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>90</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Outputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>540</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+          </Children>
           <VisualNodeSettings>
             <ShowIcon>true</ShowIcon>
             <ShowTitle>true</ShowTitle>
