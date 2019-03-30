@@ -23,6 +23,9 @@
 
 ######################################################################################################
 
+# Set filepaths
+baseFilePath = "C:/Users/rs09/Working Party/"
+
 #Part 1 - Code for Mack Bootsrap
 
 MackBootstrap <- function(data=claims){
@@ -357,7 +360,8 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
 sim<-1
 
 #These are where my files are located on my PC. These will need to be changed to the new location on user's computer for program to run. All files are provided in the folder attached
-claims <- read.csv("C:\\Users\\Aniketh\\Dropbox\\Stochastic Reserving\\Mack Method\\dataCL.csv", header=FALSE)
+filePath = paste( baseFilePath , "/stochastic-reserving-wp/Bootstrapping/R/dataCL.csv", sep="" )
+claims <- read.csv( filePath , header=FALSE)
 claims
 
 
