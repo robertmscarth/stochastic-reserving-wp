@@ -161,6 +161,11 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
   #Cumulate the data
   cum <- incr2cum(data1)
   
+  mack <- MackChainLadder(cum, est.sigma="Mack")
+  mack$FullTriangle
+  
+  df <- mack$f
+  
   
   #Observed Development Factors
   odf <- matrix(data=NA, nrow=(n-1), ncol=(n-1))
@@ -221,7 +226,9 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
   spr <- spr[is.finite(spr)]
   
   
+  
   k <- length(spr)
+  
   
   #To calculate the new development triangles
   newf <- sapply(1:(n-1),
@@ -229,6 +236,7 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
                    sum(data[c(1:(n-i)),i+1])/sum(cum[c(1:(n-i)),i])
                  }
   )
+  
   
   
   #Resampled residuals for projection
@@ -245,6 +253,8 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
       }
     }
   }
+
+  
   
   #pseudo cumulative data 
   pcc <- matrix(data=NA, nrow=n,ncol=n)
@@ -268,7 +278,6 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
       }
     } 
   }
-  
   
   
   #Calculate the ultimo reserves
@@ -332,31 +341,38 @@ Mack_AIB <- function(data1=claims, data=BootstrappedData){
   #Calculate the Mack Ultimate
   mackUltimate <- mack$FullTriangle[,n]
   
+  
+  
   #Calculate the CDR
   CDR <- mackUltimate - oneYearUltimate
   
-  return(list(reserve=reserve,oneYearUltimate=oneYearUltimate,oneYearReserve=oneYearReserve,CDR=CDR))
+  return(list(mackUltimate=mackUltimate,reserve=reserve,oneYearUltimate=oneYearUltimate,oneYearReserve=oneYearReserve,CDR=CDR))
+  
+  #return(mackUltimate)
   
   }
 
 ################################################################################################################
 #Part 3 - Stochastic simulations using my Bootstrapping function
-sim<-1000
+sim<-1
 
 #These are where my files are located on my PC. These will need to be changed to the new location on user's computer for program to run. All files are provided in the folder attached
 claims <- read.csv("C:\\Users\\Aniketh\\Dropbox\\Stochastic Reserving\\Mack Method\\dataCL.csv", header=FALSE)
+claims
 
 
+# AIB <- Mack_AIB(data1=a,data=Boot)
+# AIB
 
 totalReserve <- matrix(data=NA, nrow=1,ncol=sim)
 set.seed(12345)
 for(i in 1:sim){
-Boot <- MackBootstrap(data=dataCL)
-AIB <- Mack_AIB(data1=dataCL,data=Boot)
+Boot <- MackBootstrap(data=claims)
+AIB <- Mack_AIB(data1=claims,data=Boot)
 totalReserve[i] <- sum(AIB$oneYearReserve)
 }
 totalReserve
-
+AIB
 
 #####################################################################################################################
 #Statistics
