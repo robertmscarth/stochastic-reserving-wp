@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
   <TycheProjectFileVersion>2</TycheProjectFileVersion>
-  <TycheVersion>182.0.1.9757</TycheVersion>
+  <TycheVersion>182.0.4.9824</TycheVersion>
   <IsAuditingEnabled>false</IsAuditingEnabled>
   <IsEncrypted>false</IsEncrypted>
   <TycheProjectEngineContents>
@@ -257,13 +257,13 @@ Delta_1[OP][OPs-1]=SubCalc2[OPs-2-OP]/S1[OPs-1-OP];
 
 //out DataSet="MerzWuethrich";
 
-//out DataSet = "Example1";
+out DataSet = "Example1";
 
 //out DataSet = "Example2_Paid";
 
 //out DataSet = "Example2_Incurred";
 
-out DataSet = "AMWBF";
+//out DataSet = "AMWBF";
 
 PriorUltimateFlag = False;
 out PriorUltimateDataSet = if PriorUltimateFlag then DataSet + "_PriorUltimate" else "Dummy_PriorUltimate";
@@ -482,10 +482,10 @@ arg PreSimulatedODPResiduals = 'Remove Outer Dim'.PreSimulatedResiduals;
 ODPType = "Constant"; // "Constant" or "Varying"
 UsePreSimulated = UsePreSimulatedResiduals[0]=="Yes";
 
-OPs=Length(ClaimsTriangle);
-DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
+out OPs=Length(ClaimsTriangle);
+out DPs[OP][OPs]=Length(ClaimsTriangle[OP]);
 AllDPs=max(DPs);
-FutDPs[OP][OPs]=AllDPs -DPs[OP];
+out FutDPs[OP][OPs]=AllDPs -DPs[OP];
 
 out DevelopmentFactors[OP,DP][OPs,DPs[OP]-1]=ClaimsTriangle[OP,DP+1]/ClaimsTriangle[OP,DP];
 
@@ -750,14 +750,126 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
           <ChildrenEdges />
         </TycheNode>
         <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">FutureClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>UltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
           <NodeType>Operation</NodeType>
           <Name>ODP Outputs</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
-          <Text>arg DPs = 'Mack Bootstrap'.DPs;
+          <Text>arg OPs = 'ODP Bootstrap'.OPs;
+arg DPs = 'ODP Bootstrap'.FutDPs;
 arg IncrementalProjClaims = 'ODP Bootstrap'.IncrementalProjClaims;
-arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg FutureClaims = 'ODP Future Claims'.FutureClaims;
+arg CDR = 'Actuary in the Box ODP'.CDR;
 
 FutureClaimsByOP = Sum[mind,DP]( IncrementalProjClaims );
 ClaimsReserve = Mean[mind,sims]( FutureClaimsByOP );
@@ -767,7 +879,19 @@ TotalFutureClaims = Sum[mind,OP]( FutureClaimsByOP );
 TotalClaimsReserve = Sum[mind,OP]( ClaimsReserve );
 StdDevTotalFutureClaims = StandardDeviation[mind,sims]( TotalFutureClaims );
 
-out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims )[OP,DP] + ClaimsTriangle[OP,DPs[OP]-1];
+// Calculate the ultimate claims mean and std dev
+UltimateClaims[OP][OPs] = if OP==0 then 0 else FutureClaims[OP,DPs[OP]-1];
+TotalUltimateClaims = Sum[mind,OP](  UltimateClaims );
+MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
+StdDevUltimateClaims = StandardDeviation[mind,sims]( UltimateClaims );
+StdDevTotalUltimateClaims = StandardDeviation[mind,sims]( TotalUltimateClaims );
+
+// Calculate the mean and std dev of the CDR
+TotalCDR = Sum[mind,OP]( CDR );
+MeanOneYearCDR = Mean[mind,sims]( CDR );
+MeanTotalOneYearCDR = Mean[mind,sims]( TotalCDR );
+StdDevOneYearCDR = StandardDeviation[mind,sims]( CDR );
+StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -786,14 +910,185 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
           <ChildrenEdges />
         </TycheNode>
         <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">FutureClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>FutureClaimsByOP</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>ClaimsReserve</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>MeanOneYearCDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
           <NodeType>Operation</NodeType>
           <Name>Mack Outputs</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
 arg FutureClaims = 'Mack Bootstrap'.FutureClaims;
+arg CDR = 'Actuary in the Box Mack'.CDR;
 
+OPs = IteratorSize( FutureClaims );
+DPs[OP][OPs] = IteratorSize( FutureClaims[OP] );
+
+// Calculate the ultimate claims mean and std dev
+UltimateClaims[OP][OPs] = if OP==0 then 0 else FutureClaims[OP,DPs[OP]-1];
+TotalUltimateClaims = Sum[mind,OP](  UltimateClaims );
+MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
+StdDevUltimateClaims = StandardDeviation[mind,sims]( UltimateClaims );
+StdDevTotalUltimateClaims = StandardDeviation[mind,sims]( TotalUltimateClaims );
+
+// Calculate the mean and std dev of the CDR
+TotalCDR = Sum[mind,OP]( CDR );
+MeanOneYearCDR = Mean[mind,sims]( CDR );
+MeanTotalOneYearCDR = Mean[mind,sims]( TotalCDR );
+StdDevOneYearCDR = StandardDeviation[mind,sims]( CDR );
+StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
+
+//
 IncrementalProjClaims[FutureClaims] =
 	if DP==0
 	then FutureClaims[OP,DP] - ClaimsTriangle[OP,Length(ClaimsTriangle[OP])-1]
@@ -961,7 +1256,7 @@ out DevRatios = sum[DP,sims](DevelopmentFactors * Weights * Indicator) / sum[DP,
 out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangleExtraDiag[OP,Min(DPs[0]-1,DPs[OP])]*DevRatios[OPs-OP] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP+DP];
 
 Ult1[OP][OPs] = if OP == 0 then ClaimsTriangleExtraDiag[0,DPs[0]-1] else if OP == 1 then ClaimsTriangleExtraDiag[1,DPs[1]] else ProjClaims[OP,FutDPs[OP]-1];
-CDR = UltimateClaims - Ult1;
+out CDR = UltimateClaims - Ult1;
 TotalCDR = Sum[mind,OP](CDR);
 
 // Calculate statistics
@@ -1012,11 +1307,10 @@ StdDevTotalCDR = StandardDeviation[mind,sims]( TotalCDR );
           <Author>Richard Lewis (RL03)</Author>
           <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
 arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
-arg inFutDPs = 'Mack Bootstrap'.FutDPs;
-arg DPs = 'Mack Bootstrap'.DPs;
-arg OPs = 'Mack Bootstrap'.OPs;
-arg FutureClaims = 'ODP Outputs'.FutureClaims;
-
+arg inFutDPs = 'ODP Bootstrap'.FutDPs;
+arg DPs = 'ODP Bootstrap'.DPs;
+arg OPs = 'ODP Bootstrap'.OPs;
+arg FutureClaims = 'ODP Future Claims'.FutureClaims;
 ClaimsTriangleExtraDiag[OP][OPs] = if OP == 0 then ClaimsTriangle[0] else Glue( ClaimsTriangle[OP], FutureClaims[OP,0,default::Blank] );
 FutDPs = Max( 0, inFutDPs - 1 );
 DevelopmentFactors[OP,DP][OPs,Min(DPs[0]-1,DPs[OP])]=ClaimsTriangleExtraDiag[OP,DP+1]/ClaimsTriangleExtraDiag[OP,DP];
@@ -1031,7 +1325,7 @@ out DevRatios = sum[DP,sims](DevelopmentFactors * Weights * Indicator) / sum[DP,
 out ProjClaims[OP,DP][OPs,FutDPs[OP]]=if DP==0 then ClaimsTriangleExtraDiag[OP,Min(DPs[0]-1,DPs[OP])]*DevRatios[OPs-OP] else ProjClaims[OP,DP-1]*DevRatios[OPs-OP+DP];
 
 Ult1[OP][OPs] = if OP == 0 then ClaimsTriangleExtraDiag[0,DPs[0]-1] else if OP == 1 then ClaimsTriangleExtraDiag[1,DPs[1]] else ProjClaims[OP,FutDPs[OP]-1];
-CDR = UltimateClaims - Ult1;
+out CDR = UltimateClaims - Ult1;
 
 // Checks
 // Mean CDR should be zero (+/- sim error)
@@ -1490,10 +1784,10 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>// Set the options for use of pre-simulated data
-setUsePreSimulatedResiduals = "No"; // "Yes" or "No"
-setUsePreSimulatedUniforms = "No"; // "Yes" or "No"
+setUsePreSimulatedResiduals = "Yes"; // "Yes" or "No"
+setUsePreSimulatedUniforms = "Yes"; // "Yes" or "No"
 
-out PreSimulatedResidualsFileName = "MackResiduals.csv";  // "MackResiduals.csv" or "ODPResiduals.csv"
+out PreSimulatedResidualsFileName = "ODPResiduals.csv";  // "MackResiduals.csv" or "ODPResiduals.csv"
 out PreSimulatedUniformsFileName = "AMWBF_Uniforms.csv";
 out UsePreSimulatedResiduals = { setUsePreSimulatedResiduals };
 out UsePreSimulatedUniforms = { setUsePreSimulatedUniforms };
@@ -2208,6 +2502,34 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
           </Children>
           <ChildrenEdges />
         </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>ODP Future Claims</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg ClaimsTriangle = 'Import Claims Triangle'.ClaimsTriangle;
+arg DPs = 'ODP Bootstrap'.DPs;
+arg IncrementalProjClaims = 'ODP Bootstrap'.IncrementalProjClaims;
+
+out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims )[OP,DP] + ClaimsTriangle[OP,DPs[OP]-1];
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>704173760</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
         <TycheEdge>
@@ -2331,15 +2653,7 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
           <SinkNodeFullName>Actuary in the Box Mack</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
-          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
           <SourceNodeFullName>ODP Bootstrap</SourceNodeFullName>
-          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
-          <SourceNodeFullName>ODP Outputs</SourceNodeFullName>
           <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
@@ -2352,10 +2666,6 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
-          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
-        </TycheEdge>
-        <TycheEdge>
-          <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
           <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
@@ -2417,6 +2727,30 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
         <TycheEdge>
           <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
           <SinkNodeFullName>AMWBF Bootstrap</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Actuary in the Box Mack</SourceNodeFullName>
+          <SinkNodeFullName>Mack Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Actuary in the Box ODP</SourceNodeFullName>
+          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>ODP Future Claims</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Bootstrap</SourceNodeFullName>
+          <SinkNodeFullName>ODP Future Claims</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Future Claims</SourceNodeFullName>
+          <SinkNodeFullName>Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Future Claims</SourceNodeFullName>
+          <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
     </TycheEngine>
@@ -2697,8 +3031,8 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>AMWBF Bootstrap</Name>
-          <ElementLeft>1178</ElementLeft>
-          <ElementTop>247</ElementTop>
+          <ElementLeft>1536</ElementLeft>
+          <ElementTop>260</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -2847,8 +3181,8 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box Mack</Name>
-          <ElementLeft>467</ElementLeft>
-          <ElementTop>501</ElementTop>
+          <ElementLeft>398</ElementLeft>
+          <ElementTop>498</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -2877,8 +3211,8 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Actuary in the Box ODP</Name>
-          <ElementLeft>878</ElementLeft>
-          <ElementTop>484</ElementTop>
+          <ElementLeft>926</ElementLeft>
+          <ElementTop>481</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -3880,6 +4214,36 @@ out PreSimulatedUniforms = PreSimulatedUniforms[0];
               <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
             </TycheGuiNode>
           </Children>
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>ODP Future Claims</Name>
+          <ElementLeft>1192</ElementLeft>
+          <ElementTop>349</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
           <VisualNodeSettings>
             <ShowIcon>true</ShowIcon>
             <ShowTitle>true</ShowTitle>
