@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
   <TycheProjectFileVersion>2</TycheProjectFileVersion>
-  <TycheVersion>182.0.4.9824</TycheVersion>
+  <TycheVersion>182.0.5.9831</TycheVersion>
   <IsAuditingEnabled>false</IsAuditingEnabled>
   <IsEncrypted>false</IsEncrypted>
   <TycheProjectEngineContents>
@@ -860,6 +860,115 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
               </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
             </Entry>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">CDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">IncrementalProjClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">1</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
           </fAttachedData>
           <NodeType>Operation</NodeType>
           <Name>ODP Outputs</Name>
@@ -1042,6 +1151,94 @@ StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                   <Key>
                     <VariableNameAndType>MeanOneYearCDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>ClaimsReserve</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
                   </Key>
                   <Value>
                     <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -1300,7 +1497,33 @@ StdDevTotalCDR = StandardDeviation[mind,sims]( TotalCDR );
           <ChildrenEdges />
         </TycheNode>
         <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>Ult1</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
           <NodeType>Operation</NodeType>
           <Name>Actuary in the Box ODP</Name>
           <Description></Description>
@@ -1785,7 +2008,7 @@ MeanProjClaims = Mean[mind,sims]( ProjClaims );
           <Author>Robert Scarth (RS09)</Author>
           <Text>// Set the options for use of pre-simulated data
 setUsePreSimulatedResiduals = "Yes"; // "Yes" or "No"
-setUsePreSimulatedUniforms = "Yes"; // "Yes" or "No"
+setUsePreSimulatedUniforms = "No"; // "Yes" or "No"
 
 out PreSimulatedResidualsFileName = "ODPResiduals.csv";  // "MackResiduals.csv" or "ODPResiduals.csv"
 out PreSimulatedUniformsFileName = "AMWBF_Uniforms.csv";
