@@ -105,7 +105,33 @@
           </ImportSettings>
         </TycheNode>
         <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Output">FutureClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
           <NodeType>Operation</NodeType>
           <Name>Mack Bootstrap</Name>
           <Description></Description>
@@ -755,115 +781,6 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
               <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                   <Key>
-                    <VariableNameAndType type="Argument">FutureClaims</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>StdDevUltimateClaims</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>UltimateClaims</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-            </Entry>
-            <Entry Label="VariableFormats" ContentType="VariableFormats">
-              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
                     <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
                   </Key>
                   <Value>
@@ -969,125 +886,11 @@ out IncrementalProjClaims[ProjClaims] = FutureResiduals[OP,DP] * Sqrt(abs( Scale
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
               </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
             </Entry>
-          </fAttachedData>
-          <NodeType>Operation</NodeType>
-          <Name>ODP Outputs</Name>
-          <Description></Description>
-          <Author>Robert Scarth (RS09)</Author>
-          <Text>arg OPs = 'ODP Bootstrap'.OPs;
-arg DPs = 'ODP Bootstrap'.FutDPs;
-arg IncrementalProjClaims = 'ODP Bootstrap'.IncrementalProjClaims;
-arg FutureClaims = 'ODP Future Claims'.FutureClaims;
-arg CDR = 'Actuary in the Box ODP'.CDR;
-
-FutureClaimsByOP = Sum[mind,DP]( IncrementalProjClaims );
-ClaimsReserve = Mean[mind,sims]( FutureClaimsByOP );
-StdDevFutureClaims = StandardDeviation[mind,sims]( FutureClaimsByOP );
-
-TotalFutureClaims = Sum[mind,OP]( FutureClaimsByOP );
-TotalClaimsReserve = Sum[mind,OP]( ClaimsReserve );
-StdDevTotalFutureClaims = StandardDeviation[mind,sims]( TotalFutureClaims );
-
-// Calculate the ultimate claims mean and std dev
-UltimateClaims[OP][OPs] = if OP==0 then 0 else FutureClaims[OP,DPs[OP]-1];
-TotalUltimateClaims = Sum[mind,OP](  UltimateClaims );
-MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
-StdDevUltimateClaims = StandardDeviation[mind,sims]( UltimateClaims );
-StdDevTotalUltimateClaims = StandardDeviation[mind,sims]( TotalUltimateClaims );
-
-// Calculate the mean and std dev of the CDR
-TotalCDR = Sum[mind,OP]( CDR );
-MeanOneYearCDR = Mean[mind,sims]( CDR );
-MeanTotalOneYearCDR = Mean[mind,sims]( TotalCDR );
-StdDevOneYearCDR = StandardDeviation[mind,sims]( CDR );
-StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
-</Text>
-          <CacheResultValues>true</CacheResultValues>
-          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
-          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
-          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
-          <NumScenariosDefault>0</NumScenariosDefault>
-          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
-          <Breakpoints />
-          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
-            <InputVariables />
-            <OutputVariables />
-            <IsContainer>false</IsContainer>
-            <RandomSeed>1678741692</RandomSeed>
-          </NestedSettings>
-          <Children />
-          <ChildrenEdges />
-        </TycheNode>
-        <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData>
             <Entry Label="VariableFormats" ContentType="VariableFormats">
               <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                   <Key>
-                    <VariableNameAndType type="Argument">FutureClaims</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>FutureClaimsByOP</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>ClaimsReserve</VariableNameAndType>
-                  </Key>
-                  <Value>
-                    <fBackgroundColourAsString i:nil="true" xmlns="" />
-                    <fCustomNumberFormatString i:nil="true" xmlns="" />
-                    <fFontFamilyAsString i:nil="true" xmlns="" />
-                    <fFontIsBold i:nil="true" xmlns="" />
-                    <fFontIsItalic i:nil="true" xmlns="" />
-                    <fFontIsUnderline i:nil="true" xmlns="" />
-                    <fFontSize i:nil="true" xmlns="" />
-                    <fForegroundColourAsString i:nil="true" xmlns="" />
-                    <fFormatType xmlns="">Number</fFormatType>
-                    <fHorizontalAlignment i:nil="true" xmlns="" />
-                    <fLocaleIdentifier i:nil="true" xmlns="" />
-                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
-                    <fShowThousandsSeparators i:nil="true" xmlns="" />
-                    <fVerticalAlignment i:nil="true" xmlns="" />
-                  </Value>
-                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
-                  <Key>
-                    <VariableNameAndType>MeanUltimateClaims</VariableNameAndType>
+                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
                   </Key>
                   <Value>
                     <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -1129,7 +932,7 @@ StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                   <Key>
-                    <VariableNameAndType>StdDevOneYearCDR</VariableNameAndType>
+                    <VariableNameAndType>UltimateClaims</VariableNameAndType>
                   </Key>
                   <Value>
                     <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -1150,7 +953,49 @@ StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                   <Key>
-                    <VariableNameAndType>MeanOneYearCDR</VariableNameAndType>
+                    <VariableNameAndType>MeanCentredUltimateClaims</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">CDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType>ShiftedCDR</VariableNameAndType>
                   </Key>
                   <Value>
                     <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -1171,6 +1016,61 @@ StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
               </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
             </Entry>
+          </fAttachedData>
+          <NodeType>Operation</NodeType>
+          <Name>ODP Outputs</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg OPs = 'ODP Bootstrap'.OPs;
+arg DPs = 'ODP Bootstrap'.FutDPs;
+arg IncrementalProjClaims = 'ODP Bootstrap'.IncrementalProjClaims;
+arg FutureClaims = 'ODP Future Claims'.FutureClaims;
+arg CDR = 'Actuary in the Box ODP'.CDR;
+
+FutureClaimsByOP = Sum[mind,DP]( IncrementalProjClaims );
+ClaimsReserve = Mean[mind,sims]( FutureClaimsByOP );
+StdDevFutureClaims = StandardDeviation[mind,sims]( FutureClaimsByOP );
+
+TotalFutureClaims = Sum[mind,OP]( FutureClaimsByOP );
+TotalClaimsReserve = Sum[mind,OP]( ClaimsReserve );
+StdDevTotalFutureClaims = StandardDeviation[mind,sims]( TotalFutureClaims );
+
+// Calculate the ultimate claims mean and std dev
+UltimateClaims[OP][OPs] = if OP==0 then 0 else FutureClaims[OP,DPs[OP]-1];
+TotalUltimateClaims = Sum[mind,OP](  UltimateClaims );
+MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
+StdDevUltimateClaims = StandardDeviation[mind,sims]( UltimateClaims );
+StdDevTotalUltimateClaims = StandardDeviation[mind,sims]( TotalUltimateClaims );
+
+// Calculate the mean and std dev of the CDR
+TotalCDR = Sum[mind,OP]( CDR );
+MeanOneYearCDR = Mean[mind,sims]( CDR );
+MeanTotalOneYearCDR = Mean[mind,sims]( TotalCDR );
+StdDevOneYearCDR = StandardDeviation[mind,sims]( CDR );
+StdDevTotalOneYearCDR = StandardDeviation[mind,sims]( TotalCDR );
+
+// For checking
+MeanCentredUltimateClaims = UltimateClaims - MeanUltimateClaims;
+ShiftedCDR = CDR - MeanOneYearCDR;
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1678741692</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData>
             <Entry Label="VariableFormats" ContentType="VariableFormats">
               <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                 <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
@@ -1274,7 +1174,7 @@ DPs[OP][OPs] = IteratorSize( FutureClaims[OP] );
 // Calculate the ultimate claims mean and std dev
 UltimateClaims[OP][OPs] = if OP==0 then 0 else FutureClaims[OP,DPs[OP]-1];
 TotalUltimateClaims = Sum[mind,OP](  UltimateClaims );
-MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
+out MeanUltimateClaims = Mean[mind,sims]( UltimateClaims );
 StdDevUltimateClaims = StandardDeviation[mind,sims]( UltimateClaims );
 StdDevTotalUltimateClaims = StandardDeviation[mind,sims]( TotalUltimateClaims );
 
@@ -1572,7 +1472,7 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
         <TycheNode xmlns="" i:type="TycheNodeContainer">
           <fAttachedData i:nil="true" />
           <NodeType>Container</NodeType>
-          <Name>Multi year Actuary in the Box</Name>
+          <Name>Multi year Actuary in the Box Mack</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text></Text>
@@ -1596,6 +1496,13 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
                 <VariableName>ClaimsTriangle</VariableName>
                 <AncestorNodeName>Import Claims Triangle</AncestorNodeName>
                 <AncestorVariableName>ClaimsTriangle</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>OpeningUltimateClaims</VariableName>
+                <AncestorNodeName>Basic Chain Ladder</AncestorNodeName>
+                <AncestorVariableName>UltimateClaims</AncestorVariableName>
                 <IsParallel>false</IsParallel>
                 <IsBranchSelector>false</IsBranchSelector>
               </TycheInputVariable>
@@ -1781,7 +1688,33 @@ MeanCDR = Mean[mind,sims]( CDR );</Text>
                   <Breakpoints />
                 </TycheNode>
                 <TycheNode xmlns="" i:type="TycheNodeOperation">
-                  <fAttachedData i:nil="true" />
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">ExtendedClaimsTriangle</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
                   <NodeType>Operation</NodeType>
                   <Name>Create Triangle</Name>
                   <Description></Description>
@@ -1815,7 +1748,96 @@ out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt; NumObDPs[
                   <ChildrenEdges />
                 </TycheNode>
                 <TycheNode xmlns="" i:type="TycheNodeOperation">
-                  <fAttachedData i:nil="true" />
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Argument">ClaimsTriangle</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>DevelopmentFactors</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">4</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>DevRatios</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">4</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">ProjClaims</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
                   <NodeType>Operation</NodeType>
                   <Name>Chain Ladder</Name>
                   <Description></Description>
@@ -1841,11 +1863,11 @@ Weights[Indicator]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP]
 DevRatios = SafeDivide( sum[mind,OP](DevelopmentFactors * Weights * Indicator) , sum[mind,OP](Weights * Indicator) , 1 );
 
 // calculate the expected future cumulative claim amounts
-out ProjClaims[FutureShape] = if ToInteger(DP)==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[NumOPs-ToInteger(OP)] else ProjClaims[OP,DP-1]*DevRatios[NumOPs-ToInteger(OP)+DP];
+out ProjClaims[FutureShape] = if ToInteger(DP)==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[NumOPs-FutDPs[OP]-1] else ProjClaims[OP,DP-1]*DevRatios[NumOPs-FutDPs[OP]-1+DP];
 
-out Ultimate[OP][OPs] = ProjClaims[OP,Length(ProjClaims[OP])-1];
+out Ultimate[OP][OPs] = If FutDPs[OP] == 0 then ClaimsTriangle[OP,DPs[OP]-1] else ProjClaims[OP,FutDPs[OP]-1];
 
-out Reserve[OP][OPs] = Ultimate[OP] - ClaimsTriangle[OP,NumOPs-1];
+out Reserve[OP][OPs] = if FutDPs[OP]==0 then 0 else Ultimate[OP] - ClaimsTriangle[OP,DPs[OP]-1];
 </Text>
                   <CacheResultValues>true</CacheResultValues>
                   <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1866,16 +1888,16 @@ out Reserve[OP][OPs] = Ultimate[OP] - ClaimsTriangle[OP,NumOPs-1];
               </Children>
               <ChildrenEdges>
                 <TycheEdge>
-                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Inputs</SourceNodeFullName>
-                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Create Triangle</SinkNodeFullName>
+                  <SourceNodeFullName>Multi year Actuary in the Box Mack\AitB\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box Mack\AitB\Create Triangle</SinkNodeFullName>
                 </TycheEdge>
                 <TycheEdge>
-                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Create Triangle</SourceNodeFullName>
-                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Chain Ladder</SinkNodeFullName>
+                  <SourceNodeFullName>Multi year Actuary in the Box Mack\AitB\Create Triangle</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box Mack\AitB\Chain Ladder</SinkNodeFullName>
                 </TycheEdge>
                 <TycheEdge>
-                  <SourceNodeFullName>Multi year Actuary in the Box\AitB\Chain Ladder</SourceNodeFullName>
-                  <SinkNodeFullName>Multi year Actuary in the Box\AitB\Outputs</SinkNodeFullName>
+                  <SourceNodeFullName>Multi year Actuary in the Box Mack\AitB\Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box Mack\AitB\Outputs</SinkNodeFullName>
                 </TycheEdge>
               </ChildrenEdges>
             </TycheNode>
@@ -1908,17 +1930,44 @@ out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
               <ChildrenEdges />
             </TycheNode>
             <TycheNode xmlns="" i:type="TycheNodeOperation">
-              <fAttachedData i:nil="true" />
+              <fAttachedData>
+                <Entry Label="VariableFormats" ContentType="VariableFormats">
+                  <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                    <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      <Key>
+                        <VariableNameAndType type="Output">CDR</VariableNameAndType>
+                      </Key>
+                      <Value>
+                        <fBackgroundColourAsString i:nil="true" xmlns="" />
+                        <fCustomNumberFormatString i:nil="true" xmlns="" />
+                        <fFontFamilyAsString i:nil="true" xmlns="" />
+                        <fFontIsBold i:nil="true" xmlns="" />
+                        <fFontIsItalic i:nil="true" xmlns="" />
+                        <fFontIsUnderline i:nil="true" xmlns="" />
+                        <fFontSize i:nil="true" xmlns="" />
+                        <fForegroundColourAsString i:nil="true" xmlns="" />
+                        <fFormatType xmlns="">Number</fFormatType>
+                        <fHorizontalAlignment i:nil="true" xmlns="" />
+                        <fLocaleIdentifier i:nil="true" xmlns="" />
+                        <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                        <fShowThousandsSeparators i:nil="true" xmlns="" />
+                        <fVerticalAlignment i:nil="true" xmlns="" />
+                      </Value>
+                    </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                </Entry>
+              </fAttachedData>
               <NodeType>Operation</NodeType>
               <Name>CDR</Name>
               <Description></Description>
               <Author>Robert Scarth (RS09)</Author>
-              <Text>arg FuturePeriods = Prep.FuturePeriods;
+              <Text>arg OpeningUltimateClaims = Inputs.OpeningUltimateClaims;
+arg FuturePeriods = Prep.FuturePeriods;
 arg Ultimate = AitB.Ultimate;
 
-FutureSteps[FP][Length(FuturePeriods)-1] = ToString(FP);
+FutureSteps[FP][Length(FuturePeriods)] = ToString(FP);
 
-out CDR[FP,OP][FutureSteps,IteratorSize(Ultimate[ToInteger(FP)])] = Ultimate[ToInteger(FP),OP] - Ultimate[ToInteger(FP)+1,OP];
+out CDR[FP,OP][FutureSteps,IteratorSize(Ultimate[ToInteger(FP)])] = ( if FP=="0" then OpeningUltimateClaims[ToInteger(OP)] else Ultimate[ToInteger(FP)-1,OP] ) - Ultimate[ToInteger(FP),OP];
 </Text>
               <CacheResultValues>true</CacheResultValues>
               <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1939,47 +1988,119 @@ out CDR[FP,OP][FutureSteps,IteratorSize(Ultimate[ToInteger(FP)])] = Ultimate[ToI
           </Children>
           <ChildrenEdges>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\Inputs</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\Prep</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\Prep</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\Prep</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\AitB</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\AitB</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\Inputs</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\AitB</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\AitB</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\AitB</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\Outputs</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\Outputs</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\AitB</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\CDR</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\CDR</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\Prep</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\CDR</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\CDR</SinkNodeFullName>
             </TycheEdge>
             <TycheEdge>
-              <SourceNodeFullName>Multi year Actuary in the Box\CDR</SourceNodeFullName>
-              <SinkNodeFullName>Multi year Actuary in the Box\Outputs</SinkNodeFullName>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\CDR</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\Outputs</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box Mack\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box Mack\CDR</SinkNodeFullName>
             </TycheEdge>
           </ChildrenEdges>
         </TycheNode>
         <TycheNode xmlns="" i:type="TycheNodeOperation">
-          <fAttachedData i:nil="true" />
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">CDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">Ultimate</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">Reserve</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
           <NodeType>Operation</NodeType>
-          <Name>AitB Output</Name>
+          <Name>Mack AitB Output</Name>
           <Description></Description>
           <Author>Robert Scarth (RS09)</Author>
           <Text>arg FutureClaims = 'Mack Bootstrap'.FutureClaims;
 arg ProjClaims_2 = 'Actuary in the Box Mack'.ProjClaims;
-arg CDR = 'Multi year Actuary in the Box'.CDR;
-arg ProjClaims = 'Multi year Actuary in the Box'.ProjClaims;
-arg Ultimate = 'Multi year Actuary in the Box'.Ultimate;
-arg Reserve = 'Multi year Actuary in the Box'.Reserve;
+arg CDR = 'Multi year Actuary in the Box Mack'.CDR;
+arg ProjClaims = 'Multi year Actuary in the Box Mack'.ProjClaims;
+arg Ultimate = 'Multi year Actuary in the Box Mack'.Ultimate;
+arg Reserve = 'Multi year Actuary in the Box Mack'.Reserve;
 
 MeanProjClaims_2 = Mean[mind,sims]( ProjClaims_2 );
 MeanProjClaims = Mean[mind,sims]( ProjClaims );
@@ -2753,6 +2874,657 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
           <Children />
           <ChildrenEdges />
         </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeContainer">
+          <fAttachedData i:nil="true" />
+          <NodeType>Container</NodeType>
+          <Name>Multi year Actuary in the Box ODP</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables>
+              <TycheInputVariable>
+                <VariableName>FutureClaims</VariableName>
+                <AncestorNodeName>ODP Future Claims</AncestorNodeName>
+                <AncestorVariableName>FutureClaims</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>ClaimsTriangle</VariableName>
+                <AncestorNodeName>Import Claims Triangle</AncestorNodeName>
+                <AncestorVariableName>ClaimsTriangle</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>OpeningUltimateClaims</VariableName>
+                <AncestorNodeName>Basic Chain Ladder</AncestorNodeName>
+                <AncestorVariableName>UltimateClaims</AncestorVariableName>
+                <IsParallel>false</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+            </InputVariables>
+            <OutputVariables>
+              <TycheOutputVariable>
+                <VariableName>ProjClaims</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>ProjClaims</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>Ultimate</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>Ultimate</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>Reserve</VariableName>
+                <ChildNodeName>AitB</ChildNodeName>
+                <ChildVariableName>Reserve</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>CDR</VariableName>
+                <ChildNodeName>CDR</ChildNodeName>
+                <ChildVariableName>CDR</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+            </OutputVariables>
+            <IsContainer>true</IsContainer>
+            <RandomSeed>1456631343</RandomSeed>
+          </NestedSettings>
+          <Children>
+            <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedInputs</NodeType>
+              <Name>Inputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedOutputs</NodeType>
+              <Name>Outputs</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeParallel">
+              <fAttachedData i:nil="true" />
+              <NodeType>Parallel</NodeType>
+              <Name>AitB</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsParallel">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>FutureClaims</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>FutureClaims</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>ClaimsTriangle</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>ClaimsTriangle</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>FuturePeriods</VariableName>
+                    <AncestorNodeName>Prep</AncestorNodeName>
+                    <AncestorVariableName>FuturePeriods</AncestorVariableName>
+                    <IsParallel>true</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables>
+                  <TycheOutputVariable>
+                    <VariableName>ProjClaims</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>ProjClaims</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                  <TycheOutputVariable>
+                    <VariableName>Reserve</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>Reserve</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                  <TycheOutputVariable>
+                    <VariableName>Ultimate</VariableName>
+                    <ChildNodeName>Chain Ladder</ChildNodeName>
+                    <ChildVariableName>Ultimate</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                </OutputVariables>
+                <IsContainer>true</IsContainer>
+                <RandomSeed>1424952715</RandomSeed>
+                <ParalleliseBy>TopDimension</ParalleliseBy>
+                <ParallelisationMethod>Series</ParallelisationMethod>
+                <LocalScenarioCount>0</LocalScenarioCount>
+                <NumThreads>2</NumThreads>
+                <NumberOfSimChunks>1</NumberOfSimChunks>
+                <AutomaticallyGlueSimChunks>false</AutomaticallyGlueSimChunks>
+                <FreeChunkAllocationsAfterExecution>false</FreeChunkAllocationsAfterExecution>
+                <Grid>
+                  <GridTransferType>ByRequest</GridTransferType>
+                  <HostName>localhost</HostName>
+                  <MaximumGridRequests>100</MaximumGridRequests>
+                  <PortRangeHighest>7460</PortRangeHighest>
+                  <PortRangeLowest>7443</PortRangeLowest>
+                  <Priority>
+                    <Value>2000</Value>
+                  </Priority>
+                  <RuntimeDirectory i:nil="true" />
+                  <UseGridEmulation>false</UseGridEmulation>
+                  <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+                </Grid>
+                <ReseedEachExecution>true</ReseedEachExecution>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">ExtendedClaimsTriangle</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>Create Triangle</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg FuturePeriods = Inputs.FuturePeriods;
+arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg FutureClaims = Inputs.FutureClaims;
+
+OPs = IteratorSize(ClaimsTriangle);
+NumObDPs[OP][OPs] = Length( ClaimsTriangle[OP] );
+NumFutDPs[OP][IteratorSize(FutureClaims)] = Min( ToInteger(FuturePeriods) , Length( FutureClaims[OP] ) );
+
+DPs[OP,DP][OPs,NumObDPs[OP]+NumFutDPs[ToInteger(OP)]] = ToString(DP);
+
+out ExtendedClaimsTriangle[OP,DP][OPs,DPs[OP]] = if ToInteger(DP) &lt; NumObDPs[OP] then ClaimsTriangle[OP,DP] else FutureClaims[ToInteger(OP),ToInteger(DP)-NumObDPs[OP]];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1030259207</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Argument">ClaimsTriangle</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>DevelopmentFactors</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">4</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>DevRatios</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">4</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">ProjClaims</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>Chain Ladder</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg ClaimsTriangle = 'Create Triangle'.ExtendedClaimsTriangle;
+
+OPs = IteratorSize(ClaimsTriangle);
+NumOPs = Length(ClaimsTriangle);
+DPs[OP][OPs] = Length(ClaimsTriangle[OP]);
+Indicator[OP,DP][OPs,DPs[OP]-1]=1;
+
+AllDPs=max(DPs);
+FutDPs[OP][OPs]=AllDPs -DPs[OP];
+FutureShape[OP,DP][OPs,FutDPs[OP]]=0;
+
+// calculate triangle of development factors
+DevelopmentFactors[Indicator] = SafeDivide( ClaimsTriangle[OP,DP+1] , ClaimsTriangle[OP,DP] , 1 );
+
+// calculate the weights for calculating the fitted development ratios
+Weights[Indicator]=if ClaimsTriangle[OP,DP]==0 then 0 else ClaimsTriangle[OP,DP];
+
+// calculate the chain ladder fitted development factors
+DevRatios = SafeDivide( sum[mind,OP](DevelopmentFactors * Weights * Indicator) , sum[mind,OP](Weights * Indicator) , 1 );
+
+// calculate the expected future cumulative claim amounts
+out ProjClaims[FutureShape] = if ToInteger(DP)==0 then ClaimsTriangle[OP,DPs[OP]-1]*DevRatios[NumOPs-FutDPs[OP]-1] else ProjClaims[OP,DP-1]*DevRatios[NumOPs-FutDPs[OP]-1+DP];
+
+out Ultimate[OP][OPs] = If FutDPs[OP] == 0 then ClaimsTriangle[OP,DPs[OP]-1] else ProjClaims[OP,FutDPs[OP]-1];
+
+out Reserve[OP][OPs] = if FutDPs[OP]==0 then 0 else Ultimate[OP] - ClaimsTriangle[OP,DPs[OP]-1];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1867553500</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+              </Children>
+              <ChildrenEdges>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box ODP\AitB\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box ODP\AitB\Create Triangle</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box ODP\AitB\Create Triangle</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box ODP\AitB\Chain Ladder</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Multi year Actuary in the Box ODP\AitB\Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Multi year Actuary in the Box ODP\AitB\Outputs</SinkNodeFullName>
+                </TycheEdge>
+              </ChildrenEdges>
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeOperation">
+              <fAttachedData i:nil="true" />
+              <NodeType>Operation</NodeType>
+              <Name>Prep</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>arg FutureClaims = Inputs.FutureClaims;
+
+NumFuturePeriods1[OP][IteratorSize(FutureClaims)] = Length( FutureClaims[OP] );
+NumFuturePeriods = Max(NumFuturePeriods1);
+out FuturePeriods[FP][NumFuturePeriods] = ToString( FP + 1 );
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables />
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>1431687646</RandomSeed>
+              </NestedSettings>
+              <Children />
+              <ChildrenEdges />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeOperation">
+              <fAttachedData>
+                <Entry Label="VariableFormats" ContentType="VariableFormats">
+                  <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                    <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      <Key>
+                        <VariableNameAndType type="Output">CDR</VariableNameAndType>
+                      </Key>
+                      <Value>
+                        <fBackgroundColourAsString i:nil="true" xmlns="" />
+                        <fCustomNumberFormatString i:nil="true" xmlns="" />
+                        <fFontFamilyAsString i:nil="true" xmlns="" />
+                        <fFontIsBold i:nil="true" xmlns="" />
+                        <fFontIsItalic i:nil="true" xmlns="" />
+                        <fFontIsUnderline i:nil="true" xmlns="" />
+                        <fFontSize i:nil="true" xmlns="" />
+                        <fForegroundColourAsString i:nil="true" xmlns="" />
+                        <fFormatType xmlns="">Number</fFormatType>
+                        <fHorizontalAlignment i:nil="true" xmlns="" />
+                        <fLocaleIdentifier i:nil="true" xmlns="" />
+                        <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                        <fShowThousandsSeparators i:nil="true" xmlns="" />
+                        <fVerticalAlignment i:nil="true" xmlns="" />
+                      </Value>
+                    </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                </Entry>
+              </fAttachedData>
+              <NodeType>Operation</NodeType>
+              <Name>CDR</Name>
+              <Description></Description>
+              <Author>Robert Scarth (RS09)</Author>
+              <Text>arg OpeningUltimateClaims = Inputs.OpeningUltimateClaims;
+arg FuturePeriods = Prep.FuturePeriods;
+arg Ultimate = AitB.Ultimate;
+
+FutureSteps[FP][Length(FuturePeriods)] = ToString(FP);
+
+out CDR[FP,OP][FutureSteps,IteratorSize(Ultimate[ToInteger(FP)])] = ( if FP=="0" then OpeningUltimateClaims[ToInteger(OP)] else Ultimate[ToInteger(FP)-1,OP] ) - Ultimate[ToInteger(FP),OP];
+</Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables />
+                <OutputVariables />
+                <IsContainer>false</IsContainer>
+                <RandomSeed>1523957368</RandomSeed>
+              </NestedSettings>
+              <Children />
+              <ChildrenEdges />
+            </TycheNode>
+          </Children>
+          <ChildrenEdges>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\Prep</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\AitB</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\AitB</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\Outputs</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\AitB</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\CDR</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\Prep</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\CDR</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\CDR</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\Outputs</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Multi year Actuary in the Box ODP\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Multi year Actuary in the Box ODP\CDR</SinkNodeFullName>
+            </TycheEdge>
+          </ChildrenEdges>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">CDR</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">Ultimate</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">Reserve</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
+          <NodeType>Operation</NodeType>
+          <Name>ODP AitB Output</Name>
+          <Description></Description>
+          <Author>Robert Scarth (RS09)</Author>
+          <Text>arg FutureClaims = 'ODP Future Claims'.FutureClaims;
+arg ProjClaims_2 = 'Actuary in the Box ODP'.ProjClaims;
+arg CDR = 'Multi year Actuary in the Box ODP'.CDR;
+arg ProjClaims = 'Multi year Actuary in the Box ODP'.ProjClaims;
+arg Ultimate = 'Multi year Actuary in the Box ODP'.Ultimate;
+arg Reserve = 'Multi year Actuary in the Box ODP'.Reserve;
+MeanProjClaims_2 = Mean[mind,sims]( ProjClaims_2 );
+MeanProjClaims = Mean[mind,sims]( ProjClaims );
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>349658251</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
       </TopLevelModelNodes>
       <TopLevelModelEdges>
         <TycheEdge>
@@ -2893,23 +3665,23 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
-          <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box Mack</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
-          <SinkNodeFullName>Multi year Actuary in the Box</SinkNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box Mack</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
-          <SourceNodeFullName>Multi year Actuary in the Box</SourceNodeFullName>
-          <SinkNodeFullName>AitB Output</SinkNodeFullName>
+          <SourceNodeFullName>Multi year Actuary in the Box Mack</SourceNodeFullName>
+          <SinkNodeFullName>Mack AitB Output</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Actuary in the Box Mack</SourceNodeFullName>
-          <SinkNodeFullName>AitB Output</SinkNodeFullName>
+          <SinkNodeFullName>Mack AitB Output</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Mack Bootstrap</SourceNodeFullName>
-          <SinkNodeFullName>AitB Output</SinkNodeFullName>
+          <SinkNodeFullName>Mack AitB Output</SinkNodeFullName>
         </TycheEdge>
         <TycheEdge>
           <SourceNodeFullName>Pre Sim Options</SourceNodeFullName>
@@ -2974,6 +3746,34 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
         <TycheEdge>
           <SourceNodeFullName>ODP Future Claims</SourceNodeFullName>
           <SinkNodeFullName>ODP Outputs</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Import Claims Triangle</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Basic Chain Ladder</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Future Claims</SourceNodeFullName>
+          <SinkNodeFullName>Multi year Actuary in the Box ODP</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Multi year Actuary in the Box ODP</SourceNodeFullName>
+          <SinkNodeFullName>ODP AitB Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Actuary in the Box ODP</SourceNodeFullName>
+          <SinkNodeFullName>ODP AitB Output</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>ODP Future Claims</SourceNodeFullName>
+          <SinkNodeFullName>ODP AitB Output</SinkNodeFullName>
         </TycheEdge>
       </TopLevelModelEdges>
     </TycheEngine>
@@ -3284,8 +4084,8 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>ODP Outputs</Name>
-          <ElementLeft>883</ElementLeft>
-          <ElementTop>633</ElementTop>
+          <ElementLeft>1145</ElementLeft>
+          <ElementTop>977</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -3314,8 +4114,8 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
         </TycheGuiNode>
         <TycheGuiNode>
           <Name>Mack Outputs</Name>
-          <ElementLeft>556</ElementLeft>
-          <ElementTop>639</ElementTop>
+          <ElementLeft>453</ElementLeft>
+          <ElementTop>970</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -3463,9 +4263,9 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
           <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
-          <Name>Multi year Actuary in the Box</Name>
-          <ElementLeft>614</ElementLeft>
-          <ElementTop>843</ElementTop>
+          <Name>Multi year Actuary in the Box Mack</Name>
+          <ElementLeft>490</ElementLeft>
+          <ElementTop>745</ElementTop>
           <ElementWidth>298</ElementWidth>
           <ElementHeight>116</ElementHeight>
           <Children>
@@ -3765,9 +4565,9 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
           <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
         </TycheGuiNode>
         <TycheGuiNode>
-          <Name>AitB Output</Name>
-          <ElementLeft>917</ElementLeft>
-          <ElementTop>995</ElementTop>
+          <Name>Mack AitB Output</Name>
+          <ElementLeft>612</ElementLeft>
+          <ElementTop>1057</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
@@ -4464,6 +5264,338 @@ out FutureClaims[IncrementalProjClaims] = Accumulate[DP]( IncrementalProjClaims 
           <Name>ODP Future Claims</Name>
           <ElementLeft>1192</ElementLeft>
           <ElementTop>349</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Multi year Actuary in the Box ODP</Name>
+          <ElementLeft>924</ElementLeft>
+          <ElementTop>759</ElementTop>
+          <ElementWidth>298</ElementWidth>
+          <ElementHeight>116</ElementHeight>
+          <Children>
+            <TycheGuiNode>
+              <Name>Inputs</Name>
+              <ElementLeft>233</ElementLeft>
+              <ElementTop>-58</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Outputs</Name>
+              <ElementLeft>248</ElementLeft>
+              <ElementTop>652</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>AitB</Name>
+              <ElementLeft>244</ElementLeft>
+              <ElementTop>298</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>250</ElementLeft>
+                  <ElementTop>90</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>252</ElementLeft>
+                  <ElementTop>602</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Create Triangle</Name>
+                  <ElementLeft>251</ElementLeft>
+                  <ElementTop>253</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Chain Ladder</Name>
+                  <ElementLeft>254</ElementLeft>
+                  <ElementTop>422</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Prep</Name>
+              <ElementLeft>43</ElementLeft>
+              <ElementTop>132</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>CDR</Name>
+              <ElementLeft>46</ElementLeft>
+              <ElementTop>474</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+          </Children>
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>ODP AitB Output</Name>
+          <ElementLeft>1013</ElementLeft>
+          <ElementTop>1075</ElementTop>
           <ElementWidth>250</ElementWidth>
           <ElementHeight>90</ElementHeight>
           <Children />
