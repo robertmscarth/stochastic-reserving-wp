@@ -29,6 +29,7 @@ results = results %>% mutate(
   Ult_7 = Ult_7_2013 + Ult_7_2014 + Ult_7_2015,
   Ult_8 = Ult_8_2014 + Ult_8_2015,
   Ult_9 = Ult_9_2015,
+  Ult_Total = Ult_1_2007 + Ult_2_2008 + Ult_3_2009 + Ult_4_2010 + Ult_5_2011 + Ult_6_2012 + Ult_7_2013 + Ult_8_2014 + Ult_9_2015,
   Res_1 = Res_1_2007 + Res_1_2008 + Res_1_2009 + Res_1_2010 + Res_1_2011 + Res_1_2012 + Res_1_2013 + Res_1_2014 + Res_1_2015,
   Res_2 = Res_2_2008 + Res_2_2009 + Res_2_2010 + Res_2_2011 + Res_2_2012 + Res_2_2013 + Res_2_2014 + Res_2_2015,
   Res_3 = Res_3_2009 + Res_3_2010 + Res_3_2011 + Res_3_2012 + Res_3_2013 + Res_3_2014 + Res_3_2015,
@@ -46,7 +47,16 @@ results = results %>% mutate(
   CDR_6 = CDR_6_2012 + CDR_6_2013 + CDR_6_2014 + CDR_6_2015,
   CDR_7 = CDR_7_2013 + CDR_7_2014 + CDR_7_2015,
   CDR_8 = CDR_8_2014 + CDR_8_2015,
-  CDR_9 = CDR_9_2015
+  CDR_9 = CDR_9_2015,
+  CDR_2007 = CDR_1_2007,
+  CDR_2008 = CDR_1_2008 + CDR_2_2008,
+  CDR_2009 = CDR_1_2009 + CDR_2_2009 + CDR_3_2009,
+  CDR_2010 = CDR_1_2010 + CDR_2_2010 + CDR_3_2010 + CDR_4_2010,
+  CDR_2011 = CDR_1_2011 + CDR_2_2011 + CDR_3_2011 + CDR_4_2011 + CDR_5_2011,
+  CDR_2012 = CDR_1_2012 + CDR_2_2012 + CDR_3_2012 + CDR_4_2012 + CDR_5_2012 + CDR_6_2012,
+  CDR_2013 = CDR_1_2013 + CDR_2_2013 + CDR_3_2013 + CDR_4_2013 + CDR_5_2013 + CDR_6_2013 + CDR_7_2013,
+  CDR_2014 = CDR_1_2014 + CDR_2_2014 + CDR_3_2014 + CDR_4_2014 + CDR_5_2014 + CDR_6_2014 + CDR_7_2014 + CDR_8_2014,
+  CDR_2015 = CDR_1_2015 + CDR_2_2015 + CDR_3_2015 + CDR_4_2015 + CDR_5_2015 + CDR_6_2015 + CDR_7_2015 + CDR_8_2015 + CDR_9_2015
   )
 
 # Calculate statistics for all the variables
@@ -59,5 +69,21 @@ SummaryStatisticsFunc = function(x) c(
 # Apply the function to get the statistics
 SummaryStatistics = results %>% sapply( SummaryStatisticsFunc ) %>% as_tibble
 
-##
-t = SummaryStatistics %>% select( CDR_1_2007 , CDR_1_2008 , CDR_1_2009 , CDR_1_2010 , CDR_1_2011 , CDR_1_2012 , CDR_1_2013 , CDR_1_2014 , CDR_1_2015 )
+# Extract the items we need for the graphs
+# The std devs of the next two variables give the RMSEP
+OneYearCDRs = SummaryStatistics %>% select( CDR_1_2007 , CDR_1_2008 , CDR_1_2009 , CDR_1_2010 , CDR_1_2011 , CDR_1_2012 , CDR_1_2013 , CDR_1_2014 , CDR_1_2015 )
+UltRisk = SummaryStatistics %>% select( CDR_2007 , CDR_2008 , CDR_2009 , CDR_2010 , CDR_2011 , CDR_2012 , CDR_2013 , CDR_2014 , CDR_2015 )
+# The means of the variables below give the opening estimate of ultimate claims
+Ultimates = SummaryStatistics %>% select( Ult_1_2007 , Ult_2_2008 , Ult_3_2009 , Ult_4_2010 , Ult_5_2011 , Ult_6_2012 , Ult_7_2013 , Ult_8_2014 , Ult_9_2015 )
+# CDR_1 gives the total one-year CDR
+# Ult_Total gives the total ultimate, we mean centre this
+OneYearCDRTotal = results$CDR_1
+CentredUltTotal = results$Ult_Total - sum( results$Ult_Total ) / length(results$Ult_Total)
+
+# We create the following graphs:
+# RMSEP of one-year CDR and ultimate as a % of opening ultimate by accident year
+# emergence % by accident year. Emergence % is RMSEP of one-year CDR divided by RMSEP of ultimate
+# one graph showing both OneYearCDRTotal and CentredUltTotal
+ 
+# Create one graph showing both OneYearCDRTotal and CentredUltTotal
+
