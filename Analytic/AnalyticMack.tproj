@@ -1,0 +1,1596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TycheProject xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <TycheProjectFileVersion>2</TycheProjectFileVersion>
+  <TycheVersion>191.0.3.12126</TycheVersion>
+  <IsAuditingEnabled>false</IsAuditingEnabled>
+  <TycheProjectEngineContents>
+    <TycheEngine xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <FileVersion>1</FileVersion>
+      <LastLoadedEngineVersion>
+        <BuildNumber>0</BuildNumber>
+        <MajorVersionNumber>0</MajorVersionNumber>
+        <MinorVersionNumber>0</MinorVersionNumber>
+        <PatchNumber>0</PatchNumber>
+      </LastLoadedEngineVersion>
+      <Globals>
+        <ScenarioCount>10000</ScenarioCount>
+        <RandomSeed>749216459</RandomSeed>
+        <UsePerNodeSeeding>true</UsePerNodeSeeding>
+        <AutomaticClearResults>false</AutomaticClearResults>
+        <AutomaticFreeMemory>false</AutomaticFreeMemory>
+        <SparseVectorThreshold>0.01</SparseVectorThreshold>
+        <SIMDGlobalNumThreads>-1</SIMDGlobalNumThreads>
+        <ModelDescription></ModelDescription>
+        <ManagedGlobalNumThreads>-1</ManagedGlobalNumThreads>
+        <UseDependencyGroups>true</UseDependencyGroups>
+        <CheckIndexingVariables>false</CheckIndexingVariables>
+        <CheckVariablesAndTypes>false</CheckVariablesAndTypes>
+        <FatalReportLevel>Error</FatalReportLevel>
+        <IssueWarningForExperimentalFeatures>true</IssueWarningForExperimentalFeatures>
+        <CheckDimensionNames>None</CheckDimensionNames>
+        <CheckNonDistributedFunctions>None</CheckNonDistributedFunctions>
+        <ToolkitRequirements />
+      </Globals>
+      <TopLevelModelNodes>
+        <TycheNode xmlns="" i:type="TycheNodeExcelImport">
+          <fAttachedData i:nil="true" />
+          <NodeType>ExcelImport</NodeType>
+          <Name>Import Triangles</Name>
+          <Description></Description>
+          <Author>robert.scarth</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings i:nil="true" />
+          <Children />
+          <ChildrenEdges />
+          <ExcelImportSettings>
+            <InputVariables i:nil="true" />
+            <OutputVariables i:nil="true" />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1058333815</RandomSeed>
+            <ExcelFileName>.\Triangles.xlsx</ExcelFileName>
+            <ExcelExportVariables />
+            <ExcelImportVariables>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>TaylorAshe</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>TaylorAshe</SheetName>
+                <CellsRange>TaylorAshe</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Example1</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Example1</SheetName>
+                <CellsRange>Example1</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Example2</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Example2</SheetName>
+                <CellsRange>Example2</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>TaylorAshe_Indicator</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>TaylorAshe</SheetName>
+                <CellsRange>TaylorAshe_Indicator</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Example1_Indicator</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Example1</SheetName>
+                <CellsRange>Example1_Indicator</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Example2_Indicator</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Example2</SheetName>
+                <CellsRange>Example2_Indicator</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+            </ExcelImportVariables>
+            <ExcelComplexImportVariables />
+            <RecalculateAfterExport>true</RecalculateAfterExport>
+          </ExcelImportSettings>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData i:nil="true" />
+          <NodeType>Operation</NodeType>
+          <Name>Process Triangles</Name>
+          <Description></Description>
+          <Author>robert.scarth</Author>
+          <Text>arg TaylorAshe = 'Import Triangles'.TaylorAshe;
+arg Example1 = 'Import Triangles'.Example1;
+arg Example2 = 'Import Triangles'.Example2;
+arg TaylorAshe_Indicator = 'Import Triangles'.TaylorAshe_Indicator;
+arg Example1_Indicator = 'Import Triangles'.Example1_Indicator;
+arg Example2_Indicator = 'Import Triangles'.Example2_Indicator;
+
+// Put all triangle into one variable
+DataSets[ds][{"TaylorAshe","Example1","Example2"}] = ds;
+Triangles1[DataSets] = { TaylorAshe , Example1 , Example2 };
+Indicators1[DataSets] = { TaylorAshe_Indicator , Example1_Indicator , Example2_Indicator };
+
+// Reindex to give meaningful names to op and dp dimensions
+Triangles2 = ReIndex( Triangles1 , "ds" , "op" , "dp" );
+Indicators2 = ReIndex( Indicators1 , "ds" , "op" , "dp" );
+
+// Get OPs
+TriOPs[ds,op][DataSets,IteratorSize( Triangles2[ds] )] = op;
+IndOPs[ds,op][DataSets,IteratorSize( Indicators2[ds] )] = op;
+
+// Get number of DPs for each OP
+TriNumDPsByOP = Sum[mind,dp]( if Triangles2 == Blank then 0 else 1 );
+IndNumDPsByOP = Sum[mind,dp]( if Indicators2 == Blank then 0 else 1 );
+
+// Output the processed triangles and indicators
+out Triangles[ds,op,dp][DataSets,TriOPs[ds],TriNumDPsByOP[ds,op]] = Triangles2[ds,op,dp];
+out Indicators[ds,op,dp][DataSets,IndOPs[ds],IndNumDPsByOP[ds,op]] = Indicators2[ds,op,dp];
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1883692604</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeParallel">
+          <fAttachedData i:nil="true" />
+          <NodeType>Parallel</NodeType>
+          <Name>Analytic Mack</Name>
+          <Description></Description>
+          <Author>robert.scarth</Author>
+          <Text></Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsParallel">
+            <InputVariables>
+              <TycheInputVariable>
+                <VariableName>Triangles</VariableName>
+                <AncestorNodeName>Process Triangles</AncestorNodeName>
+                <AncestorVariableName>Triangles</AncestorVariableName>
+                <IsParallel>true</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+              <TycheInputVariable>
+                <VariableName>Indicators</VariableName>
+                <AncestorNodeName>Process Triangles</AncestorNodeName>
+                <AncestorVariableName>Indicators</AncestorVariableName>
+                <IsParallel>true</IsParallel>
+                <IsBranchSelector>false</IsBranchSelector>
+              </TycheInputVariable>
+            </InputVariables>
+            <OutputVariables>
+              <TycheOutputVariable>
+                <VariableName>MackErrors</VariableName>
+                <ChildNodeName>Analytic Mack</ChildNodeName>
+                <ChildVariableName>MackErrors</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+              <TycheOutputVariable>
+                <VariableName>MerzWuethrichErrors</VariableName>
+                <ChildNodeName>Analytic Mack</ChildNodeName>
+                <ChildVariableName>MerzWuethrichErrors</ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+              </TycheOutputVariable>
+            </OutputVariables>
+            <IsContainer>true</IsContainer>
+            <RandomSeed>1535424799</RandomSeed>
+            <ParalleliseBy>TopDimension</ParalleliseBy>
+            <ParallelisationMethod>Series</ParallelisationMethod>
+            <LocalScenarioCount>0</LocalScenarioCount>
+            <NumThreads>20</NumThreads>
+            <NumberOfSimChunks>1</NumberOfSimChunks>
+            <AutomaticallyGlueSimChunks>false</AutomaticallyGlueSimChunks>
+            <FreeChunkAllocationsAfterExecution>false</FreeChunkAllocationsAfterExecution>
+            <Grid>
+              <GridTransferType>ByRequest</GridTransferType>
+              <HostName>localhost</HostName>
+              <MaximumGridRequests>100</MaximumGridRequests>
+              <PortRangeHighest>7460</PortRangeHighest>
+              <PortRangeLowest>7443</PortRangeLowest>
+              <Priority>
+                <Value>2000</Value>
+              </Priority>
+              <RuntimeDirectory i:nil="true" />
+              <UseGridEmulation>false</UseGridEmulation>
+              <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+            </Grid>
+            <ReseedEachExecution>true</ReseedEachExecution>
+          </NestedSettings>
+          <Children>
+            <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedInputs</NodeType>
+              <Name>Inputs</Name>
+              <Description></Description>
+              <Author>robert.scarth</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+              <fAttachedData i:nil="true" />
+              <NodeType>NestedOutputs</NodeType>
+              <Name>Outputs</Name>
+              <Description></Description>
+              <Author>robert.scarth</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+            </TycheNode>
+            <TycheNode xmlns="" i:type="TycheNodeContainer">
+              <fAttachedData i:nil="true" />
+              <NodeType>Container</NodeType>
+              <Name>Analytic Mack</Name>
+              <Description></Description>
+              <Author>robert.scarth</Author>
+              <Text></Text>
+              <CacheResultValues>true</CacheResultValues>
+              <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+              <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+              <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+              <NumScenariosDefault>0</NumScenariosDefault>
+              <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+              <Breakpoints />
+              <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                <InputVariables>
+                  <TycheInputVariable>
+                    <VariableName>ClaimsTriangle</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>Triangles</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                  <TycheInputVariable>
+                    <VariableName>Indicator</VariableName>
+                    <AncestorNodeName>Inputs</AncestorNodeName>
+                    <AncestorVariableName>Indicators</AncestorVariableName>
+                    <IsParallel>false</IsParallel>
+                    <IsBranchSelector>false</IsBranchSelector>
+                  </TycheInputVariable>
+                </InputVariables>
+                <OutputVariables>
+                  <TycheOutputVariable>
+                    <VariableName>MackErrors</VariableName>
+                    <ChildNodeName>Mack</ChildNodeName>
+                    <ChildVariableName>MackErrors</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                  <TycheOutputVariable>
+                    <VariableName>MerzWuethrichErrors</VariableName>
+                    <ChildNodeName>Merz Wuethrich</ChildNodeName>
+                    <ChildVariableName>MerzWuethrichErrors</ChildVariableName>
+                    <CachedTypeData i:nil="true" />
+                    <IsEnabled>true</IsEnabled>
+                  </TycheOutputVariable>
+                </OutputVariables>
+                <IsContainer>true</IsContainer>
+                <RandomSeed>1939961596</RandomSeed>
+              </NestedSettings>
+              <Children>
+                <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedInputs</NodeType>
+                  <Name>Inputs</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>NestedOutputs</NodeType>
+                  <Name>Outputs</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text></Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">FittedDevFactors</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">3</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>Basic Chain Ladder</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg OPs = Prep.OPs;
+arg NumDPsByOP = Prep.NumDPsByOP;
+arg Indicator = Inputs.Indicator;
+arg FutureShape = Prep.FutureShape;
+arg FutDPs = Prep.FutDPs;
+arg ColumnSums = 'Column Sums'.ColumnSums;
+
+// calculate triangle of development factors
+out DevFactors[Indicator] = if ClaimsTriangle[op,dp]==0 then 1 else ClaimsTriangle[op,dp+1] / ClaimsTriangle[op,dp];
+
+// calculate the chain ladder fitted development factors
+out FittedDevFactors[dp][Max(NumDPsByOP)-1] = if ColumnSums[0,dp]==0 then 1 else ColumnSums[1,dp+1] / ColumnSums[0,dp];
+
+// calculate the expected future cumulative claim amounts
+out ProjClaims[FutureShape] = if dp==0 then ClaimsTriangle[op,NumDPsByOP[op]-1] * FittedDevFactors[NumDPsByOP[op]-1] else ProjClaims[op,dp-1] * FittedDevFactors[NumDPsByOP[op]-1+dp];
+
+// calculate the expected ultimate claims
+out UltimateClaims[OPs] = if FutDPs[op] == 0 then ClaimsTriangle[op,NumDPsByOP[op]-1] else ProjClaims[op,FutDPs[op]-1];
+
+// calculate the reserves
+out ClaimsReserves[OPs] = UltimateClaims[op] - ClaimsTriangle[op,NumDPsByOP[op]-1];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1421024521</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData />
+                  <NodeType>Operation</NodeType>
+                  <Name>Column Sums</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>// In this node we calculate the column sums
+// S_{j}^{k} = \Sum_{m=1}^{k-j} C_{mj}
+// Where C_{ij} denotes the cumulative claims for origin period i, and development period j
+
+arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg Indicator = Inputs.Indicator;
+
+ExtendedIndicator[ClaimsTriangle] = if dp == Length( ClaimsTriangle[op] ) - 1 then 1 else Indicator[op,dp];
+
+Sums[i][2] = 0;
+SumPrep[i,op,dp][2,if i==0 then IteratorSize(Indicator) else IteratorSize(ClaimsTriangle),if i==0 then IteratorSize(Indicator[op]) else IteratorSize(ClaimsTriangle[op])] = ExtendedIndicator[op,dp] * ClaimsTriangle[op,dp];
+
+out ColumnSums = Sum[mind,op]( SumPrep );
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>546966997</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Mack Scale Factors</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg FutDPs = Prep.FutDPs;
+arg NumOPs = Prep.NumOPs;
+arg Indicator = Inputs.Indicator;
+arg FittedDevFactors = 'Basic Chain Ladder'.FittedDevFactors;
+arg DevFactors = 'Basic Chain Ladder'.DevFactors;
+
+OPs[op][IteratorSize(Indicator)] = op;
+NumDPsByOP[OPs] = Length(Indicator[op]) - ( if FutDPs[op] == 0 then 1 else 0 );
+RawSqResidualsShape[op,dp][OPs,NumDPsByOP[op]] = 0;
+
+RawSqResiduals[RawSqResidualsShape] = Indicator[op,dp] * ClaimsTriangle[op,dp] * ( DevFactors[op,dp] - FittedDevFactors[dp] )^2;
+
+InnIndicator[RawSqResidualsShape] = Indicator[op,dp];
+
+N = Sum[mind,op]( InnIndicator );
+ScaleFactors1 = if N==1 then 0 else Sum[mind,op]( RawSqResiduals ) / ( N - 1 );
+
+// Apply Mack's ad-hoc method of getting the final scale factor
+s1 = ScaleFactors1[Length(ScaleFactors1)-1];
+s2 = ScaleFactors1[Length(ScaleFactors1)-2];
+LastScaleFactor = if s2==0 then s1 else Min( s1^4 / s2^2 , Min( s1 , s2 ) );
+
+out ScaleFactors[dp][Length(ScaleFactors1)+1] = if dp &lt; Length(ScaleFactors1) then ScaleFactors1[dp] else LastScaleFactor;
+
+// We also calculate the quantities sigma^2 / f_j^2
+out ScaleFactorsByDevFactors[ScaleFactors] = if FittedDevFactors[dp]==0 then 0 else ScaleFactors[dp] / FittedDevFactors[dp]^2;
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>388562295</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">bigLambda</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">bigScaledLambda</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>bigScaledLambda1</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>Lambdas</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg OPs = Prep.OPs;
+arg NumDPsByOP = Prep.NumDPsByOP;
+arg FutDPs = Prep.FutDPs;
+arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg ColumnSums = 'Column Sums'.ColumnSums;
+arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg ScaleFactorsByDevFactors = 'Mack Scale Factors'.ScaleFactorsByDevFactors;
+
+out smallLambda[OPs] = if FutDPs[op] == 0 then 0 else ScaleFactorsByDevFactors[NumDPsByOP[op]-1] / ColumnSums[0,NumDPsByOP[op]-1];
+
+out bigLambda = Accumulate( smallLambda );
+
+// We now calculate the scaled lambda used in the Merz-Wuethrich formula
+ScaleFactor[OPs] = ClaimsTriangle[op,NumDPsByOP[op]-1] / ColumnSums[1,NumDPsByOP[op]-1];
+smallScaledLambda = ScaleFactor * smallLambda ;
+
+// We shift the big scaled lambda forward by one op so that the formula for ParameterError in the node "Merz Wuethrich" is slicker
+bigScaledLambda1 = Accumulate( smallScaledLambda );
+out bigScaledLambda[OPs] = if FutDPs[op] == 0 then 0 else bigScaledLambda1[ToString(ToInteger(op)-1)];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1446160133</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Argument">ProjClaims</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">smallOmega</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>Omegas</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg ClaimsTriangle = Inputs.ClaimsTriangle;
+arg NumDPsByOP = Prep.NumDPsByOP;
+arg ProjClaims = 'Basic Chain Ladder'.ProjClaims;
+arg ScaleFactorsByDevFactors = 'Mack Scale Factors'.ScaleFactorsByDevFactors;
+
+allSmallOmega[ProjClaims] = ScaleFactorsByDevFactors[dp+NumDPsByOP[op]-1] / ( if dp==0 then ClaimsTriangle[op,NumDPsByOP[op]-1] else ProjClaims[op,dp-1] );
+out smallOmega[op][IteratorSize(allSmallOmega)] = if Length(allSmallOmega[op])==0 then 0 else allSmallOmega[op,0];
+
+out bigOmega = Replace( Sum[mind,dp]( allSmallOmega ) , Blank , 0 );
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1234738549</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Mack</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg bigOmega = Omegas.bigOmega;
+arg bigLambda = Lambdas.bigLambda;
+
+// Calculate the process and parameter error for each origin period
+ProcessError = Sqrt( bigOmega ) * UltimateClaims;
+ParameterError = Sqrt( bigLambda ) * UltimateClaims;
+
+// Calculate the process error for the aggregate of all origin periods
+TotalProcessError = Sqrt( Sum[mind,op]( ProcessError^2 ) );
+
+// Calcualte the covariance term
+NumOPs = Length(bigLambda);
+CovarTerm1[i,j][NumOPs,NumOPs-i-1] = bigLambda[i] * UltimateClaims[i] * UltimateClaims[i+j+1];
+CovarTerm = 2 * Sum[mind,i,j]( CovarTerm1 );
+
+// Calculate the parameter error for the aggregate of all origin periods
+TotalParameterError = Sqrt( Sum[mind,op]( ParameterError^2 ) + CovarTerm );
+
+// Put all errors into a single variable
+ErrorTypes[err][{"Process","Parameter","Total"}] = err;
+OPLabels1 = IteratorSize( bigLambda );
+TotalLabel = { "Total" };
+OPLabels[op][SetsUnion(OPLabels1,TotalLabel)] = op;
+
+AllProcessError[OPLabels] = if op == "Total" then TotalProcessError else ProcessError[op];
+AllParameterError[OPLabels] = if op == "Total" then TotalParameterError else ParameterError[op];
+AllTotalError = Sqrt( AllProcessError^2 + AllParameterError^2 );
+
+MackErrors1[ErrorTypes] = { AllProcessError , AllParameterError , AllTotalError };
+
+out MackErrors = Transpose[op,err]( MackErrors1 );
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1328612099</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Merz Wuethrich</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+arg smallOmega = Omegas.smallOmega;
+arg smallLambda = Lambdas.smallLambda;
+arg bigScaledLambda = Lambdas.bigScaledLambda;
+
+// Calculate the process error for each origin period
+ProcessError = Sqrt( smallOmega ) * UltimateClaims;
+ParameterError = Sqrt( bigScaledLambda + smallLambda ) * UltimateClaims;
+
+// Calculate the process error for the aggregate of all origin periods
+TotalProcessError = Sqrt( Sum[mind,op]( ProcessError^2 ) );
+
+// Calcualte the covariance term
+NumOPs = Length(smallLambda);
+CovarTerm1[i,j][NumOPs,NumOPs-i-1] = ( bigScaledLambda[i] + smallLambda[i] ) * UltimateClaims[i] * UltimateClaims[i+j+1];
+CovarTerm = 2 * Sum[mind,i,j]( CovarTerm1 );
+
+// Calculate the parameter error for the aggregate of all origin periods
+TotalParameterError = Sqrt( Sum[mind,op]( ParameterError^2 ) + CovarTerm );
+
+// Put all errors into a single variable
+ErrorTypes[err][{"Process","Parameter","Total"}] = err;
+OPLabels1 = IteratorSize( smallLambda );
+TotalLabel = { "Total" };
+OPLabels[op][SetsUnion(OPLabels1,TotalLabel)] = op;
+
+AllProcessError[OPLabels] = if op == "Total" then TotalProcessError else ProcessError[op];
+AllParameterError[OPLabels] = if op == "Total" then TotalParameterError else ParameterError[op];
+AllTotalError = Sqrt( AllProcessError^2 + AllParameterError^2 );
+
+MerzWuethrichErrors1[ErrorTypes] = { AllProcessError , AllParameterError , AllTotalError };
+
+out MerzWuethrichErrors = Transpose[op,err]( MerzWuethrichErrors1 );
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>2081077029</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Operation</NodeType>
+                  <Name>Prep</Name>
+                  <Description></Description>
+                  <Author>Robert Scarth (RS09)</Author>
+                  <Text>arg ClaimsTriangle = Inputs.ClaimsTriangle;
+
+// Get OPs
+out OPs[op][IteratorSize(ClaimsTriangle)] = op;
+
+// Get number of DPs for each OP
+out NumDPsByOP[OPs] = Length(ClaimsTriangle[op]);
+
+// Get number of origin periods
+out NumOPs = Length(OPs);
+
+// Get dimensions for future development
+NumDPs = Max( NumDPsByOP );
+out FutDPs[OPs] = NumDPs - NumDPsByOP[op];
+
+// Output the shape for future claims
+out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1898315699</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
+              </Children>
+              <ChildrenEdges>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Omegas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Column Sums</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack Scale Factors</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack Scale Factors</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Column Sums</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Mack Scale Factors</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Omegas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Omegas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Mack Scale Factors</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Omegas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Mack</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Omegas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Column Sums</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Prep</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Prep</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Prep</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack Scale Factors</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Prep</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Omegas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Prep</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+              </ChildrenEdges>
+            </TycheNode>
+          </Children>
+          <ChildrenEdges>
+            <TycheEdge>
+              <SourceNodeFullName>Analytic Mack\Inputs</SourceNodeFullName>
+              <SinkNodeFullName>Analytic Mack\Analytic Mack</SinkNodeFullName>
+            </TycheEdge>
+            <TycheEdge>
+              <SourceNodeFullName>Analytic Mack\Analytic Mack</SourceNodeFullName>
+              <SinkNodeFullName>Analytic Mack\Outputs</SinkNodeFullName>
+            </TycheEdge>
+          </ChildrenEdges>
+        </TycheNode>
+        <TycheNode xmlns="" i:type="TycheNodeOperation">
+          <fAttachedData>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">MackErrors</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+          </fAttachedData>
+          <NodeType>Operation</NodeType>
+          <Name>Results</Name>
+          <Description></Description>
+          <Author>robert.scarth</Author>
+          <Text>arg MackErrors = 'Analytic Mack'.MackErrors;
+arg MerzWuethrichErrors = 'Analytic Mack'.MerzWuethrichErrors;
+</Text>
+          <CacheResultValues>true</CacheResultValues>
+          <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+          <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+          <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+          <NumScenariosDefault>0</NumScenariosDefault>
+          <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+          <Breakpoints />
+          <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+            <InputVariables />
+            <OutputVariables />
+            <IsContainer>false</IsContainer>
+            <RandomSeed>1058333815</RandomSeed>
+          </NestedSettings>
+          <Children />
+          <ChildrenEdges />
+        </TycheNode>
+      </TopLevelModelNodes>
+      <TopLevelModelEdges>
+        <TycheEdge>
+          <SourceNodeFullName>Import Triangles</SourceNodeFullName>
+          <SinkNodeFullName>Process Triangles</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Process Triangles</SourceNodeFullName>
+          <SinkNodeFullName>Analytic Mack</SinkNodeFullName>
+        </TycheEdge>
+        <TycheEdge>
+          <SourceNodeFullName>Analytic Mack</SourceNodeFullName>
+          <SinkNodeFullName>Results</SinkNodeFullName>
+        </TycheEdge>
+      </TopLevelModelEdges>
+    </TycheEngine>
+  </TycheProjectEngineContents>
+  <TycheProjectGUIContents>
+    <TycheModel xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <FileVersion>1</FileVersion>
+      <TopLevelGuiNodes>
+        <TycheGuiNode>
+          <Name>Import Triangles</Name>
+          <ElementLeft>102</ElementLeft>
+          <ElementTop>-27</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>130</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Process Triangles</Name>
+          <ElementLeft>101</ElementLeft>
+          <ElementTop>167</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Analytic Mack</Name>
+          <ElementLeft>101</ElementLeft>
+          <ElementTop>322</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children>
+            <TycheGuiNode>
+              <Name>Inputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>90</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Outputs</Name>
+              <ElementLeft>250</ElementLeft>
+              <ElementTop>540</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children />
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+            <TycheGuiNode>
+              <Name>Analytic Mack</Name>
+              <ElementLeft>251</ElementLeft>
+              <ElementTop>315</ElementTop>
+              <ElementWidth>250</ElementWidth>
+              <ElementHeight>90</ElementHeight>
+              <Children>
+                <TycheGuiNode>
+                  <Name>Inputs</Name>
+                  <ElementLeft>237</ElementLeft>
+                  <ElementTop>-444</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Outputs</Name>
+                  <ElementLeft>446</ElementLeft>
+                  <ElementTop>885</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Basic Chain Ladder</Name>
+                  <ElementLeft>-63</ElementLeft>
+                  <ElementTop>37</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Column Sums</Name>
+                  <ElementLeft>520</ElementLeft>
+                  <ElementTop>-205</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Mack Scale Factors</Name>
+                  <ElementLeft>80</ElementLeft>
+                  <ElementTop>210</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Lambdas</Name>
+                  <ElementLeft>545</ElementLeft>
+                  <ElementTop>394</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Omegas</Name>
+                  <ElementLeft>254</ElementLeft>
+                  <ElementTop>389</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Mack</Name>
+                  <ElementLeft>261</ElementLeft>
+                  <ElementTop>655</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Merz Wuethrich</Name>
+                  <ElementLeft>633</ElementLeft>
+                  <ElementTop>660</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Prep</Name>
+                  <ElementLeft>74</ElementLeft>
+                  <ElementTop>-217</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+              </Children>
+              <VisualNodeSettings>
+                <ShowIcon>true</ShowIcon>
+                <ShowTitle>true</ShowTitle>
+                <ShowBorder>true</ShowBorder>
+                <ShowBackground>true</ShowBackground>
+                <IconString></IconString>
+                <TitleLocation>Embed</TitleLocation>
+                <TitleColourString>#FF000000</TitleColourString>
+                <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                <BorderColourString>#FF800080</BorderColourString>
+                <IsIconStandardSize>true</IsIconStandardSize>
+                <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                <FloatingTitleWidth>120</FloatingTitleWidth>
+                <FloatingTitleHeight>40</FloatingTitleHeight>
+              </VisualNodeSettings>
+              <OutliningStatus />
+              <IsBackwardsNode>false</IsBackwardsNode>
+              <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+            </TycheGuiNode>
+          </Children>
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+        <TycheGuiNode>
+          <Name>Results</Name>
+          <ElementLeft>107</ElementLeft>
+          <ElementTop>495</ElementTop>
+          <ElementWidth>250</ElementWidth>
+          <ElementHeight>90</ElementHeight>
+          <Children />
+          <VisualNodeSettings>
+            <ShowIcon>true</ShowIcon>
+            <ShowTitle>true</ShowTitle>
+            <ShowBorder>true</ShowBorder>
+            <ShowBackground>true</ShowBackground>
+            <IconString></IconString>
+            <TitleLocation>Embed</TitleLocation>
+            <TitleColourString>#FF000000</TitleColourString>
+            <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+            <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+            <BorderColourString>#FF800080</BorderColourString>
+            <IsIconStandardSize>true</IsIconStandardSize>
+            <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+            <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+            <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+            <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+            <FloatingTitleWidth>120</FloatingTitleWidth>
+            <FloatingTitleHeight>40</FloatingTitleHeight>
+          </VisualNodeSettings>
+          <OutliningStatus />
+          <IsBackwardsNode>false</IsBackwardsNode>
+          <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+        </TycheGuiNode>
+      </TopLevelGuiNodes>
+      <DebuggingSettings>
+        <BreakOnError>true</BreakOnError>
+        <BreakOnWarning>false</BreakOnWarning>
+        <BreakOnMessage>false</BreakOnMessage>
+      </DebuggingSettings>
+      <DefaultGridCellFormat i:nil="true" />
+      <ModelInspectionSettings viewGlobalProperties="True" viewDescriptionProperties="True" viewTSharpProperties="True" viewGeneralProperties="True" viewNodesWithTSharp="True" viewNodesWithoutTSharp="True" />
+    </TycheModel>
+  </TycheProjectGUIContents>
+  <NodeTests i:nil="true" />
+</TycheProject>
