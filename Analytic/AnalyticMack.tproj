@@ -147,6 +147,66 @@
                 <IgnoreEmptyCells>true</IgnoreEmptyCells>
                 <NumDimensions>2</NumDimensions>
               </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Sanders</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Sanders</SheetName>
+                <CellsRange>Sanders</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>Sanders_Indicator</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>Sanders</SheetName>
+                <CellsRange>Sanders_Indicator</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>MerzWuethrich</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>MerzWuethrich</SheetName>
+                <CellsRange>MerzWuethrich</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
+              <TycheOutputVariable_ExcelImport>
+                <VariableName>MerzWuethrich_Indicator</VariableName>
+                <ChildNodeName></ChildNodeName>
+                <ChildVariableName></ChildVariableName>
+                <CachedTypeData i:nil="true" />
+                <IsEnabled>true</IsEnabled>
+                <SheetName>MerzWuethrich</SheetName>
+                <CellsRange>MerzWuethrich_Indicator</CellsRange>
+                <ImportAsScenarios>false</ImportAsScenarios>
+                <ImportHeaders>RowAndColumnHeaders</ImportHeaders>
+                <IsEnabled>true</IsEnabled>
+                <DataType>Double</DataType>
+                <IgnoreEmptyCells>true</IgnoreEmptyCells>
+                <NumDimensions>2</NumDimensions>
+              </TycheOutputVariable_ExcelImport>
             </ExcelImportVariables>
             <ExcelComplexImportVariables />
             <RecalculateAfterExport>true</RecalculateAfterExport>
@@ -159,16 +219,20 @@
           <Description></Description>
           <Author>robert.scarth</Author>
           <Text>arg TaylorAshe = 'Import Triangles'.TaylorAshe;
+arg Sanders = 'Import Triangles'.Sanders;
+arg MerzWuethrich = 'Import Triangles'.MerzWuethrich;
 arg Example1 = 'Import Triangles'.Example1;
 arg Example2 = 'Import Triangles'.Example2;
 arg TaylorAshe_Indicator = 'Import Triangles'.TaylorAshe_Indicator;
+arg Sanders_Indicator = 'Import Triangles'.Sanders_Indicator;
+arg MerzWuethrich_Indicator = 'Import Triangles'.MerzWuethrich_Indicator;
 arg Example1_Indicator = 'Import Triangles'.Example1_Indicator;
 arg Example2_Indicator = 'Import Triangles'.Example2_Indicator;
 
 // Put all triangle into one variable
-DataSets[ds][{"TaylorAshe","Example1","Example2"}] = ds;
-Triangles1[DataSets] = { TaylorAshe , Example1 , Example2 };
-Indicators1[DataSets] = { TaylorAshe_Indicator , Example1_Indicator , Example2_Indicator };
+DataSets[ds][{"TaylorAshe","Sanders","MerzWüthrich","Example1","Example2"}] = ds;
+Triangles1[DataSets] = { TaylorAshe , Sanders , MerzWuethrich , Example1 , Example2 };
+Indicators1[DataSets] = { TaylorAshe_Indicator , Sanders_Indicator , MerzWuethrich_Indicator , Example1_Indicator , Example2_Indicator };
 
 // Reindex to give meaningful names to op and dp dimensions
 Triangles2 = ReIndex( Triangles1 , "ds" , "op" , "dp" );
@@ -235,16 +299,16 @@ out Indicators[ds,op,dp][DataSets,IndOPs[ds],IndNumDPsByOP[ds,op]] = Indicators2
             </InputVariables>
             <OutputVariables>
               <TycheOutputVariable>
-                <VariableName>MackErrors</VariableName>
+                <VariableName>UltimateErrors</VariableName>
                 <ChildNodeName>Analytic Mack</ChildNodeName>
-                <ChildVariableName>MackErrors</ChildVariableName>
+                <ChildVariableName>UltimateErrors</ChildVariableName>
                 <CachedTypeData i:nil="true" />
                 <IsEnabled>true</IsEnabled>
               </TycheOutputVariable>
               <TycheOutputVariable>
-                <VariableName>MerzWuethrichErrors</VariableName>
+                <VariableName>OnePeriodErrors</VariableName>
                 <ChildNodeName>Analytic Mack</ChildNodeName>
-                <ChildVariableName>MerzWuethrichErrors</ChildVariableName>
+                <ChildVariableName>OnePeriodErrors</ChildVariableName>
                 <CachedTypeData i:nil="true" />
                 <IsEnabled>true</IsEnabled>
               </TycheOutputVariable>
@@ -337,16 +401,16 @@ out Indicators[ds,op,dp][DataSets,IndOPs[ds],IndNumDPsByOP[ds,op]] = Indicators2
                 </InputVariables>
                 <OutputVariables>
                   <TycheOutputVariable>
-                    <VariableName>MackErrors</VariableName>
-                    <ChildNodeName>Mack</ChildNodeName>
-                    <ChildVariableName>MackErrors</ChildVariableName>
+                    <VariableName>UltimateErrors</VariableName>
+                    <ChildNodeName>Ultimate Risk</ChildNodeName>
+                    <ChildVariableName>UltimateErrors</ChildVariableName>
                     <CachedTypeData i:nil="true" />
                     <IsEnabled>true</IsEnabled>
                   </TycheOutputVariable>
                   <TycheOutputVariable>
-                    <VariableName>MerzWuethrichErrors</VariableName>
-                    <ChildNodeName>Merz Wuethrich</ChildNodeName>
-                    <ChildVariableName>MerzWuethrichErrors</ChildVariableName>
+                    <VariableName>OnePeriodErrors</VariableName>
+                    <ChildNodeName>One Period Risk</ChildNodeName>
+                    <ChildVariableName>OnePeriodErrors</ChildVariableName>
                     <CachedTypeData i:nil="true" />
                     <IsEnabled>true</IsEnabled>
                   </TycheOutputVariable>
@@ -391,7 +455,7 @@ out Indicators[ds,op,dp][DataSets,IndOPs[ds],IndNumDPsByOP[ds,op]] = Indicators2
                       <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
-                            <VariableNameAndType type="Output">FittedDevFactors</VariableNameAndType>
+                            <VariableNameAndType type="Output">ClaimsReserves</VariableNameAndType>
                           </Key>
                           <Value>
                             <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -405,7 +469,7 @@ out Indicators[ds,op,dp][DataSets,IndOPs[ds],IndNumDPsByOP[ds,op]] = Indicators2
                             <fFormatType xmlns="">Number</fFormatType>
                             <fHorizontalAlignment i:nil="true" xmlns="" />
                             <fLocaleIdentifier i:nil="true" xmlns="" />
-                            <fNumDecimalPlaces xmlns="">3</fNumDecimalPlaces>
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
                             <fShowThousandsSeparators i:nil="true" xmlns="" />
                             <fVerticalAlignment i:nil="true" xmlns="" />
                           </Value>
@@ -493,7 +557,54 @@ out ColumnSums = Sum[mind,op]( SumPrep );
                   <ChildrenEdges />
                 </TycheNode>
                 <TycheNode xmlns="" i:type="TycheNodeOperation">
-                  <fAttachedData i:nil="true" />
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>s1</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">15</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>s2</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">15</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
                   <NodeType>Operation</NodeType>
                   <Name>Mack Scale Factors</Name>
                   <Description></Description>
@@ -548,6 +659,111 @@ out ScaleFactorsByDevFactors[ScaleFactors] = if FittedDevFactors[dp]==0 then 0 e
                       <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
+                            <VariableNameAndType type="Output">smallLambda</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>ScaleFactor</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">3</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>t1</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>scaledSmallLambdas</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>scaledBigLambdas</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
                             <VariableNameAndType type="Output">bigLambda</VariableNameAndType>
                           </Key>
                           <Value>
@@ -569,7 +785,7 @@ out ScaleFactorsByDevFactors[ScaleFactors] = if FittedDevFactors[dp]==0 then 0 e
                         </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
-                            <VariableNameAndType type="Output">bigScaledLambda</VariableNameAndType>
+                            <VariableNameAndType>smallScaledLambda</VariableNameAndType>
                           </Key>
                           <Value>
                             <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -590,7 +806,28 @@ out ScaleFactorsByDevFactors[ScaleFactors] = if FittedDevFactors[dp]==0 then 0 e
                         </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
-                            <VariableNameAndType>bigScaledLambda1</VariableNameAndType>
+                            <VariableNameAndType type="Output">scaledBigLambda</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>scaledSmallLambda</VariableNameAndType>
                           </Key>
                           <Value>
                             <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -624,17 +861,18 @@ arg ColumnSums = 'Column Sums'.ColumnSums;
 arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
 arg ScaleFactorsByDevFactors = 'Mack Scale Factors'.ScaleFactorsByDevFactors;
 
-out smallLambda[OPs] = if FutDPs[op] == 0 then 0 else ScaleFactorsByDevFactors[NumDPsByOP[op]-1] / ColumnSums[0,NumDPsByOP[op]-1];
+smallLambda[OPs] = if FutDPs[op] == 0 then 0 else ScaleFactorsByDevFactors[NumDPsByOP[op]-1] / ColumnSums[0,NumDPsByOP[op]-1];
 
-out bigLambda = Accumulate( smallLambda );
-
-// We now calculate the scaled lambda used in the Merz-Wuethrich formula
+// Calculate the scaling factor for future projection periods
 ScaleFactor[OPs] = ClaimsTriangle[op,NumDPsByOP[op]-1] / ColumnSums[1,NumDPsByOP[op]-1];
-smallScaledLambda = ScaleFactor * smallLambda ;
 
-// We shift the big scaled lambda forward by one op so that the formula for ParameterError in the node "Merz Wuethrich" is slicker
-bigScaledLambda1 = Accumulate( smallScaledLambda );
-out bigScaledLambda[OPs] = if FutDPs[op] == 0 then 0 else bigScaledLambda1[ToString(ToInteger(op)-1)];
+// Scale the small lambdas using the scaling factor just calculated
+scaledSmallLambda[op,dp][OPs,FutDPs[op]] = 
+	if dp==0 then smallLambda[op]
+	else ( 1 - ScaleFactor[ToString(ToInteger(op)-1)] ) * scaledSmallLambda[ToString(ToInteger(op)-1),dp-1];
+
+// Aggregate to get the big Lambdas
+out bigLambda = Accumulate( Transpose[dp,op]( scaledSmallLambda ) );
 </Text>
                   <CacheResultValues>true</CacheResultValues>
                   <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -658,7 +896,7 @@ out bigScaledLambda[OPs] = if FutDPs[op] == 0 then 0 else bigScaledLambda1[ToStr
                       <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
-                            <VariableNameAndType type="Argument">ProjClaims</VariableNameAndType>
+                            <VariableNameAndType>allSmallOmega</VariableNameAndType>
                           </Key>
                           <Value>
                             <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -672,14 +910,35 @@ out bigScaledLambda[OPs] = if FutDPs[op] == 0 then 0 else bigScaledLambda1[ToStr
                             <fFormatType xmlns="">Number</fFormatType>
                             <fHorizontalAlignment i:nil="true" xmlns="" />
                             <fLocaleIdentifier i:nil="true" xmlns="" />
-                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
                             <fShowThousandsSeparators i:nil="true" xmlns="" />
                             <fVerticalAlignment i:nil="true" xmlns="" />
                           </Value>
                         </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                         <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
                           <Key>
-                            <VariableNameAndType type="Output">smallOmega</VariableNameAndType>
+                            <VariableNameAndType type="Output">bigOmega</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">6</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType>t1</VariableNameAndType>
                           </Key>
                           <Value>
                             <fBackgroundColourAsString i:nil="true" xmlns="" />
@@ -710,10 +969,10 @@ arg NumDPsByOP = Prep.NumDPsByOP;
 arg ProjClaims = 'Basic Chain Ladder'.ProjClaims;
 arg ScaleFactorsByDevFactors = 'Mack Scale Factors'.ScaleFactorsByDevFactors;
 
-allSmallOmega[ProjClaims] = ScaleFactorsByDevFactors[dp+NumDPsByOP[op]-1] / ( if dp==0 then ClaimsTriangle[op,NumDPsByOP[op]-1] else ProjClaims[op,dp-1] );
-out smallOmega[op][IteratorSize(allSmallOmega)] = if Length(allSmallOmega[op])==0 then 0 else allSmallOmega[op,0];
+smallOmega[ProjClaims] = ScaleFactorsByDevFactors[dp+NumDPsByOP[op]-1] / ( if dp==0 then ClaimsTriangle[op,NumDPsByOP[op]-1] else ProjClaims[op,dp-1] );
 
-out bigOmega = Replace( Sum[mind,dp]( allSmallOmega ) , Blank , 0 );
+bigOmega1[op][IteratorSize(smallOmega)] = Reverse( Accumulate( Reverse( smallOmega[op] ) ) );
+out bigOmega = Transpose[dp,op]( bigOmega1 );
 </Text>
                   <CacheResultValues>true</CacheResultValues>
                   <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -727,117 +986,6 @@ out bigOmega = Replace( Sum[mind,dp]( allSmallOmega ) , Blank , 0 );
                     <OutputVariables />
                     <IsContainer>false</IsContainer>
                     <RandomSeed>1234738549</RandomSeed>
-                  </NestedSettings>
-                  <Children />
-                  <ChildrenEdges />
-                </TycheNode>
-                <TycheNode xmlns="" i:type="TycheNodeOperation">
-                  <fAttachedData i:nil="true" />
-                  <NodeType>Operation</NodeType>
-                  <Name>Mack</Name>
-                  <Description></Description>
-                  <Author>robert.scarth</Author>
-                  <Text>arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
-arg bigOmega = Omegas.bigOmega;
-arg bigLambda = Lambdas.bigLambda;
-
-// Calculate the process and parameter error for each origin period
-ProcessError = Sqrt( bigOmega ) * UltimateClaims;
-ParameterError = Sqrt( bigLambda ) * UltimateClaims;
-
-// Calculate the process error for the aggregate of all origin periods
-TotalProcessError = Sqrt( Sum[mind,op]( ProcessError^2 ) );
-
-// Calcualte the covariance term
-NumOPs = Length(bigLambda);
-CovarTerm1[i,j][NumOPs,NumOPs-i-1] = bigLambda[i] * UltimateClaims[i] * UltimateClaims[i+j+1];
-CovarTerm = 2 * Sum[mind,i,j]( CovarTerm1 );
-
-// Calculate the parameter error for the aggregate of all origin periods
-TotalParameterError = Sqrt( Sum[mind,op]( ParameterError^2 ) + CovarTerm );
-
-// Put all errors into a single variable
-ErrorTypes[err][{"Process","Parameter","Total"}] = err;
-OPLabels1 = IteratorSize( bigLambda );
-TotalLabel = { "Total" };
-OPLabels[op][SetsUnion(OPLabels1,TotalLabel)] = op;
-
-AllProcessError[OPLabels] = if op == "Total" then TotalProcessError else ProcessError[op];
-AllParameterError[OPLabels] = if op == "Total" then TotalParameterError else ParameterError[op];
-AllTotalError = Sqrt( AllProcessError^2 + AllParameterError^2 );
-
-MackErrors1[ErrorTypes] = { AllProcessError , AllParameterError , AllTotalError };
-
-out MackErrors = Transpose[op,err]( MackErrors1 );
-</Text>
-                  <CacheResultValues>true</CacheResultValues>
-                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
-                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
-                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
-                  <NumScenariosDefault>0</NumScenariosDefault>
-                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
-                  <Breakpoints />
-                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
-                    <InputVariables />
-                    <OutputVariables />
-                    <IsContainer>false</IsContainer>
-                    <RandomSeed>1328612099</RandomSeed>
-                  </NestedSettings>
-                  <Children />
-                  <ChildrenEdges />
-                </TycheNode>
-                <TycheNode xmlns="" i:type="TycheNodeOperation">
-                  <fAttachedData i:nil="true" />
-                  <NodeType>Operation</NodeType>
-                  <Name>Merz Wuethrich</Name>
-                  <Description></Description>
-                  <Author>robert.scarth</Author>
-                  <Text>arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
-arg smallOmega = Omegas.smallOmega;
-arg smallLambda = Lambdas.smallLambda;
-arg bigScaledLambda = Lambdas.bigScaledLambda;
-
-// Calculate the process error for each origin period
-ProcessError = Sqrt( smallOmega ) * UltimateClaims;
-ParameterError = Sqrt( bigScaledLambda + smallLambda ) * UltimateClaims;
-
-// Calculate the process error for the aggregate of all origin periods
-TotalProcessError = Sqrt( Sum[mind,op]( ProcessError^2 ) );
-
-// Calcualte the covariance term
-NumOPs = Length(smallLambda);
-CovarTerm1[i,j][NumOPs,NumOPs-i-1] = ( bigScaledLambda[i] + smallLambda[i] ) * UltimateClaims[i] * UltimateClaims[i+j+1];
-CovarTerm = 2 * Sum[mind,i,j]( CovarTerm1 );
-
-// Calculate the parameter error for the aggregate of all origin periods
-TotalParameterError = Sqrt( Sum[mind,op]( ParameterError^2 ) + CovarTerm );
-
-// Put all errors into a single variable
-ErrorTypes[err][{"Process","Parameter","Total"}] = err;
-OPLabels1 = IteratorSize( smallLambda );
-TotalLabel = { "Total" };
-OPLabels[op][SetsUnion(OPLabels1,TotalLabel)] = op;
-
-AllProcessError[OPLabels] = if op == "Total" then TotalProcessError else ProcessError[op];
-AllParameterError[OPLabels] = if op == "Total" then TotalParameterError else ParameterError[op];
-AllTotalError = Sqrt( AllProcessError^2 + AllParameterError^2 );
-
-MerzWuethrichErrors1[ErrorTypes] = { AllProcessError , AllParameterError , AllTotalError };
-
-out MerzWuethrichErrors = Transpose[op,err]( MerzWuethrichErrors1 );
-</Text>
-                  <CacheResultValues>true</CacheResultValues>
-                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
-                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
-                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
-                  <NumScenariosDefault>0</NumScenariosDefault>
-                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
-                  <Breakpoints />
-                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
-                    <InputVariables />
-                    <OutputVariables />
-                    <IsContainer>false</IsContainer>
-                    <RandomSeed>2081077029</RandomSeed>
                   </NestedSettings>
                   <Children />
                   <ChildrenEdges />
@@ -882,20 +1030,170 @@ out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
                   <Children />
                   <ChildrenEdges />
                 </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeParallel">
+                  <fAttachedData i:nil="true" />
+                  <NodeType>Parallel</NodeType>
+                  <Name>Ultimate Risk</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg UltimateClaims = 'Basic Chain Ladder'.UltimateClaims;
+argparallel bigOmega = Omegas.bigOmega;
+argparallel bigLambda = Lambdas.bigLambda;
+
+// Calculate the process and parameter error for each origin period
+trimUltimateClaims = PadToPattern( UltimateClaims , bigOmega , 0 );
+// Process error is ultimate claims times big Omega
+ProcessError = Product[mind,0]( { Sqrt( bigOmega ) , trimUltimateClaims } );
+// Parameter error is ultimate claims times big Lambda
+ParameterError = Product[mind,0]( { Sqrt( bigLambda ) , trimUltimateClaims } );
+
+// Calculate the process error for the aggregate of all origin periods
+TotalProcessError = Sqrt( Sum[mind,op]( ProcessError^2 ) );
+
+// Calcualte the covariance term
+NumOPs = Length(bigLambda);
+CovarTerm1[i,j][NumOPs,NumOPs-i-1] = bigLambda[i] * trimUltimateClaims[i] * trimUltimateClaims[i+j+1];
+CovarTerm = if NumOPs == 1 then 0 else 2 * Sum[mind,i,j]( CovarTerm1 );
+
+// Calculate the parameter error for the aggregate of all origin periods
+TotalParameterError = Sqrt( Sum[mind,op]( ParameterError^2 ) + CovarTerm );
+
+// Put all errors into a single variable
+ErrorTypes[err][{"Process","Parameter","Total"}] = err;
+OPLabels1 = IteratorSize( trimUltimateClaims );
+TotalLabel = { "Total" };
+OPLabels[op][SetsUnion(OPLabels1,TotalLabel)] = op;
+
+AllProcessError[OPLabels] = if op == "Total" then TotalProcessError else ProcessError[op];
+AllParameterError[OPLabels] = if op == "Total" then TotalParameterError else ParameterError[op];
+AllTotalError = Sqrt( AllProcessError^2 + AllParameterError^2 );
+
+UltimateErrors1[ErrorTypes] = { AllProcessError , AllParameterError , AllTotalError };
+
+out UltimateErrors = Transpose[op,err]( UltimateErrors1 );
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsParallel">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1535424799</RandomSeed>
+                    <ParalleliseBy>TopDimension</ParalleliseBy>
+                    <ParallelisationMethod>Series</ParallelisationMethod>
+                    <LocalScenarioCount>0</LocalScenarioCount>
+                    <NumThreads>20</NumThreads>
+                    <NumberOfSimChunks>1</NumberOfSimChunks>
+                    <AutomaticallyGlueSimChunks>false</AutomaticallyGlueSimChunks>
+                    <FreeChunkAllocationsAfterExecution>false</FreeChunkAllocationsAfterExecution>
+                    <Grid>
+                      <GridTransferType>ByRequest</GridTransferType>
+                      <HostName>localhost</HostName>
+                      <MaximumGridRequests>100</MaximumGridRequests>
+                      <PortRangeHighest>7460</PortRangeHighest>
+                      <PortRangeLowest>7443</PortRangeLowest>
+                      <Priority>
+                        <Value>2000</Value>
+                      </Priority>
+                      <RuntimeDirectory i:nil="true" />
+                      <UseGridEmulation>false</UseGridEmulation>
+                      <GridSettingsOrigin>FromParent</GridSettingsOrigin>
+                    </Grid>
+                    <ReseedEachExecution>true</ReseedEachExecution>
+                  </NestedSettings>
+                  <Children>
+                    <TycheNode xmlns="" i:type="TycheNodeNestedInputs">
+                      <fAttachedData i:nil="true" />
+                      <NodeType>NestedInputs</NodeType>
+                      <Name>Inputs</Name>
+                      <Description></Description>
+                      <Author>robert.scarth</Author>
+                      <Text></Text>
+                      <CacheResultValues>true</CacheResultValues>
+                      <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                      <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                      <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                      <NumScenariosDefault>0</NumScenariosDefault>
+                      <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                      <Breakpoints />
+                    </TycheNode>
+                    <TycheNode xmlns="" i:type="TycheNodeNestedOutputs">
+                      <fAttachedData i:nil="true" />
+                      <NodeType>NestedOutputs</NodeType>
+                      <Name>Outputs</Name>
+                      <Description></Description>
+                      <Author>robert.scarth</Author>
+                      <Text></Text>
+                      <CacheResultValues>true</CacheResultValues>
+                      <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                      <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                      <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                      <NumScenariosDefault>0</NumScenariosDefault>
+                      <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                      <Breakpoints />
+                    </TycheNode>
+                  </Children>
+                  <ChildrenEdges />
+                </TycheNode>
+                <TycheNode xmlns="" i:type="TycheNodeOperation">
+                  <fAttachedData>
+                    <Entry Label="VariableFormats" ContentType="VariableFormats">
+                      <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                        <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                          <Key>
+                            <VariableNameAndType type="Output">MerzWuethrichErrors</VariableNameAndType>
+                          </Key>
+                          <Value>
+                            <fBackgroundColourAsString i:nil="true" xmlns="" />
+                            <fCustomNumberFormatString i:nil="true" xmlns="" />
+                            <fFontFamilyAsString i:nil="true" xmlns="" />
+                            <fFontIsBold i:nil="true" xmlns="" />
+                            <fFontIsItalic i:nil="true" xmlns="" />
+                            <fFontIsUnderline i:nil="true" xmlns="" />
+                            <fFontSize i:nil="true" xmlns="" />
+                            <fForegroundColourAsString i:nil="true" xmlns="" />
+                            <fFormatType xmlns="">Number</fFormatType>
+                            <fHorizontalAlignment i:nil="true" xmlns="" />
+                            <fLocaleIdentifier i:nil="true" xmlns="" />
+                            <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                            <fShowThousandsSeparators i:nil="true" xmlns="" />
+                            <fVerticalAlignment i:nil="true" xmlns="" />
+                          </Value>
+                        </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                      </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                    </Entry>
+                  </fAttachedData>
+                  <NodeType>Operation</NodeType>
+                  <Name>One Period Risk</Name>
+                  <Description></Description>
+                  <Author>robert.scarth</Author>
+                  <Text>arg UltimateErrors = 'Ultimate Risk'.UltimateErrors;
+
+out OnePeriodErrors[dp][Length(UltimateErrors)] = if dp &lt; Length(UltimateErrors)-1 then Sqrt( Sum[mind,0]( { UltimateErrors[dp]^2 , -1 * UltimateErrors[dp+1]^2 } ) ) else UltimateErrors[dp];
+</Text>
+                  <CacheResultValues>true</CacheResultValues>
+                  <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
+                  <NumScenariosSourceNodeName></NumScenariosSourceNodeName>
+                  <NumScenariosSourceVariableName></NumScenariosSourceVariableName>
+                  <NumScenariosDefault>0</NumScenariosDefault>
+                  <IsUserDefinedFunctionContents>false</IsUserDefinedFunctionContents>
+                  <Breakpoints />
+                  <NestedSettings xmlns="" i:type="TycheSettingsContainer">
+                    <InputVariables />
+                    <OutputVariables />
+                    <IsContainer>false</IsContainer>
+                    <RandomSeed>1883692604</RandomSeed>
+                  </NestedSettings>
+                  <Children />
+                  <ChildrenEdges />
+                </TycheNode>
               </Children>
               <ChildrenEdges>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Omegas</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Mack</SinkNodeFullName>
-                </TycheEdge>
                 <TycheEdge>
                   <SourceNodeFullName>Analytic Mack\Analytic Mack\Inputs</SourceNodeFullName>
                   <SinkNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SinkNodeFullName>
@@ -937,28 +1235,8 @@ out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
                   <SinkNodeFullName>Analytic Mack\Analytic Mack\Omegas</SinkNodeFullName>
                 </TycheEdge>
                 <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Mack</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Omegas</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
                   <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
                   <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
-                </TycheEdge>
-                <TycheEdge>
-                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Merz Wuethrich</SourceNodeFullName>
-                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
                 </TycheEdge>
                 <TycheEdge>
                   <SourceNodeFullName>Analytic Mack\Analytic Mack\Column Sums</SourceNodeFullName>
@@ -983,6 +1261,30 @@ out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
                 <TycheEdge>
                   <SourceNodeFullName>Analytic Mack\Analytic Mack\Prep</SourceNodeFullName>
                   <SinkNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Basic Chain Ladder</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Ultimate Risk</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Omegas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Ultimate Risk</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Lambdas</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Ultimate Risk</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Ultimate Risk</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\Ultimate Risk</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\One Period Risk</SinkNodeFullName>
+                </TycheEdge>
+                <TycheEdge>
+                  <SourceNodeFullName>Analytic Mack\Analytic Mack\One Period Risk</SourceNodeFullName>
+                  <SinkNodeFullName>Analytic Mack\Analytic Mack\Outputs</SinkNodeFullName>
                 </TycheEdge>
               </ChildrenEdges>
             </TycheNode>
@@ -1023,6 +1325,73 @@ out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
                     <fVerticalAlignment i:nil="true" xmlns="" />
                   </Value>
                 </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">MerzWuethrichErrors</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+              </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+            </Entry>
+            <Entry Label="VariableFormats" ContentType="VariableFormats">
+              <ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">UltimateErrors</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                <KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
+                  <Key>
+                    <VariableNameAndType type="Argument">OnePeriodErrors</VariableNameAndType>
+                  </Key>
+                  <Value>
+                    <fBackgroundColourAsString i:nil="true" xmlns="" />
+                    <fCustomNumberFormatString i:nil="true" xmlns="" />
+                    <fFontFamilyAsString i:nil="true" xmlns="" />
+                    <fFontIsBold i:nil="true" xmlns="" />
+                    <fFontIsItalic i:nil="true" xmlns="" />
+                    <fFontIsUnderline i:nil="true" xmlns="" />
+                    <fFontSize i:nil="true" xmlns="" />
+                    <fForegroundColourAsString i:nil="true" xmlns="" />
+                    <fFormatType xmlns="">Number</fFormatType>
+                    <fHorizontalAlignment i:nil="true" xmlns="" />
+                    <fLocaleIdentifier i:nil="true" xmlns="" />
+                    <fNumDecimalPlaces xmlns="">0</fNumDecimalPlaces>
+                    <fShowThousandsSeparators i:nil="true" xmlns="" />
+                    <fVerticalAlignment i:nil="true" xmlns="" />
+                  </Value>
+                </KeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
               </ArrayOfKeyValueOfTycheVariableNameAndTypeDerivedGridCellFormatjX8q0WCU>
             </Entry>
           </fAttachedData>
@@ -1030,8 +1399,8 @@ out FutureShape[op,dp][OPs,FutDPs[OP]]=0;
           <Name>Results</Name>
           <Description></Description>
           <Author>robert.scarth</Author>
-          <Text>arg MackErrors = 'Analytic Mack'.MackErrors;
-arg MerzWuethrichErrors = 'Analytic Mack'.MerzWuethrichErrors;
+          <Text>arg UltimateErrors = 'Analytic Mack'.UltimateErrors;
+arg OnePeriodErrors = 'Analytic Mack'.OnePeriodErrors;
 </Text>
           <CacheResultValues>true</CacheResultValues>
           <NumScenariosSourceType>Unspecified</NumScenariosSourceType>
@@ -1236,8 +1605,8 @@ arg MerzWuethrichErrors = 'Analytic Mack'.MerzWuethrichErrors;
                 </TycheGuiNode>
                 <TycheGuiNode>
                   <Name>Outputs</Name>
-                  <ElementLeft>446</ElementLeft>
-                  <ElementTop>885</ElementTop>
+                  <ElementLeft>418</ElementLeft>
+                  <ElementTop>909</ElementTop>
                   <ElementWidth>250</ElementWidth>
                   <ElementHeight>90</ElementHeight>
                   <Children />
@@ -1415,69 +1784,130 @@ arg MerzWuethrichErrors = 'Analytic Mack'.MerzWuethrichErrors;
                   <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
                 </TycheGuiNode>
                 <TycheGuiNode>
-                  <Name>Mack</Name>
-                  <ElementLeft>261</ElementLeft>
-                  <ElementTop>655</ElementTop>
-                  <ElementWidth>250</ElementWidth>
-                  <ElementHeight>90</ElementHeight>
-                  <Children />
-                  <VisualNodeSettings>
-                    <ShowIcon>true</ShowIcon>
-                    <ShowTitle>true</ShowTitle>
-                    <ShowBorder>true</ShowBorder>
-                    <ShowBackground>true</ShowBackground>
-                    <IconString></IconString>
-                    <TitleLocation>Embed</TitleLocation>
-                    <TitleColourString>#FF000000</TitleColourString>
-                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
-                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
-                    <BorderColourString>#FF800080</BorderColourString>
-                    <IsIconStandardSize>true</IsIconStandardSize>
-                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
-                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
-                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
-                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
-                    <FloatingTitleWidth>120</FloatingTitleWidth>
-                    <FloatingTitleHeight>40</FloatingTitleHeight>
-                  </VisualNodeSettings>
-                  <OutliningStatus />
-                  <IsBackwardsNode>false</IsBackwardsNode>
-                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
-                </TycheGuiNode>
-                <TycheGuiNode>
-                  <Name>Merz Wuethrich</Name>
-                  <ElementLeft>633</ElementLeft>
-                  <ElementTop>660</ElementTop>
-                  <ElementWidth>250</ElementWidth>
-                  <ElementHeight>90</ElementHeight>
-                  <Children />
-                  <VisualNodeSettings>
-                    <ShowIcon>true</ShowIcon>
-                    <ShowTitle>true</ShowTitle>
-                    <ShowBorder>true</ShowBorder>
-                    <ShowBackground>true</ShowBackground>
-                    <IconString></IconString>
-                    <TitleLocation>Embed</TitleLocation>
-                    <TitleColourString>#FF000000</TitleColourString>
-                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
-                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
-                    <BorderColourString>#FF800080</BorderColourString>
-                    <IsIconStandardSize>true</IsIconStandardSize>
-                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
-                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
-                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
-                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
-                    <FloatingTitleWidth>120</FloatingTitleWidth>
-                    <FloatingTitleHeight>40</FloatingTitleHeight>
-                  </VisualNodeSettings>
-                  <OutliningStatus />
-                  <IsBackwardsNode>false</IsBackwardsNode>
-                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
-                </TycheGuiNode>
-                <TycheGuiNode>
                   <Name>Prep</Name>
                   <ElementLeft>74</ElementLeft>
                   <ElementTop>-217</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children />
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>Ultimate Risk</Name>
+                  <ElementLeft>413</ElementLeft>
+                  <ElementTop>591</ElementTop>
+                  <ElementWidth>250</ElementWidth>
+                  <ElementHeight>90</ElementHeight>
+                  <Children>
+                    <TycheGuiNode>
+                      <Name>Inputs</Name>
+                      <ElementLeft>250</ElementLeft>
+                      <ElementTop>90</ElementTop>
+                      <ElementWidth>250</ElementWidth>
+                      <ElementHeight>90</ElementHeight>
+                      <Children />
+                      <VisualNodeSettings>
+                        <ShowIcon>true</ShowIcon>
+                        <ShowTitle>true</ShowTitle>
+                        <ShowBorder>true</ShowBorder>
+                        <ShowBackground>true</ShowBackground>
+                        <IconString></IconString>
+                        <TitleLocation>Embed</TitleLocation>
+                        <TitleColourString>#FF000000</TitleColourString>
+                        <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                        <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                        <BorderColourString>#FF800080</BorderColourString>
+                        <IsIconStandardSize>true</IsIconStandardSize>
+                        <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                        <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                        <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                        <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                        <FloatingTitleWidth>120</FloatingTitleWidth>
+                        <FloatingTitleHeight>40</FloatingTitleHeight>
+                      </VisualNodeSettings>
+                      <OutliningStatus />
+                      <IsBackwardsNode>false</IsBackwardsNode>
+                      <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                    </TycheGuiNode>
+                    <TycheGuiNode>
+                      <Name>Outputs</Name>
+                      <ElementLeft>250</ElementLeft>
+                      <ElementTop>540</ElementTop>
+                      <ElementWidth>250</ElementWidth>
+                      <ElementHeight>90</ElementHeight>
+                      <Children />
+                      <VisualNodeSettings>
+                        <ShowIcon>true</ShowIcon>
+                        <ShowTitle>true</ShowTitle>
+                        <ShowBorder>true</ShowBorder>
+                        <ShowBackground>true</ShowBackground>
+                        <IconString></IconString>
+                        <TitleLocation>Embed</TitleLocation>
+                        <TitleColourString>#FF000000</TitleColourString>
+                        <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                        <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                        <BorderColourString>#FF800080</BorderColourString>
+                        <IsIconStandardSize>true</IsIconStandardSize>
+                        <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                        <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                        <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                        <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                        <FloatingTitleWidth>120</FloatingTitleWidth>
+                        <FloatingTitleHeight>40</FloatingTitleHeight>
+                      </VisualNodeSettings>
+                      <OutliningStatus />
+                      <IsBackwardsNode>false</IsBackwardsNode>
+                      <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                    </TycheGuiNode>
+                  </Children>
+                  <VisualNodeSettings>
+                    <ShowIcon>true</ShowIcon>
+                    <ShowTitle>true</ShowTitle>
+                    <ShowBorder>true</ShowBorder>
+                    <ShowBackground>true</ShowBackground>
+                    <IconString></IconString>
+                    <TitleLocation>Embed</TitleLocation>
+                    <TitleColourString>#FF000000</TitleColourString>
+                    <BackgroundColour1String>#FFFAFBE9</BackgroundColour1String>
+                    <BackgroundColour2String>#FFFFD700</BackgroundColour2String>
+                    <BorderColourString>#FF800080</BorderColourString>
+                    <IsIconStandardSize>true</IsIconStandardSize>
+                    <FloatingTitleBackgroundColourString>#FFFFFFFF</FloatingTitleBackgroundColourString>
+                    <FloatingTitleBorderColourString>#FF800080</FloatingTitleBorderColourString>
+                    <FloatingTitleOffsetX>0</FloatingTitleOffsetX>
+                    <FloatingTitleOffsetY>0</FloatingTitleOffsetY>
+                    <FloatingTitleWidth>120</FloatingTitleWidth>
+                    <FloatingTitleHeight>40</FloatingTitleHeight>
+                  </VisualNodeSettings>
+                  <OutliningStatus />
+                  <IsBackwardsNode>false</IsBackwardsNode>
+                  <ExcludeFromModelInspection>false</ExcludeFromModelInspection>
+                </TycheGuiNode>
+                <TycheGuiNode>
+                  <Name>One Period Risk</Name>
+                  <ElementLeft>598</ElementLeft>
+                  <ElementTop>732</ElementTop>
                   <ElementWidth>250</ElementWidth>
                   <ElementHeight>90</ElementHeight>
                   <Children />
